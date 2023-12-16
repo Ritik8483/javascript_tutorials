@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    //FLAT ARRAY :
+
+    var array = [1,4, 2, 3,7, [7, 8, [9]], 4, [5], 6];
+    // console.log(array.flat(2));
+
+    // var array = [1, 2, [3, 4], 5];
+    // When it encounters the nested array [3, 4], the recursive call happens. This recursive call returns [3, 4]. So, flatArr(it) returns [3, 4].
+    // function flatArr(item) {
+    //   const arr = [];
+    //   console.log("ARRAY = ",arr);
+
+    //   const aa=item.map((it) => {
+    //     console.log(it);
+    //     if (Array.isArray(it)) {
+    //       // console.log("...flatArr(it)",arr.push(...flatArr(it)));
+    //       arr.push(...flatArr(it));
+    //     } else {
+    //       console.log("arr",arr);
+    //       arr.push(it);
+    //     }
+    //   });
+    //   console.log("ritik - ",aa);
+    //   console.log("arr = ",arr);
+    //   return arr;
+    // }
+    // console.log(flatArr(array));
+
+    // PALENDROME :
+    // const a = "NitiN";
+    // const b = a.split("").reverse().join("");
+    // console.log(a===b ? "Palendrome" : "Not-Palendrome")
+
+    // const string = "NitiN";
+    // console.log(string.length / 2);
+    // function check(str) {
+    //   for (let i = 0; i < str.length / 2; i++) {
+    //     console.log(str[i]);
+    //     console.log(str[str.length - 1 - i]);
+    //     if (str[i] !== str[str.length - 1 - i]) {
+    //       return "It is not a palindrome";
+    //     }
+    //   }
+    //   return "It is a palindrome";
+    // }
+    // console.log("", check(string));
+
+    //FACTORIAL OF A NO.
+    // const no = 5;
+    // function fact(item){
+    //   let x=1;
+    //   for (let index = 1; index <= item; index++) {
+    //     x = index * x
+    //   }
+    //   return x
+    // }
+    // console.log(fact(no));
+
+    // const a = window.prompt("Enter value of a");
+    // const b = window.prompt("Enter value of b");
+    // const c = window.prompt("Enter value of c");
+
+    // // console.log(Math.max(a, b, c));
+    // function max() {
+    //   if (a > b && a > c) {
+    //     console.log("A is greater");
+    //   } else if (b > a && b > c) {
+    //     console.log("B is greater");
+    //   } else {
+    //     console.log("c is greater");
+    //   }
+    // }
+    // max()
+
+    // const a = window.prompt("Enter value of a");
+    // const b = window.prompt("Enter value of b");
+    // const sum = parseInt(a) + parseInt(b);
+    // console.log("sum", sum);
+
+    // let a = window.prompt("Enter value of a");
+    // let b = window.prompt("Enter value of b");
+    // let c = a;
+    // a = b;
+    // b = c;
+    // console.log(a, b);
+
+    // const a = window.prompt("Enter value of a");
+    // if (a === 0 || a % 2 === 0) {
+    //   console.log("It's a EVEN no");
+    // } else {
+    //   console.log("It's a ODD no");
+    // }
+
+    // const a = window.prompt("Enter value of a");
+    // function primeFun(a) {
+    //   if (a <= 1) {
+    //     console.log("It is neither prime nor composite");
+    //     return;
+    //   }
+    //   for (let i = 2; i < a; i++) {
+    //     if (a % i === 0) {
+    //       console.log("It is not a prime number");
+    //       return
+    //     } else {
+    //       console.log("It is a prime number");
+    //       return
+
+    //     }
+    //   }
+    // }
+    // primeFun(a);
+
+
+
+  </script>
+  <body></body>
+</html>

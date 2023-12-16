@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    // const a = prompt("Please enter first number");
+    // const b = prompt("Please enter second number");
+    // const c = prompt("Please enter third number");
+    // console.log(typeof(a));
+    // const d = +a + +b + +c;
+    // console.log("d", d);
+
+    // const a = parseInt(prompt("Please enter first number"));
+    // const b = a * a;
+    // console.log("Square", b);
+
+    // const base = parseInt(prompt("Please enter base"));
+    // const height = parseInt(prompt("Please enter height"));
+    // const area = (base * height) / 2;
+    // console.log("area", area);
+
+    // const base = parseInt(prompt("Please enter base"));
+    // const height = parseInt(prompt("Please enter height"));
+    // const area = (base * height) / 2;
+    // console.log("area", area);
+
+    // let a = parseInt(prompt("Please enter first no."));
+    // let b = parseInt(prompt("Please enter second no"));
+    // console.log(" A", a);
+    // console.log(" B", b)  ;
+    // let c = a;
+    // a = b;
+    // b = c;
+    // console.log("Swapped A", a);
+    // console.log("Swapped B", b);
+
+    // const a = parseInt(prompt("Please enter a no."));
+    // if (a > 0) {
+    //   console.log("POsitive");
+    // } else if (a < 0) {
+    //   console.log("Negative");
+    // } else {
+    //   console.log("Zero");
+    // }
+
+    // const a = parseInt(prompt("Please enter a no."));
+    // if (a % 2 === 0 || a === 2 || a === 0) {
+    //   console.log("It is a Even");
+    // } else {
+    //   console.log("It is a Odd");
+    // }
+
+    // const a = parseInt(prompt("Please enter a no."));
+    // if (a < 0) {
+    //   console.log("It is not a Prime No");
+    // } else if (a % 2 === 0 || a === 1) {
+    //   console.log("It is not a Prime No");
+    // } else {
+    //   console.log("It is a Prime no");
+    // }
+
+    // const a = parseInt(prompt("Please enter 1st no."));
+    // const b = parseInt(prompt("Please enter 2nd no."));
+    // const c = parseInt(prompt("Please enter 3rd no."));
+    // // console.log(Math.max(a, b, c));
+    // if (a > b && a > c) {
+    //   console.log("A is greater");
+    // } else if (b > c && b > a) {
+    //   console.log("B is greater");
+    // } else {
+    //   console.log("C is greater");
+    // }
+
+    //HERE WE HAVE TO DO MULTIPLICATION WITH PREV NO
+    // const a = parseInt(prompt("Please enter a no."));
+    // let fact = 1;
+    // for (let i = 1; i <= a; i++) {
+    //   fact = i * fact;
+    // }
+    // console.log(`Factorial of ${a} is : `, fact);
+
+    // var a = parseInt(prompt("Please enter a no."));
+    // for (i = 1; i <= 10; i++) {
+    //   let b = i * a;
+    //   console.log(`${a} X ${i} = ${b} `);
+    // }
+
+    // var array = [1, 2, 3, [7, 8, [9]], 4, [5], 6];
+    // function flattenArray(arr) {
+    //   var flattened = [];
+    //   arr.forEach(function (item) {
+    //     console.log("item", item);
+    //     console.log("isArray", Array.isArray(item));
+    //     if (Array.isArray(item)) {
+    //       flattened = flattened.concat(flattenArray(item));
+    //     } else {
+    //       flattened.push(item);
+    //     }
+    //   });
+
+    //   return flattened;
+    // }
+    // console.log(flattenArray(array));
+
+    // console.log(arr.flat().flat());
+    //     let flatArray = [].concat.apply([], arr);
+    //     console.log("flatArray", flatArray);
+
+    //     let arr = [
+    //     [1, 2],
+    //     [3, 4],
+    //     [5, 6][7, 8, 9],
+    //     [10, 11, 12, 13, 14, 15]
+    // ];
+    // let flatArray = [].concat.apply([], arr);
+    // let flatArray = [].concat(...arr);
+
+    // function flatten(items) {
+    //   console.log("items",items);
+    //   const flat = [];
+
+    //   items.forEach(item => {
+    //     console.log("itemTTT",item);
+    //     if (Array.isArray(item)) {
+    //       // console.log("rkk",flat.push(...flatten(item)));
+    //       flat.push(...flatten(item));   // it call function with [7, 8, [9]] and 7,8 is pushed to flat arr and [9] again call the function
+    //     } else {
+    //       flat.push(item);
+    //     }
+    //   });
+
+    //   return flat;
+    // }
+    // console.log("flatten",flatten(arr));
+
+    // var arr = [1, 2, 3, [7, 8, [9]], 4, [5], 6];
+    // const flatArr = (arrItmes) => {
+    //   let flat = [];
+    //   arrItmes.forEach((item) => {
+    //     if (Array.isArray(item)) {
+    //       flat.push(...flatArr(item));
+    //     } else {
+    //       flat.push(item);
+    //     }
+    //   });
+    //   return flat;
+    // };
+    // console.log(flatArr(arr));
+
+    // let a = ["1", "2", "3", "4"];
+    // let b = ["1", "2", "5", "6"];
+
+    // const sum=[...a,...b];
+    // console.log([...new Set(sum)]);
+
+    // const filter = b.filter((item) => !a.includes(item));
+    // console.log("ff", a.concat(filter));
+
+    // const fact = (item) => {
+    //   let num = 1;
+    //   for (var i = 1; i <= item; i++) {
+    //     num = num * i;
+    //   }
+    //   return num;
+    // };
+
+    // console.log(fact(10));
+
+      // const input = +window.prompt("Please enter a number : ");
+      // console.log("input",typeof input);
+      // if(input===0 || input%2===0){
+      //   console.log("Even");
+      // }
+      // else{
+      //   console.log("Odd");
+      // }
+
+  </script>
+  <body></body>
+</html>
