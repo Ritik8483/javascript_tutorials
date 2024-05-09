@@ -8,6 +8,25 @@
   <body>
     <script>
       //PALENDROME
+
+      // const name = window.prompt("Please enter a string");
+      // console.log("name", name[1]);
+
+      // function palen(data) {
+      //   console.log("data", data);
+      //   const totalStrLength = data.length;
+      //   console.log(data[totalStrLength - 1]);
+      //   for (let index = 0; index < data.length / 2; index++) {
+      //     if(data[index]===data[totalStrLength - 1]){
+      //       console.log("Palendrome");
+      //       return
+      //     }
+      //   }
+      //   console.log("Not - Palendrome");
+      // }
+
+      // palen(name);
+
       // const name = window.prompt("Please enter a string");
       // console.log("name", name);
       // console.log("name", name[1]);
@@ -53,7 +72,7 @@
       //   var emptyArray = [];
       //   data.forEach((element) => {
       //     if (Array.isArray(element)) {
-      //       emptyArray.push(...arr(element));
+      //       emptyArray.push(...arr(element));   //when it calls with [7,8,[9]] it returns an array [1, 2, 3, 5]
       //     } else {
       //       emptyArray.push(element);
       //     }
@@ -75,9 +94,151 @@
       // }
       // console.log(uniqueItems(arr));
 
+      //FACTORIAL
+      // function factorial(item) {
+      //   let numb = 1;
+      //   for (let index = 1; index <= item; index++) {
+      //     numb *= index;
+      //   }
+      //   return numb;
+      // }
+      // console.log(factorial(5));
 
+      //ODD OR EVEN
+      // function oddOrEven(num){
+      //   if(num%2===0 || num===0){
+      //     console.log("even number");
+      //   }
+      //   else{
+      //     console.log("odd number");
+      //   }
+      // }
+      // oddOrEven(11)
 
+      //PRIME NUMBER
+      // function primeNumber(num) {
+      //   if (num <= 1) {
+      //     return console.log("It is not a prime number");
+      //   } else if (num === 2) {
+      //     return console.log("It is a prime number");
+      //   } else {
+      //     for (let i = 2; i < num; i++) {
+      //       if (num % i === 0) {
+      //         console.log("It is not a Prime Number");
+      //         return;
+      //       }
+      //     }
+      //     console.log("It is a Prime Number");
+      //   }
+      // }
+      // primeNumber(70);
 
+      // -------------------------------------TCI INTER-----------------------------------------
+
+      // const str = window.prompt("Please enter a string : ");
+      // const reversed = str.split("").reverse().join("");
+
+      // function palen(stri) {
+      //   const strLen = stri.length;
+      //   for (var index = 0; index < strLen / 2; index++) {
+      //     if (stri[index] !== stri[strLen - index - 1]) {
+      //       console.log("Not Palendrom");
+      //       return;
+      //     }
+      //   }
+      //   console.log("Palendrome");
+      // }
+      // palen(str);
+
+      //DUPLICACY
+      // const arr = [1, 3, 4, 6, 5, 3, 5, 4, 7, 8, 4, 5];
+
+      // const ff = [...new Set(arr)];
+      // console.log("ff", ff);
+
+      // const ff = arr.filter((it, ind) => arr.indexOf(it) === ind);
+      // console.log("ff", ff);
+
+      // const ff = arr.filter(
+      //   (it, ind) => arr.findIndex((item) => item === it) === ind
+      // );
+      // console.log("ff", ff);
+
+      //DUPLICATES
+      // const repeatedValues = arr.filter((it, ind) => arr.indexOf(it) !== ind);
+      // console.log(repeatedValues);
+      // const duplicates = arr.filter((element, index) => repeatedValues.includes(element));
+      // console.log(duplicates);
+
+      //RECURRSION
+      // const arrays = [1, 2, 3, 5, [7, 8, [9]], 4, [5], 6];
+      // function recurrFunc(data) {
+      //   const arr = [];
+      //   data.forEach((item) => {
+      //     if (Array.isArray(item)) {
+      //       arr.push(...recurrFunc(item));
+      //     } else {
+      //       arr.push(item);
+      //     }
+      //   });
+      //   return arr;
+      // }
+      // console.log(recurrFunc(arrays));
+
+      //UNIQUE ARRAY
+      // const arr = [1, 3, 2, 5, 4];
+      // const ff = arr.every((it, index) => {
+      //   console.log(index);
+      //   return arr.indexOf(it) === index;
+      // });
+      // console.log(ff);
+
+      // FACTORIAL
+      // const num = 3;
+      // function fact(number) {
+      //   let numb = 1;
+      //   for (let index = 1; index <= number; index++) {
+      //     numb *= index
+      //   }
+      //   return numb
+      // }
+      // console.log(fact(num));
+
+      //ODD - EVEN
+      // const number = +prompt("Enter a number");
+      // function oddEven(num) {
+      //   if (num % 2 === 0 || num === 0) {
+      //     console.log("IT is EVEN");
+      //   } else {
+      //     console.log("IT is ODD");
+      //   }
+      // }
+      // oddEven(number);
+
+      //PRIME NO
+      // const number = +prompt("Enter a number");
+
+      // function checkPrime(num) {
+      //   const numb = 1;
+      //   if (number <= 1) {
+      //     console.log("IT is not a PRIME no");
+      //     return;
+      //   } else if (num === 2) {
+      //     console.log("PRIME NO");
+      //     return;
+      //   } else {
+      //     for (let index = 2; index < num; index++) {
+      //       if (num % index === 0) {
+      //         console.log("IT is not a PRIME");
+      //         return;
+      //       }
+      //     }
+      //     console.log("PRIME NO");
+      //   }
+      // }
+      // checkPrime(number);
+
+      
     </script>
   </body>
 </html>
