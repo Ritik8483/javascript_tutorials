@@ -16,6 +16,15 @@
     //   "Monday": true
     // }
 
+    // let recObj = {};
+    // const dd = recurrArr.forEach((item, index) => {
+    //   Object.keys(item).forEach((it) => {
+    //     recObj[it] = item[it];
+    //   });
+    // });
+
+    // console.log(recObj);
+
     // let recObj = {}
     // const obj = arr.forEach((item)=>{
     //   console.log("item",item);
@@ -28,24 +37,20 @@
     // console.log("obj",obj); //returning nothing
     // console.log(recObj);  //give desired output
 
-    // const recurrance_days = recurrArr?.reduce((acc, dayObj) => {
-    //   console.log("acc", acc);
-    //   console.log("dayObj", dayObj);
+    // FOR IN
+    // const obj = { a: 1, b: 2, c: 3 };
 
-    //   for (let key in dayObj) {
-    //     //let value of array
-    //     console.log(key, dayObj[key]); // Outputs: firstName John, lastName Doe, age 30
-    //     acc[key] = dayObj[key];
-    //   }
-    //   // for (const [key, value] of Object.entries(dayObj)) {
-    //   //   console.log(key, value);
+    // for (let key in obj) {
+    //   console.log(key); // Output: 'a', 'b', 'c'
+    //   console.log(obj[key]); // Output: 1, 2, 3
+    // }
 
-    //   //   acc[key] = value === 'true';    //Comparison and Assignment
-    //   // }
-    //   return acc;
-    // }, {});
+    // FOR OF
+    // const arr = [1, 2, 3];
 
-    // console.log("recurrance_days", recurrance_days);
+    // for (let value of arr) {
+    //   console.log(value); // Output: 1, 2, 3
+    // }
 
     // const person = { firstName: "John", lastName: "Doe", age: 30 };
     // console.log(Object.entries(person));
@@ -59,18 +64,77 @@
     // const existingPayload = {
     //   name: "ritik",
     //   age: "24",
-    //   techStack: "ReactJS"
+    //   techStack: "ReactJS",
+    //   city: {
+    //     name: "new york",
+    //     country: "USA",
+    //   },
     // };
 
     // const newPayload = {
-    //   age: "24",
     //   name: "ritik",
-    //   techStack: "ReactJS"
+    //   age: "24",
+    //   techStack: "ReactJS",
+    //   city: {
+    //     name: "new york",
+    //     country: "USA",
+    //   },
     // };
-    // // Since both objects have identical properties and values and are serialized in the same order
-    //     const isPayloadEqual = JSON.stringify(existingPayload) === JSON.stringify(newPayload);
 
-    //     console.log(isPayloadEqual);
+    // function samePayload(obj1, obj2) {
+    //   const keysArr = Object.keys(obj1);
+    //   if (obj1.length !== obj2.length) {
+    //     return false;
+    //   }
+    //   for (const element of keysArr) {
+    //     if (obj1[element] !== obj2[element]) {
+    //       return false;
+    //     }
+    //   }
+    //   return true;
+    // }
+
+    // function samePayload(obj1, obj2) {
+    //   const keysArr1 = Object.keys(obj1);
+    //   const keysArr2 = Object.keys(obj2);
+
+    //   if (keysArr1.length !== keysArr2.length) {
+    //     return false;
+    //   }
+
+    //   for (const key of keysArr1) {
+    //     // Check if the key exists in both objects
+    //     if (!obj2.hasOwnProperty(key)) {
+    //       return false;
+    //     }
+
+    //     const value1 = obj1[key];
+    //     const value2 = obj2[key];
+
+    //     console.log("value1",value1);
+
+    //     // If the values are objects, recursively compare them
+    //     if (typeof value1 === "object" && typeof value2 === "object") {
+    //       if (!samePayload(value1, value2)) {   //if false not same it return false else if same it returns true (outermost return)
+    //         return false;
+    //       }
+    //     } else {
+    //       // Compare primitive values
+    //       if (value1 !== value2) {
+    //         return false;
+    //       }
+    //     }
+    //   }
+
+    //   return true;
+    // }
+
+    // console.log(samePayload(existingPayload, newPayload));
+
+    // // Since both objects have identical properties and values and are serialized in the same order
+    // const isPayloadEqual = JSON.stringify(existingPayload) === JSON.stringify(newPayload);
+
+    // console.log(isPayloadEqual);
 
     // const areObjectsEqual = (obj1, obj2) => {
     //   const keys1 = Object.keys(obj1);
@@ -123,6 +187,17 @@
     //   },
     // ];
 
+    // const combinedArr = [...obj1, ...obj2];
+    // console.log("combinedArr", combinedArr);
+    // const onlyIds = combinedArr.map((item) => item.id);
+    // console.log("onlyIds", onlyIds);
+    // const duplicates = onlyIds.filter(
+    //   (item, index) => onlyIds.indexOf(item) !== index
+    // );
+    // const replicates = combinedArr.filter((item)=>duplicates.includes(item.id));
+    // console.log("replicates",replicates);
+    // console.log("duplicates",duplicates);
+
     // const combineArr = [...obj1, ...obj2];
     // console.log("combineArr", combineArr);
     // const combineArrId = combineArr.map((item) => item.id);
@@ -139,6 +214,9 @@
     // check if they both contains same items or not
     // const a = [1, 2, 3];
     // const b = [1, 2, 3];
+
+    // const check = a.every((item)=>b.includes(item));
+    // console.log(check);
 
     // const sameArr = a.length === b.length && a.every((item)=>b.includes(item))
     // console.log("sameArr",sameArr);
@@ -213,7 +291,7 @@
     // console.log(obj.hasOwnProperty("name")); //both
     // console.log(Object.keys(obj).length);
 
-    // const arr = ["10", "10", "10","10","10","10"].map(parseInt); //parseInt("10", 1) The radix is 1, which is not a valid radix. Therefore, NaN is returned.
+    // const arr = [10, 10, 10, 10, 10, 10].map(parseInt); //parseInt("10", 1) The radix is 1, which is not a valid radix. Therefore, NaN is returned.
     // console.log(arr); //parseInt("10", 2) is called. The radix is 2, so "10" is interpreted as a binary number, and the result is 2
 
     // It's due to different scopes of both the variables
@@ -240,7 +318,9 @@
     // console.log("1" + "1" - 1);
     // console.log("2" > "12"); //in lexicographical order ,The comparison starts with the first characters of the two strings: "2" and "1".
     // console.log(2 > 12);
+    // console.log("2" > 12);
     // console.log("2">"32");
+    // console.log(String([1,2,3]));
     // console.log(1+ [1,2,3]);
     // console.log([1,2,3] + [4,5,6]);     //+ operator with arrays, it performs array-to-string
     // console.log(!true-true);
@@ -314,6 +394,7 @@
     // >=
     // console.log(3+4+'6');
     // console.log(typeof 3+4+'6');        //o/p are performed from left to right,type of 3 is number+46
+    // console.log(typeof (3+4+'6'));
     // let data = 3 + 4 + "5";
     // console.log(data);
     // console.log(typeof data);
@@ -396,7 +477,7 @@
     // console.log("newArr", newArr);
     // console.log("arr", arr);
 
-    //extract a section of an array and return a new array.(SLICE)
+    //extract a section of an array and return a new array.(SLICE) It doesn't modify the orignal array
     // NOTE:If the start index is greater than or equal to the end index, it returns an empty array.
     // var originalArray = [1, 2, 3, 4, 5];
     // var portion = originalArray.slice();
@@ -411,7 +492,7 @@
     // console.log("portion", portion);
 
     //(SPLICE)It modifies the array it's called on and **returns an array containing the deleted elements;return empty []array with added values
-    // var array = [1, 2, 3, 4, 5,6,2];
+    // var array = [1, 2, 3, 4, 5, 6, 2];
     // var removed = array.splice(2, 2); //removes two elements starting from index 2(start from index inclusive means delete it also).
     // var addArr = array.splice(2, 0, 6, 7);    //inserts 6 and 7 at index 2(start from index inclusive means add at it place also) without removing any elements.
     // var removed = array.splice(0, 2);     //(2-1=1index)start from index 0 and remove elements upto 2 index(non inclusive means don't delete second index element)
@@ -420,20 +501,22 @@
     // (-2-1=1index)starting from last index to -2 index means delete elements from last index to -2 index(not - inclusive means don't delete -2 index element)
     // var removed = array.splice(2, 1, 'a');       //add a and b
     // var removed = array.splice(2, 0, 'a');
-    // var adding = array.splice(array.length, 0, 6, 7);   //add 6 and 7 at the last of array
+    // var adding = array.splice(array.length, 0, 6, 7); //add 6 and 7 at the last of array
     // console.log("array", array); //it is modified array,array is now [1, 2, 5]
     // console.log("addArr", addArr); //it gives deleted values,removed is [3, 4]
     // console.log("removed", removed); //adding array element give empty array
     // console.log("adding", adding);
     // console.log("array", array);
 
-    // let arr = [1, 2, 3, 4];   //returns (undefined )it doesn't give new array instead it modifies the orignal array
-    // const newArr = arr.forEach((element, index, array) => {   //not need to return anything as we are manipulating array elements
-    // console.log("element", element); //array elements
-    // console.log("index", index);
-    // console.log("array", array); //full array arr changes again and again
+    // let arr = [1, 2, 3, 4]; //returns (undefined )it doesn't give new array instead it modifies the orignal array
+    // const newArr = arr.forEach((element, index, array) => {
+    //   //not need to return anything as we are manipulating array elements
+    //   console.log("element", element); //array elements
+    //   console.log("index", index);
+    //   console.log("array", array); //full array arr changes again and again
 
     //   array[index] = element * 2;
+    //   return "true"
     // });
     // console.log(arr);
     // console.log(newArr);
@@ -517,7 +600,7 @@
     //   setTimeout(() => console.log(i), 2000);
     // }
 
-    //now it's in global scope and behaves like var
+    // now it's in global scope and behaves like var
     // for (let i = 0; i < 3; i++) {     //it creates 3 lets
     //   console.log(i);
     //   setTimeout(() => console.log(i), 1);
@@ -531,8 +614,8 @@
     //   }, //example shape object
     //   perimeter: () => 2 * radius, //fat arrow fun doesn't refer to the shape object,it's
     // }; //surrounding scope is window for example
-    // // they inherit the this value from the enclosing function or context but it's a object.
-    // // , it doesn't refer to the shape object's radius, but rather it refers to the radius variable in the outer scope
+    // they inherit the this value from the enclosing function or context but it's a object.
+    // , it doesn't refer to the shape object's radius, but rather it refers to the radius variable in the outer scope
 
     // console.log(shape.diameter());
     // console.log(shape.perimeter());
@@ -574,15 +657,14 @@
 
     // console.log(new Number(3));         //it's an object whose value is 3
 
-    // function getPersonInfo(one,two,three) {
-    //   console.log(one);             //tagged template literals, the value of the first argument is
-    //                                 // always an array of the string of empty values
-    //   console.log(two);             //The remaining arguments get the values of the passed expressions
+    // function getPersonInfo(one, two, three) {
+    //   console.log(one); //tagged template literals, the value of the first argument is                                    // always an array of the string of empty values
+    //   console.log(two); //The remaining arguments get the values of the passed expressions
     //   console.log(three);
     // }
     // const person = "Lydia";
     // const age = 21;
-    // getPersonInfo`2344 ${person} is df ${age} years old`;
+    // getPersonInfo`2344  cc ${person} is cvdfg df ${age} years old`;
 
     // function checkAge(data) {
     //   if (data === { age: 18 }) {
@@ -603,6 +685,14 @@
     //   console.log(typeof []);
     // }
     // getAge(21);
+
+    // function getAge(...args) {
+    //   console.log(args);
+    //   console.log(...args);
+    //   console.log(typeof args);
+    //   console.log(typeof []);
+    // }
+    // getAge([21,22]);
 
     // let a=[];
     // let b=[];
@@ -673,7 +763,7 @@
 
     // let a = [1, 2, 3, 4, 5];
     // let b = [4, 5, 6];
-    // // console.log(...a);                         //it doen't replace
+    // console.log(...a);                         //it doen't replace
     // let c = [...a, ...b]; //it takes both 4 in the array
     // console.log(c);
     // console.log([...new Set(c)]);
@@ -729,7 +819,7 @@
     // console.log(typeof false);
 
     // let person = { name: "anil" };
-    // // console.log(person);
+    // console.log(person);
     // person.age = 30;
     // console.log(person);
     // // //add new key in object
@@ -952,7 +1042,7 @@
 
     // STRING QUESTIONS
 
-    let str = "Hello, How are you?";
+    // let str = "Hello, How are you?";
 
     //1.Convert string in only one array
 
@@ -1540,7 +1630,7 @@
 
     //   return (m) => {
     //     console.log("m", m);
-    //     m > n;
+    //     m > n ? true : false;
     //   };
     // }
 
@@ -1659,3 +1749,41 @@
     </div>
   </body>
 </html>
+<!-- 
+type Geeks = {
+  name: string;
+  age: number;
+};
+
+type MoreGeeks = {
+  email: string;
+};
+
+type CombinedGeeks = Geeks & MoreGeeks;
+
+const gfg: CombinedGeeks = {
+  name: "kgowda",
+  age: 20,
+  email: "kgowda@gmail.com"
+};
+
+console.log(gfg); -->
+
+<!-- interface Geeks {
+  name: string;
+  age: number
+}
+
+interface Geeks {
+  email: string;
+}
+
+// Using the merged interface
+const gfg: Geeks = {
+  name: &quot; kgowda&quot;,
+  age: 20,
+  email: &quot; kgowda@gmail.com&quot;
+};
+
+console.log(gfg); -->
+<!-- Interface support the use of object -->

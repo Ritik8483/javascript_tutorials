@@ -611,6 +611,17 @@
     //   },
     // ];
 
+    // const comb = [...obj1, ...obj2];
+    // console.log("comb", comb);
+    // const onlyIds = comb.map((item) => item.id);
+    // console.log("onlyIds", onlyIds);
+    // const dupl = onlyIds.filter(
+    //   (item, index) => onlyIds.indexOf(item) !== index
+    // );
+    // console.log("dupl", dupl);
+    // const replicates = comb.filter((item, ind) => dupl.includes(item.id));
+    // console.log("replicates", replicates);
+
     // const combinedArr = [...obj1, ...obj2];
     // const onlyIdsArr = combinedArr.map((item) => item.id);
     // const rep = onlyIdsArr.filter((ite,index)=>onlyIdsArr.indexOf(ite)!==index);
@@ -618,6 +629,18 @@
     // console.log(dupl);
 
     // const recurrArr = [{ Sunday: "true" }, { Monday: "false" }];
+
+    // let recObj = {};
+    // recurrArr.forEach((item,index)=>{
+    //   const keys = Object.keys(item);
+    //   keys.forEach((it)=>{
+    //     recObj[it]=item[it]
+    //   })
+    //   console.log("keys",keys);
+    // })
+
+    // console.log("recObj",recObj);
+
     // let recObj = {};
     // const keys = recurrArr.forEach((item) => {
     //   Object.keys(item).forEach((it) => {
@@ -653,6 +676,18 @@
     // console.log(equalObj(existingPayload, newPayload));
 
     // const name = window.prompt("Please enter a name");
+
+    // const palen = (data) => {
+    //   const strLen = data.length;
+    //   for (let index = 0; index < strLen / 2; index++) {
+    //     if (data[index] !== data[strLen - index - 1]) {
+    //       return false;
+    //     }
+    //   }
+    //   return true;
+    // };
+    // console.log(palen(name) ? "Plaendrome" : "Not");
+
     // function palen(str) {
     //   const strLen = str.length;
     //   console.log(str[0]);
@@ -670,6 +705,20 @@
     // console.log(name === reverse ? "PALENDROM" : "NOT");
 
     // var array = [1, 2, 3, [7, 8, [9]], 4, [5], 6];
+
+    // function flatArr(data) {
+    //   const emptyArr = [];
+    //   data.forEach((element) => {
+    //     if (Array.isArray(element)) {
+    //       emptyArr.push(...flatArr(element));
+    //     } else {
+    //       emptyArr.push(element);
+    //     }
+    //   });
+    //   return emptyArr;
+    // }
+    // console.log(flatArr(array));
+
 
     // const flatArr = (arr) => {
     //   let emptyArr = [];
@@ -698,7 +747,6 @@
     // }
 
     // console.log(fatco(number));
-
   </script>
   <body></body>
 </html>
