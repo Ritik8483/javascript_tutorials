@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // --Prefer array notation then object notation in Que3
+      //QUE:1   Bubble sort
+      // https://www.geeksforgeeks.org/bubble-sort-algorithms-by-using-javascript/
+      //   const arr = [2, 4, 6, 4, 1, 8];    //for i = 0 , inner loop runs 5 times everytime
+      //   for (let i = 0; i < arr.length; i++) {
+      //     //for every element of i inner loop runs
+      //     console.log("index", i);
+      //     for (let j = 0; j < arr.length - 1 - i; j++) {       //Ensures we don’t compare undefined values (data[j + 1]).
+      //Optimizes the sort by reducing how far we loop on each pass.
+      //       //for index = 0
+      //       console.log("jdex", j); //j = 0
+
+      //       if (arr[j] < arr[j + 1]) {
+      //         //first it compares whether 2 is small the other elemnts then 4 is
+      //         console.log("arr[j]", arr[j]); //for j=0 , arr[j]=2
+      //         console.log("arr[j + 1]", arr[j + 1]); //for j=1 , arr[j]=4
+      //         let temp = arr[j]; //if condition is true saving arr[j]=2 in temp variable
+      //         arr[j] = arr[j + 1];
+      //         arr[j + 1] = temp;
+      //       }
+      //     }
+      //   }
+      //   console.log("arr", arr);
+
+      // const arr = [2, 4, 6, 4, 1, 8];
+      // for (let i = 0; i < arr.length; i++) {
+      //   console.log("Iindex",i);
+
+      //   for (let j = 0; j < arr.length - 1 - i; j++) {
+      //     console.log("Jindex",j);
+      //     const element = arr[j];
+      //     if(arr[j]<arr[j+1]){
+      //       let temp = arr[j]; //if condition is true saving arr[j]=2 in temp variable
+      //         arr[j] = arr[j + 1];
+      //         arr[j + 1] = temp;
+      //     }
+
+      //   }
+      // }
+
+      // console.log("arr",arr);
+
+      // const array = [2, 4, 6, 4, 1, 8];
+      // console.log("array",array);
+
+      // for (let i = 0; i < array.length; i++) {
+      //   console.log("i",i);
+
+      //   for (let j = 0; j < array.length -i- 1; j++) {
+      //     console.log("j",j);
+
+      //     if (array[j] < array[j + 1]) {
+      //       let temp = array[j];
+      //       array[j] = array[j + 1];
+      //       array[j + 1] = temp;
+      //     }
+      //   }
+      // }
+
+      // console.log("array",array);
+
+      //   QUE:2
+      // const recurrArr = [{ Sunday: "true" }, { Monday: "true" }];
+      //   ANS
+      //   {
+      //     "Sunday": true,
+      //     "Monday": true
+      //   }
+      // let emptyObj = {};
+      //   const result = recurrArr.forEach((item, index) => {
+      //     Object.keys(item).forEach((it, ind) => {
+      //       emptyObj[it] = item[it];     //here we are not returning anything instead updating keys in the object
+      //     });
+      //   });
+
+      // const result = recurrArr.map((item, index) => {
+      // console.log("item",item['Sunday']);
+      //   Object.keys(item).map((it, ind) => {
+      //     return (emptyObj[it] = item[it]);     //as we assigning value to key which is created by us in empty object
+      //   });
+      // });
+
+      //   console.log("result", result);
+      //   console.log("emptyObj", emptyObj);
+
+      // const emptyObj = {}
+      // recurrArr.map((item)=>{
+      //   for (const key in item) {
+      //     emptyObj[key]=item[key]
+      //   }
+      // })
+
+      // console.log("emptyObj",emptyObj);
+
+      // QUE:3
+      // const existingPayload = {
+      //   name: "ritik",
+      //   age: "24",
+      //   techStack: "ReactJS",
+      // };
+
+      // const newPayload = {
+      //   name: "ritik",
+      //   age: "24",
+      //   techStack: "ReactJS",
+      // };
+
+      // const samePayload = (obj1, obj2) => {
+      //   const obj1Keys = Object.keys(obj1);
+      //   if (Object.keys(obj1).length !== Object.keys(obj2).length)
+      //     return "Not Same Payload 1";
+      //   const results = obj1Keys.map((key) => obj1[key] === obj2[key]);
+      //   return results.includes(false) ? "Not Same Payload" : "Same Payload";
+      // };
+
+      // const isPayloadEqual =
+      //   JSON.stringify(existingPayload) === JSON.stringify(newPayload);
+      // console.log(isPayloadEqual);
+
+      //   const samePayload = (pay1, pay2) => {
+      //     const keys1 = Object.keys(pay1);
+      //     console.log("keys1", keys1);
+      //     console.log("keys2", keys1);
+
+      //     const keys2 = Object.keys(pay2);
+      //     if (keys1.length !== keys2.length) {
+      //       return false;
+      //     }
+      // keys1.map((item, index) => {        //cann't use map of forEach because it returns a array and other modifies a array
+      //   if (pay1[item] !== pay2[item]) {
+      //     return false;
+      //   }
+      //   return true;
+      // });
+
+      // const result = keys1.every((item, index) => (pay1[item] === pay2[item]));//can use every as it returns true of false
+      // console.log("result",result);
+      // return result
+
+      // const result = for (const item of keysObj1) {   //The for loop itself doesn't produce a returnable value directly
+      //   if (pay1[item] === pay2[item]) {
+      //     return "Same Payload";
+      //   } else return "Not Same ";
+      // }
+
+      // for (const item of keys1) {
+      //   //it can return anything boolean or string
+      //   if (pay1[item] === pay2[item]) {
+      //     return "Same Payload";   //it fails because it can only able to compare
+      //   } else return "Not Same "; //first value of the object after that the return stament runs and loop execution stops
+      // }
+
+      // As soon as the loop checks the first item and finds that pay1[item] === pay2[item],
+      // it will execute the else block and immediately return "Same Payload".
+      // This causes the function to stop without fully checking all other key-value pairs.
+
+      //     for (const item of keys1) {
+      //       if (pay1[item] !== pay2[item]) {
+      //         return "Not Same";
+      //       }
+      //     }
+
+      //     return "Same Payload ";
+      //   };
+
+      //   console.log(samePayload(existingPayload, newPayload));
+
+      // const isEqual = JSON.stringify(existingPayload) === JSON.stringify(newPayload);
+      // console.log("isEqual",isEqual);
+
+      // function check(pay1,pay2){
+      //   const keys = Object.keys(pay1)
+      //   if(Object.keys(pay1).length===Object.keys(pay2).length){
+      //     return keys.every((item)=>pay1[item]===pay2[item])
+      //   }
+      //   return false
+      // }
+
+      // console.log(check(existingPayload,newPayload));
+
+      //QUE:3
+      // let obj1 = [
+      //   {
+      //     id: 1,
+      //     name: "jack",
+      //   },
+      //   {
+      //     id: 2,
+      //     name: "leo",
+      //   },
+      //   {
+      //     id: 3,
+      //     name: "annie",
+      //   },
+      // ];
+
+      // let obj2 = [
+      //   {
+      //     id: 4,
+      //     name: "neil",
+      //   },
+      //   {
+      //     id: 2,
+      //     name: "nitin",
+      //   },
+      //   {
+      //     id: 3,
+      //     name: "mukesh",
+      //   },
+      // ];
+
+      // const combinedArr = [...obj1, ...obj2];
+      // console.log("combinedArr", combinedArr);
+      // const onlyIds = combinedArr.map((item) => item.id);
+      // console.log("onlyIds", onlyIds);
+      // const duplicates = onlyIds.filter(
+      //   (item, index) => onlyIds.indexOf(item) !== index
+      // );
+      // console.log("duplicates", duplicates);
+
+      // const repeats = combinedArr.filter((item,index)=>duplicates.includes(item.id));
+      // console.log("repeats",repeats);
+
+      // const combinedObj = [...obj1,...obj2];
+      // console.log("combinedObj",combinedObj);
+      //     const ids = combinedObj.map((item)=>item.id)
+      //     const uniqueIds = ids.filter((item,index)=>ids.indexOf(item)===index);
+      //     console.log("uniqueIds",uniqueIds);
+      //     const duplicateIds = ids.filter((item,index)=>ids.indexOf(item)!==index);
+      //     console.log("duplicateIds",duplicateIds);
+
+      //     console.log("ids",ids);
+      //     const uniqueData = combinedObj.filter((it)=>duplicateIds.includes(it.id));
+      //     console.log("uniqueData",uniqueData);
+
+      // Que:4 check if they both contains same items or not
+      // const a = [1, 2, 3];
+      // const b = [1, 2, 3];
+      // const containSame = (pay1, pay2) => {
+      //   if (pay1.length !== pay2.length) {
+      //     return false;
+      //   }
+      //   return pay1.every((item, index) => pay2.includes(item));
+      // };
+
+      // console.log("containSame", containSame(a, b));
+
+      // const sameArr = (arr1, arr2) => {
+      //   if (arr1.length !== arr2.length) return false;
+      //   for (let i = 0; i < arr1.length; i++) {
+      //     if (arr1[i] !== arr2[i]) {
+      //       return false;
+      //     }
+      //   }
+      //   return true;
+      // };
+
+      // console.log(sameArr(a, b) ? "Same Array" : "Not Same Array");
+
+      // Que:5 Which one is greater
+      // const a = window.prompt("Enter value of A");
+      // const b = window.prompt("Enter value of B");
+      // const c = window.prompt("Enter value of C");
+
+      // console.log("a", a, b, c);
+      // function greater(x, y, z) {
+      //   if (x > y && x > z) {
+      //     console.log(`${x} is greater`);
+      //   } else if (y > z && y > x) {
+      //     console.log(`${y} is greater`);
+      //   } else console.log(`${z} is greater`);
+      // }
+      // greater(a, b, c);
+
+      // Que:6 Swapping Question
+      // let a = window.prompt("Enter value of A");
+      // let b = window.prompt("Enter value of B");
+      // console.log("A : ", a);
+      // console.log("B : ", b);
+      // let swap = a;
+      // a = b;
+      // b = swap;
+      // console.log("A : ", a);
+      // console.log("B : ", b);
+
+      // Que 7 :  Prime Number (leave number and 1 and divide by all other values)
+      // let a = window.prompt("Enter value of A");
+      // function isPrime(value){
+      //   if(value<=0) return "Not a prime Number"
+      //   if(value===1) return "Prime No"
+      //   for (let index = 2; index < a; index++) {
+      //     if(value % index==0){
+      //       return "Not a prime no"
+      //     }
+
+      //   }
+      //   return "Prime No"
+      // }
+      // console.log(isPrime(a));
+
+      //Que 8 : Palendrome
+      // function palen(data) {
+      //   const strLeng = data.length;
+      //   console.log(strLeng / 2);
+
+      //   let temp;
+      //   for (let i = 0; i < strLeng / 2; i++) {
+      //     console.log(strLeng- i - 1);
+      //     console.log("last",data[strLeng- i - 1]);
+      //     if (data[i] !== data[strLeng- i - 1]) {
+      //       return "Not Palendrome";
+      //     }
+      //   }
+      //   return "Palendrome";
+      // }
+      // console.log(palen("maham"));
+
+      // Que 9 : Recurrsion
+      // const arrays = [1, 2, 3, 5, [7, 8, [9]], 4, [5], 6];
+      // function recFunc(data) {
+      //   const emptyArr = [];
+
+      //   data.forEach((element) => {
+      //     if (Array.isArray(element)) {
+      //       emptyArr.push(...recFunc(element));
+      //     } else {
+      //       emptyArr.push(element);
+      //       console.log("HELLO", emptyArr);
+      //     }
+      //   });
+      //   console.log("emptyArr", emptyArr);
+
+      //   return emptyArr;
+      // }
+      // console.log(recFunc(arrays));
+
+      // Que 10 : FACTORIAL
+      // function fact(data){
+      //   let num = 1
+      //   for (let index = 1; index <= data; index++) {
+      //     num *= index
+      //   }
+      //   return num
+      // }
+      // console.log(fact(3));
+
+      // ---------------------------------------------------------------------------------------
+      // const arr = [2, 4, 6, 4, 1, 8];
+      // const sortedArr = (data) => {
+      //   for (let i = 0; i < data.length; i++) {
+      //     for (let j = 0; j < data.length - 1 - i; j++) {
+      //       if (data[j] < data[j + 1]) {
+      //         const I = data[j];
+      //         const Jelement = data[i];
+      //         console.log("I", I);
+      //         console.log("Jelement", Jelement);
+
+      //         let temp = data[j];
+      //         data[j] = data[j + 1];
+      //         data[j + 1] = temp;
+      //         console.log("temp", temp);
+      //       }
+      //     }
+      //   }
+      //   return data;    //return data not temp variable as it's single last value
+      // };
+      // console.log(sortedArr(arr));
+
+      // const recurrArr = [{ Sunday: "true" }, { Monday: "true" }];
+      // const weekFunc=(data)=>{
+      //   let emptyObj={};
+      //   data.map((item)=>{
+      //     for (const key in item) {
+      //       console.log("key",key);
+      //       emptyObj[key] = item[key]
+      //     }
+      //   })
+      //   return emptyObj
+      // }
+      // console.log("weekFunc",weekFunc(recurrArr));
+
+      // const existingPayload = {
+      //   name: "ritik",
+      //   age: "24",
+      //   techStack: "ReactJS",
+      // };
+
+      // const newPayload = {
+      //   name: "ritik",
+      //   age: "24",
+      //   techStack: "ReactJS",
+      //   // techS2tack1: "React1JS",
+      // };
+      // const samePayload = (obj1, obj2) => {
+      //   const obj1Keys = Object.keys(obj1);
+      //   if (Object.keys(obj1).length !== Object.keys(obj2).length)
+      //     return "Not Same Payload 1";
+      //   // const results = obj1Keys.map((key) => obj1[key] === obj2[key]);
+      //   // return results.includes(false) ? "Not Same Payload" : "Same Payload";
+
+      //   for (const element of obj1Keys) {
+      //     // console.log("obj1[element]",obj1[element]);
+      //     // console.log("obj1[element]",obj1);
+      //     if(obj1[element] !== obj2[element]){
+      //       return "Not Same Payload"
+      //     }
+      //   }
+      //   return "Same Payload"
+      // };
+
+      // console.log(samePayload(existingPayload, newPayload));
+
+      // const a = [1, 2, 3];
+      // const b = [1, 2, 3];
+      // const resp =
+      //   a.length === b.length && a.every((item, index) => b.includes(item));
+      // console.log("resp", resp);
+
+      // const sameArr = (arr1, arr2) => {
+      //   if (arr1.length !== arr2.length) return false;
+      //   for (let i = 0; i < arr1.length; i++) {
+      //     if (arr1[i] !== arr2[i]) {
+      //       return false;
+      //     }
+      //   }
+      //   return true;
+      // };
+
+      // console.log(sameArr(a, b) ? "Same Array" : "Not Same Array");
+
+      //QUE:3
+      // let obj1 = [
+      //   {
+      //     id: 1,
+      //     name: "jack",
+      //   },
+      //   {
+      //     id: 2,
+      //     name: "leo",
+      //   },
+      //   {
+      //     id: 3,
+      //     name: "annie",
+      //   },
+      // ];
+
+      // let obj2 = [
+      //   {
+      //     id: 4,
+      //     name: "neil",
+      //   },
+      //   {
+      //     id: 2,
+      //     name: "nitin",
+      //   },
+      //   {
+      //     id: 3,
+      //     name: "mukesh",
+      //   },
+      // ];
+
+      // const combinedArr = [...obj1,...obj2]
+      // console.log("combinedArr",combinedArr);
+      // const onlyIds = combinedArr.map((it,index)=>it.id);
+      // console.log("onlyIds",onlyIds);
+      // const uniqueIds = onlyIds.filter((it,ind)=>onlyIds.indexOf(it)!==ind);
+      // console.log("uniqueIds",uniqueIds);
+      // const filteredItems = combinedArr.filter((item,index)=>uniqueIds.includes(item.id))
+      // // const filteredItems = combinedArr.filter((item,index)=>{
+      // //   if(uniqueIds.includes(item.id)){
+      // //     return item
+      // //   }
+      // // })
+      // console.log("filteredItems",filteredItems);
+
+      // const a = prompt("Enter Value of A :")
+      // const b = prompt("Enter Value of B :")
+      // const c = prompt("Enter Value of C :")
+      // console.log(a,b,c);
+      // const greater=(x,y,z)=>{
+      //   if(x>y && y>z){
+      //     return "A is greater"
+      //   }
+      //   else if(y>z && y>x){
+      //     return "B is greater"
+      //   }
+      //   else return "C is greater"
+      // }
+      // console.log(greater(a,b,c));
+
+      // let a = prompt("Enter Value of A :");
+      // let b = prompt("Enter Value of B :");
+      // console.log(`ABOVE - A : ${a} , B : ${b}`);
+      // let temp = a
+      // a = b
+      // b = temp
+      // console.log(`A : ${a} , B : ${b}`);
+
+      // const val = prompt("Enter Value");
+      // const isPrime = (a) => {
+      //   if (!a || a <= 1) {
+      //     return "A is not a Prime Number";
+      //   }
+      //   for (let i = 2; i < a; i++) {
+      //     if (a % i === 0) {
+      //       return "It's Not a prime number";
+      //     }
+      //   }
+      //   return "Prime Number";
+      // };
+      // console.log(isPrime(val));
+
+      // const val = prompt("Enter Value");
+      // const isPalenDrome = (data) => {
+      //   const dataLength = data.length;
+      //   console.log(data[0]);
+
+      //   for (let index = 0; index < dataLength / 2; index++) {
+      //     if (data[index] !== data[dataLength - index - 1]) {
+      //       return "Not Palendrome";
+      //     }
+      //   }
+      //   return "Pelendrom";
+      // };
+
+      // console.log(isPalenDrome(val));
+
+      // const arrays = [1, 2, 3, 5, [7, 8, [9]], 4, [5], 6];
+      // const recurrFunc=(data)=>{
+      //   let emptyArr = [];
+      //   // for (let i = 0; i < data.length; i++) {
+      //     // if(Array.isArray(i)){
+      //     //   emptyArr.push(...recurrFunc(i))
+      //     // }
+      //     // else{
+      //     //   emptyArr.push(i)
+      //     // }
+      //   // }
+      //   data.forEach((i,index) => {
+      //     if(Array.isArray(i)){
+      //       emptyArr.push(...recurrFunc(i))
+      //     }
+      //     else{
+      //       emptyArr.push(i)
+      //     }
+      //   });
+      //   console.log("emptyArr",emptyArr);
+
+      //   return emptyArr
+      // }
+      // console.log(recurrFunc(arrays));
+
+      // const val = prompt("Enter Value");
+      // const factorial=(data)=>{
+      //   let num = 1
+      //   for (let i = 1; i <= data; i++) {
+      //     num *= i
+      //   }
+      //   return num
+      // }
+      // console.log(factorial(val));
+
+      //------------------------------------------------------------------------------------
+      //------------------------------------------------------PLACEMENT-------------------------------
+
+      // const arr = [2, 4, 6, 4, 1, 8];
+
+      // const descFuc = (data) => {
+      //   for (let i = 0; i < data.length; i++) {
+      //     console.log("I => ", data[i]);
+      //     // for (let j = 0; j < data.length; j++) {     //it run inner loop for all elements
+      //     //It compares out-of-bounds when j === data.length - 1 and tries to access data[j + 1].
+      //     //It doesn't reduce comparisons in later passes (-1 - i is missing), so it may do unnecessary swaps.
+      //     for (let j = 0; j < data.length - 1 - i; j++) {
+      //       //reduces elements in this order 1,2,4,4 etc
+      //       // console.log("---J---", j);
+      //       console.log("Data J ", data[j]);
+      //       console.log("Data (J + 1) --> ", data[j]);
+      //       if (data[j] < data[j + 1]) {
+      //         let temp = data[j];
+      //         data[j] = data[j + 1];
+      //         data[j + 1] = temp;
+      //       }
+      //     }
+      //   }
+      //   console.log("data", data);
+      // };
+
+      // console.log(descFuc(arr));
+
+      // ----------------------------------------------
+
+      // const recurrArr = [{ Sunday: "true" }, { Monday: "true" }];
+      // const recursive = (data)=>{
+      //   let emptyObj = {};
+      //   data?.forEach((element) => {
+      //     const keys = Object.keys(element);
+      //     keys.map((item)=>{
+      //       emptyObj[item]=element[item]
+      //     })
+      //     console.log("keys",keys);
+      //   });
+      //   console.log("emptyObj",emptyObj);
+      //   return emptyObj
+      // }
+      // console.log(recursive(recurrArr));
+
+      // -----------------------------------------------------------
+
+      // const existingPayload = {
+      //   name: "ritik",
+      //   age: "24",
+      //   techStack: "ReactJS",
+      // };
+
+      // const newPayload = {
+      //   name: "ritik",
+      //   age: "24",
+      //   techStack: "Re1actJS",
+      // };
+
+      // console.log(JSON.stringify(existingPayload)===JSON.stringify(newPayload));
+
+      // const sameFunc = (obj1, obj2) => {
+      //   const keys1 = Object.keys(obj1).length;
+      //   const keys1Arr = Object.keys(obj1);
+      //   console.log("keys1Arr", keys1Arr);
+
+      //   const keys2 = Object.keys(obj2).length;
+      //   // console.log("keys2",keys2);
+
+      //   if (keys1 !== keys2) {
+      //     return "Not same";
+      //   }
+      //   for (const key of keys1Arr) {
+      //     if (obj1[key] !== obj2[key]) {
+      //       return "Not same";
+      //     }
+      //   }
+      //   return "Same Payload";
+
+      // };
+
+      // const sameFunc=(obj1,obj2)=>{
+      //   const keys1 = Object.keys(obj1).length;
+      //   const keys1Arr = Object.keys(obj1);
+      //   console.log("keys1Arr",keys1Arr);
+
+      //   const keys2 = Object.keys(obj2).length;
+      //   // console.log("keys2",keys2);
+
+      //   if(keys1!==keys2){
+      //     return "Not same"
+      //   }
+      //   keys1Arr.forEach((item,index)=>{
+      //     if(obj1[item]!==obj2[item]){
+      //       return "Not Same"     // ← This only returns from the forEach callback, not from sameFunc
+      //     }
+      //     return "Same Payload"   // ← Also ignored
+      //   })
+      // }
+
+      // The .map() method does not break early and its return values are ignored unless explicitly returned from the function.
+      // Methods like .map(), .forEach(), and .filter() don’t allow breaking out early, and return inside them only exits the inner callback, not the parent function.
+      //   If you want early exit (like checking and stopping at first mismatch), use a for loop or for...of.
+
+      // ----------------------------------------
+
+      // let obj1 = [
+      //   {
+      //     id: 1,
+      //     name: "jack",
+      //   },
+      //   {
+      //     id: 2,
+      //     name: "leo",
+      //   },
+      //   {
+      //     id: 3,
+      //     name: "annie",
+      //   },
+      // ];
+
+      // let obj2 = [
+      //   {
+      //     id: 4,
+      //     name: "neil",
+      //   },
+      //   {
+      //     id: 2,
+      //     name: "nitin",
+      //   },
+      //   {
+      //     id: 3,
+      //     name: "mukesh",
+      //   },
+      // ];
+
+      // console.log(sameFunc(existingPayload, newPayload));
+
+      // -----------------------------------------------------------------------23-06-2025---------------------------------------------
+      // const arr = [2, 4, 6, 4, 1, 8];
+      // const sortFunc = (data) => {
+      //   for (let i = 0; i < data.length; i++) {
+      //     for (let j = 0; j < data.length - i - 1; j++) {
+      //       if (data[j] > data[j + 1]) {
+      //         let temp = data[j];
+      //         data[j] = data[j + 1];
+      //         data[j + 1] = temp;
+      //       }
+      //     }
+      //   }
+
+      //   return data;
+      // };
+
+      // console.log("hello", sortFunc(arr));
+
+      // const recurrArr = [{ Sunday: "true" }, { Monday: "true" }];
+
+      // const getElementOut = (data)=>{
+      //   let emptyObj = {}
+      //   data.forEach((element) => {
+      //     Object.keys(element).forEach((item)=>{
+      //       emptyObj[item] = element[item]
+      //     })
+      //   });
+
+      //   return emptyObj
+      // }
+      // console.log(getElementOut(recurrArr));
+
+      // let obj1 = [
+      //   {
+      //     id: 1,
+      //     name: "jack",
+      //   },
+      //   {
+      //     id: 2,
+      //     name: "leo",
+      //   },
+      //   {
+      //     id: 3,
+      //     name: "annie",
+      //   },
+      // ];
+
+      // let obj2 = [
+      //   {
+      //     id: 4,
+      //     name: "neil",
+      //   },
+      //   {
+      //     id: 2,
+      //     name: "nitin",
+      //   },
+      //   {
+      //     id: 3,
+      //     name: "mukesh",
+      //   },
+      // ];
+
+      // const combinedObj = [...obj1,...obj2];
+      // console.log("combinedObj",combinedObj);
+      // const onlyIds = combinedObj.map((item)=>item.id);
+      // console.log("onlyIds",onlyIds);
+      // const uniqueIds = onlyIds.filter((item,index)=>onlyIds.indexOf(item)!==index)
+      // console.log("uniqueIds",uniqueIds);
+      // const repeats = combinedObj.filter((item)=>uniqueIds.includes(item.id));
+      // console.log("repeats",repeats);
+
+      // const existingPayload = {
+      //   name: "ritik",
+      //   age: "24",
+      //   techStack: "ReactJS",
+      // };
+
+      // const newPayload = {
+      //   name: "ritik",
+      //   age: "24",
+      //   techStack: "ReactJS",
+      //   techStack: "ReactJS",
+      // };
+
+      // const sameObjs = (obj1, obj2) => {
+      //   const objLen1 = Object.keys(obj1);
+      //   const objLen2 = Object.keys(obj2);
+      //   console.log(objLen1.length);
+      //   console.log(objLen2.length);
+
+      //   if (objLen1.length !== objLen2.length) {
+      //     return false;
+      //   }
+      //   for (const element of objLen1) {
+      //     if (obj1[element] !== obj2[element]) {
+      //       return false;
+      //     }
+      //   }
+      //   return true;
+      // };
+
+      // console.log(
+      //   sameObjs(existingPayload, newPayload)
+      //     ? "Same Pyload"
+      //     : "Not Same Payload"
+      // );
+
+      //       Array.prototype.myReduceFunction = function(callBack,initialValue){
+      //         const array = this;
+      //         let accumulator
+      //         let startIndex = 0
+      //         if(initialValue!=undefined){
+      //           accumulator = initialValue
+      //         }
+      //         else{
+      //           while(startIndex<array.length && !(startIndex in array)){
+      //             startIndex++
+      //           }
+      //           while(startIndex>=array.length){
+      //             throw new Error("Errro");
+      //           }
+      //           accumulator = array[startIndex]
+      //           startIndex++
+      //         }
+
+      //         for (let i = 0; i < array.length; i++) {
+      //           if(i in array){
+      //             accumulator = callBack(accumulator,array[i],i,array)
+      //           }
+      //         }
+      //         return accumulator
+      //       }
+
+      // const nums = [1, 2, 3, 4, 5];
+
+      // const sum = nums.myReduceFunction((acc,curr)=>{return acc+curr},0);
+      // console.log(sum);
+
+      // const a = [1, 2, 3];
+      //       const b = [1, 9, 3];
+
+      //       const containsSameElements = (arr1,arr2) =>{
+      //         if(arr1.length!==arr2.length) return false;
+      //         const resp = arr1.every((item,index)=>arr2.includes(item))
+      //         console.log("resp",resp);
+      //         return resp
+      //       }
+      //       console.log(containsSameElements(a,b) ? "Same" : "Not Same");
+
+      // const a = +window.prompt("Enter value of a");
+      // const b = +window.prompt("Enter value of b");
+      // const c = +window.prompt("Enter value of c");
+
+      // const greater=(x,y,z)=>{
+      //   if(x>y && y>z){
+      //     return "X is greater"
+      //   }
+      //   else if(y>z && y>x){
+      //     return "Y is greater"
+      //   }
+      //   else{
+      //     return "Z is greater"
+      //   }
+      // }
+
+      // console.log(a,b,c,greater(a,b,c));
+
+      // let a = +window.prompt("Enter value of a");
+      // let b = +window.prompt("Enter value of b");
+      // console.log(a, b);
+      //   let temp = a;
+      //   a = b;
+      //   b = temp;
+
+      // console.log(a, b);
+
+      // const a = +window.prompt("Enter value of a");
+      // const isPrime = (num) => {
+      //   if (num <= 1) {
+      //     return "Not a prime number";
+      //   }
+      //   for (let i = 2; i < num; i++) {
+      //     console.log("i",i);
+
+      //     if (num % i === 0) {    //if divisible by 2 and other then not prime
+      //       return `${num} is not a prime number`;
+      //     }
+      //   }
+      //   return `${num} is a PRIME number`;
+      // };
+
+      // console.log(isPrime(a));
+
+      // const a = window.prompt("Enter name");
+      // const palendrome=(name)=>{
+      //   const strLen = name.length
+      //   console.log(strLen/2);
+
+      //   for (let i = 0; i < strLen/2; i++) {
+      //     console.log("name[strLen - i - 1]",name[strLen - i - 1]);
+
+      //     if(name[i]!==name[strLen - i - 1]){
+      //       return "Not Palendrome"
+      //     }
+      //   }
+      //   return "Palendrome"
+      // }
+
+      // console.log(palendrome(a));
+
+      // const arrays = [1, 2, 3, 5, [7, 8, [9]], 4, [5], 6];
+      // const recussiveFunc = (data) => {
+      //   const emptyArr = [];
+      //   for (let i = 0; i < data.length; i++) {
+      //     if (Array.isArray(data[i])) {
+      //       emptyArr.push(...recussiveFunc(data[i]));
+      //     } else {
+      //       emptyArr.push(data[i]);
+      //     }
+      //   }
+
+      //   return emptyArr;
+      // };
+      // console.log(recussiveFunc(arrays));
+    </script>
+  </body>
+</html>

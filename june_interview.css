@@ -1,0 +1,56 @@
+#searched_planets_container{
+    list-style: none;
+    background-color: #ccc;
+    width: 200px;
+    margin-top: 0px;
+}
+#li_id:hover{
+    background-color: red;
+    width: 100%;
+}
+.createElement{
+    border: 1px solid black;
+}
+
+
+.container {
+  width: 100%;
+  background-color: #f0f0f0;
+  overflow: hidden; /* To clear floats */
+  padding: 10px;
+}
+
+.box {
+  width: 48%;
+  padding: 20px;
+  color: white;
+  font-size: 18px;
+}
+
+.left {
+  float: left;
+  background-color: #3498db;
+}
+
+.right {
+  float: right;
+  background-color: #2ecc71;
+}
+
+#ul_class{
+  background-color: #ccc;
+  margin-top: 0;
+  max-width: 200px;
+  padding: 0;
+}
+#li_class{
+  list-style: none;
+}
+#ul_class #li_class:hover{
+  background-color: #f0f0f0;
+}
+
+.main_detail_box{
+  border: 1px solid red;
+  padding: 20px;
+}
