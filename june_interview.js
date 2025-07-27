@@ -665,9 +665,6 @@
 
 // button.addEventListener("click", () => throttleClick());
 
-
-
-
 // const button = document.getElementById("button_click");
 
 // function throttle(callback,delay){
@@ -688,9 +685,6 @@
 // const throttleClick = throttle(handleClick,2000)
 
 // button.addEventListener('click',throttleClick)
-
-
-
 
 // const name_input = document.getElementById("name_input");
 
@@ -713,28 +707,36 @@
 
 // name_input.addEventListener('input',debounceClick)
 
-
-// -------------------JS----------------------
+//-------------------JS----------------------
 // const arr = [2, 4, 6, 4, 1, 8];
-// const sort = (data) => {
+// console.log("arr", arr);
+// function sortArr(data) {
 //   for (let i = 0; i < data.length; i++) {
-//     for (let j = 0; j < data.length; j++) {
-//       if (data[j] < data[j + 1]) {
+//     for (let j = 0; j < data.length - i - 1; j++) {
+//       if (data[j] > data[j + 1]) {
 //         let temp = data[j];
 //         data[j] = data[j + 1];
 //         data[j + 1] = temp;
 //       }
 //     }
 //   }
-
-//   return data;
-// };
-
-// console.log(sort(arr));
-
-
+//   return data
+// }
+// console.log("sortArr", sortArr(arr));
 
 // const recurrArr = [{ Sunday: "true" }, { Monday: "true" }]
+
+// function recurrData(data){
+//     const emptyObj = {};
+//     data.forEach((element) => {
+//         Object.keys(element)?.forEach((item)=>{
+//             emptyObj[item] = element[item]
+//         })
+//     });
+//     return emptyObj
+// }
+
+// console.log(recurrData(recurrArr));
 
 // const func =(data)=>{
 //   const emptyObj = {}
@@ -750,36 +752,44 @@
 
 // console.log(func(recurrArr))
 
+// let obj1 = [
+//   {
+//     id: 1,
+//     name: "jack",
+//   },
+//   {
+//     id: 2,
+//     name: "leo",
+//   },
+//   {
+//     id: 3,
+//     name: "annie",
+//   },
+// ];
 
-//   let obj1 = [
-//         {
-//           id: 1,
-//           name: "jack",
-//         },
-//         {
-//           id: 2,
-//           name: "leo",
-//         },
-//         {
-//           id: 3,
-//           name: "annie",
-//         },
-//       ];
+// let obj2 = [
+//   {
+//     id: 4,
+//     name: "neil",
+//   },
+//   {
+//     id: 2,
+//     name: "nitin",
+//   },
+//   {
+//     id: 3,
+//     name: "mukesh",
+//   },
+// ];
 
-//       let obj2 = [
-//         {
-//           id: 4,
-//           name: "neil",
-//         },
-//         {
-//           id: 2,
-//           name: "nitin",
-//         },
-//         {
-//           id: 3,
-//           name: "mukesh",
-//         },
-//       ];
+// const combinedArr = [...obj1, ...obj2];
+// console.log("combinedArr",combinedArr);
+// const onlyIds = combinedArr.map((item)=>item.id);
+// console.log("onlyIds",onlyIds);
+// const repeatIds = onlyIds.filter((item,ind)=>onlyIds.indexOf(item)!==ind)
+// console.log(repeatIds);
+// const repeatitions = combinedArr.filter((item)=>repeatIds.includes(item.id))
+// console.log(repeatitions);
 
 // const combinedObj = [...obj1,...obj2];
 // const combinedObjIds = combinedObj.map((it)=>it.id)
@@ -788,8 +798,23 @@
 // const outputObj = combinedObj.filter((item)=>uniqueIds.includes(item.id))
 // console.log("outputObj",outputObj);
 
-
 // let a = window.prompt("Enter value of A");
+// function isPrimeNo(data){
+//     const num = +data
+//     if(num<=1){
+//         return "Not a Prime Number"
+//     }
+//     for (let i = 2; i < num; i++) {
+//         if(num%i===0){
+//             return "It's not a Prime Number"
+//         }
+//     }
+//     return "It's a Prime number"
+//     console.log(num);
+// }
+
+// console.log(isPrimeNo(a));
+
 // function isPrimeNo(data){
 //   const number = +data
 //   if(number<=1){
@@ -804,8 +829,20 @@
 // }
 // console.log(isPrimeNo(a));
 
-
 // const name = window.prompt("Enter name");
+// function isPalenDrome(data){
+//     const strLen = data?.length;
+//     for (let i = 0; i < strLen/2; i++) {
+//         if(data[i]!==data[strLen - i - 1]){
+//             return "Not Palendrome"
+//         }
+//     }
+//     return "Palendrome"
+//     console.log(strLen);
+// }
+
+// console.log(isPalenDrome(name));
+
 // function isPalenDrome(data){
 //   const strLen = data.length
 //   for (let i = 0; i < strLen/2; i++) {
@@ -819,8 +856,23 @@
 
 // console.log(isPalenDrome(name))
 
-
 // const arrays = [1, 2, 3, 5, [7, 8, [9]], 4, [5], 6]
+
+// function flatArr(data){
+//     const emptyArr = []
+//     data.forEach((item) => {
+//         if(Array.isArray(item)){
+//             emptyArr.push(...flatArr(item))
+//         }
+//         else{
+//             emptyArr.push(item)
+//         }
+//     });
+
+//     return emptyArr
+// }
+
+// console.log(flatArr(arrays));
 
 // const flatArr=(data)=>{
 //   const emptyArr = [];
@@ -835,3 +887,94 @@
 //   return emptyArr
 // }
 // console.log(flatArr(arrays))
+
+// const nestedObj = {
+//   name: "John",
+//   address: {
+//     city: "New York",
+//     zip: {
+//       code: 10001,
+//       plus4: 1234,
+//     },
+//   },
+// };
+
+// {
+//   "name": "John",
+//   "address.city": "New York",
+//   "address.zip.code": 10001,
+//   "address.zip.plus4": 1234
+// }
+
+//Because flattenObject is recursive, and it needs to carry forward the values of
+//parentKey and result to deeper levels of recursion.
+
+// function flattenObject(obj, parentKey = '', result = {}) {
+//   for (let key in obj) {
+//     console.log(key);
+
+//     const newKey = parentKey ? `${parentKey}.${key}` : key;
+//     if (typeof obj[key] === 'object') {
+//       flattenObject(obj[key], newKey, result);
+//     } else {
+//       result[newKey] = obj[key];
+//     }
+//   }
+//   return result;
+// }
+
+// function flattenObj(obj, parentKey = "", result = {}) {
+//   for (const key in obj) {
+//     const newKey = parentKey ? `${parentKey}.${key}` : key;
+//     if (typeof obj[key] === "object") {
+//       flattenObj(obj[key], newKey, result);
+//     } else {
+//       result[newKey] = obj[key];
+//     }
+//   }
+
+//   return result;
+// }
+
+// console.log(flattenObj(nestedObj));
+
+// -------------------------------------------------------------
+
+const planetUrl = "https://www.swapi.tech/api/planets/";
+const inputField = document.getElementById("planet_input");
+console.log(inputField);
+
+async function getAllPlanets() {
+  try {
+    const resp = await fetch(planetUrl);
+    const respJson = await resp.json();
+    const planets = await respJson?.results;
+    console.log("planets", planets);
+  } catch (error) {
+    console.log("error", error);
+  }
+}
+
+// function debounce(){
+
+// }
+function handleChange(e) {
+  console.log("Searched Value : ", e.target.value);
+}
+
+function debounce(func,delay){
+    let initialTimeId;
+    return function(...args){
+        clearTimeout(initialTimeId);
+        setTimeout(() => {
+            func.apply(this,[])
+        }, delay);
+    }
+
+}
+const debouncedText = debounce(handleChange,1000)
+console.log("debouncedText",debouncedText);
+
+
+document.addEventListener("DOMContentLoaded", getAllPlanets);
+inputField.addEventListener("input", handleChange);

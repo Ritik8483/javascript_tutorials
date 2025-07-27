@@ -37,7 +37,6 @@
 
 
     // ------------------------
-    
 
 //     Function.prototype.myCall = function (context, ...args) {
 //       //globalThis refers to the global object in any JavaScript environment:
@@ -181,269 +180,6 @@
       
     // -------------------------------------------------------
 
-    // const myArr = [1,2,3,4,5];
-
-    // Array.prototype.myReduceFunc = function(callBack,initialValue){
-    //   const array = this
-    //   let accumulator
-    //   let startIndex = 0
-    //   if(initialValue!==undefined){
-    //     accumulator = initialValue
-    //   }
-    //   else{
-    //     while(startIndex<array.length && !(startIndex in array)){
-    //       startIndex++
-    //     }
-    //     if(startIndex>=array.length){
-    //       throw new Error("Error");
-    //     }
-
-    //     accumulator = array[startIndex]
-    //     startIndex++
-    //   }
-
-    //   for (let i = startIndex; i < array.length; i++) {
-    //     accumulator = callBack(accumulator,array[i],i,array)
-    //   }
-
-    //   return accumulator
-    // }
-
-    // const resp = myArr.reduce((acc,curr)=>(acc+curr),5)
-    // console.log("resp",resp);
-    
-
-    // Array.prototype.myMapFunc = function(callback){
-    //   const result = [];
-    //   for (let i = 0; i < this.length; i++) {
-    //     result.push(callback(this[i],i,this))
-    //   }
-    //   return result
-    // }
-
-    // Array.prototype.myFilterFunc = function(callBack){
-    //   const result = [];
-    //   for (let i = 0; i < this.length; i++) {
-    //     if(callBack(this[i],i,this)){
-    //       result.push(this[i])
-    //     }
-    //   }
-
-    //   return result
-    // }
-
-    // Array.prototype.myReduceFunc = function(callBack,initialValue){
-    //   const array = this
-    //   let accumulator
-    //   let startindex = 0
-    //   if(initialValue!==undefined){
-    //     accumulator = initialValue
-    //   }
-    //   else{
-    //     while(startindex < array.length && !(startindex in array)){
-    //       startindex++
-    //     }
-    //     if(startindex>=array.length){
-    //       throw new Error("Error");
-    //     }
-
-    //     accumulator = array[startindex]
-    //     startindex++
-    //   }
-
-    //   for (let i = startindex; i < array.length; i++) {
-    //     accumulator = callBack(accumulator,array[i],i,array)
-    //   }
-
-    //   return accumulator
-    // }
-
-    // const resp = myArr.myFilterFunc((item)=>item%2 === 0)
-    // const resp = myArr.myReduceFunc((acc,curr)=>(acc + curr),10)
-    // console.log(resp);
-    
-
-    // Array.prototype.myMapFunction = function(callBack){
-    //   const emptyArr = [];
-    //   for (let i = 0; i < this.length; i++) {
-    //       emptyArr.push(callBack(this[i],i,this))
-    //   }
-
-    //   return emptyArr
-    // }
-
-    // Array.prototype.myFilter = function(callback){
-    //   const emptyArr = []
-    //   for (let i = 0; i < this.length; i++) {
-    //     if(callback(this[i],i,this)){
-    //       emptyArr.push(this[i])
-    //     }
-    //   }
-
-    //   return emptyArr
-    // }
-
-    // const result = myArr.myFilter((item)=>item%2===0);
-    // console.log("result",result);
-
-    // Array.prototype.myReduceFunc = function(callback,initialValue){
-    //   const array = this
-    //   let accumulator
-    //   let startIndex = 0
-    //   if(initialValue!==undefined){
-    //     accumulator = initialValue
-    //   }
-    //   else{
-    //     while(startIndex<array.length && !(startIndex in array)){
-    //       startIndex++
-    //     }
-    //     if(startIndex>=array.length){
-    //       throw new Error("Error in reduxe");
-    //     }
-
-    //     accumulator = array[startIndex]
-    //     startIndex++
-    //   }
-
-    //   for (let i = startIndex; i < array.length; i++) {
-    //     accumulator = callback(accumulator,array[i],i,array)
-        
-    //   }
-
-    //   return accumulator
-    // }
-
-    // const resp = myArr.myReduceFunc((acc,curr)=>(acc + curr),6)
-    // console.log(resp);
-    
-
-    // Array.prototype.myMapFunc = function(callBack){
-    //   const emptyArr = [];
-    //   for (let i = 0; i < this.length; i++) {
-    //     emptyArr.push(callBack(this[i],i,this))
-    //   }
-    //   return emptyArr
-    // }
-
-    // Array.prototype.myFilterFunc = function(callBack){
-    //   const emptyArr = [];
-    //   for (let i = 0; i < this.length; i++) {
-    //     if(callBack(this[i],i,this)){
-    //       emptyArr.push(this[i])
-    //     }
-    //   }
-    //   return emptyArr
-    // }
-
-
-    // Array.prototype.myReduceFunc
-
-    // const res = myArr.myFilterFunc((ite)=>ite%2===0)
-    // console.log(res);
-    
-
-    // Array.prototype.myMapFunction = function(callback){      
-    //   const emptyArr = []
-    //   for (let i = 0; i < this.length; i++) {
-    //     emptyArr.push(callback(this[i],i,this))
-    //   }
-    //   return emptyArr
-    // }
-
-    // Array.prototype.myFilterFunc = function(callback){
-    //   const emptyArr = []
-    //   for (let i = 0; i < this.length; i++) {
-    //     if(callback(this[i],i,this)){
-    //       emptyArr.push(this[i])
-    //     }
-    //   }
-
-    //   return emptyArr
-    // }
-
-    // Array.prototype.myReduceFunc = function(callback,initialValue){
-    //   const array = this;
-    //   let accumulator;
-    //   let startIndex = 0
-    //   if(initialValue !== undefined){
-    //     accumulator = initialValue
-    //   }
-    //   else{
-    //     while (startIndex<array.length && !(startIndex in array)) {
-    //       startIndex++
-    //     }
-    //     if(startIndex>=array.length){
-    //       throw new Error("Eroro in reduce");
-    //     }
-
-    //     accumulator = array[startIndex]
-    //     startIndex++
-    //   }
-
-    //   for (let i = startIndex; i < array.length; i++) {
-    //     if(i in array){
-    //       accumulator = callback(accumulator,array[i],i,array)
-    //     }
-    //   }
-
-    //   return accumulator
-    // }
-
-    // const arr = [1,2,3,4,5]
-    // const mapFunc = arr.myReduceFunc((acc,curr)=>{
-    //   return acc+curr
-    // },20);
-    // console.log(mapFunc);
-    
-
-    // Array.prototype.myMapFunction = function(callBack){
-    //   const emptyArr = [];
-    //   for (let i = 0; i < this.length; i++) {
-    //     emptyArr.push(callBack(this[i],i,this))
-    //   }
-       
-    //   return emptyArr
-    // }
-
-    // Array.prototype.myFilterFunc=function(callback){
-    //   const emptyArr = [];
-    //   for (let i = 0; i < this.length; i++) {
-    //     if(callback(this[i],i,this)){
-    //       emptyArr.push(this[i])
-    //     }
-    //   }
-      
-    //   return emptyArr
-    // }
-
-    // Array.prototype.myReduceFunc=function(callback,initialValue){
-    //   const array = this
-    //   let accumulator;
-    //   let startIndex = 0
-    //   if(initialValue!==undefined){
-    //     accumulator = initialValue
-    //   }
-    //   else{
-    //     while(startIndex<array.length && !(startIndex in array) ){
-    //       startIndex++
-    //     }
-
-    //     if(startIndex>=array.length){
-    //       throw new Error("Error in reduce");
-    //     }
-
-    //     accumulator = array[startIndex];
-    //     startIndex++
-    //   }
-    //   for (let i = startIndex; i < array.length; i++) {
-    //     if(i in array){
-    //       accumulator = callback(accumulator,array[i],i,array)
-    //     }
-        
-    //   }
-
-    //   return accumulator
-    // }
 
     // const arr = [1,2,3,4,5]
     // const data = arr.myFilterFunc((item)=>item%2===0);
@@ -628,55 +364,8 @@
 //   return accumulator
 // }
 
-// ----------------
-
-// const nums = [1, 2, 3, 4, 5];
-
-// const sum = nums.myReduceFunction((acc,curr)=>{return acc+curr},20);
-// console.log(sum);
-// ------------------
-
-
-
-// Array.prototype.myReduceFunction = function(callBack,lastValue){
-
-//   const array = this
-//   let accumulator;
-//   let initialValue = 0;
-
-//   if(lastValue!=undefined){
-//     accumulator = lastValue
-//   }
-//   else{
-//     while(initialValue<array.length && !(initialValue in Array)){
-//       initialValue++
-//     }
-
-//     if(initialValue>=array.length){
-//       throw new Error("Erorr");
-//     }
-//     accumulator = array[initialValue];
-//     initialValue++;
-//   }
-
-//    for (let i = initialValue; i < array.length; i++) {
-//     if (i in array) {
-//       accumulator = callBack(accumulator, array[i], i, array);
-//     }
-//   }
-
-//   return accumulator
-
-// }
-
-// const nums = [1, 2, 3, 4, 5];
-
-// const sum = nums.myReduceFunction((acc,curr)=>{return acc+curr},20);
-// console.log(sum);
-
-
 //--------------------------------------
-
+    // const arr = [10, 20, 30, 40, 50]
     
     // const arr = [10, 20, 30, 40, 50];
     // function sumAll(data){
@@ -705,6 +394,8 @@
 
 
     // -----------------------------------
+
+
 
 
 //->Only copies the first level of an object or array.
@@ -740,7 +431,7 @@
 // const deepClone = JSON.parse(JSON.stringify(original));
 
 // deepClone.address.city = "Mumbai";
-// deepClone.name = "Ritik";
+// deepClone.name = "RitikChauhan";
 
 // console.log(original.address.city); 
 // console.log(original.name);
@@ -754,20 +445,20 @@
     //You cannot assign to something that might be undefined – it defeats the purpose of assignment safety.
     // error : Support for the experimental syntax 'optionalChainingAssign' isn't currently enabled
 
-//     const x = obj?.prop; // ✅ valid
-// obj?.prop = 123;     // ❌ invalid
+    // const x = obj?.prop; // ✅ valid
+    // obj?.prop = 123;     // ❌ invalid
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setUser((prev) => ({
-//       ...prev,
-//       [name]: value,    //they're using a JavaScript feature called "computed property names
-//     }));
-//   };
-//   //Without the brackets, it would literally create a key named "name" for email like 
-// //   {
-// //   name: "user@example.com"
-// // }
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setUser((prev) => ({
+  //     ...prev,
+  //     [name]: value,    //they're using a JavaScript feature called "computed property names
+  //   }));
+  // };
+  //Without the brackets, it would literally create a key named "name" for email like 
+//   {
+//   name: "user@example.com"
+// }
 
 
 // //Instead of hardcoding a property name, you compute it at runtime using square brackets
@@ -783,6 +474,23 @@
 // console.log(obj); // { key: "example@example.com" } ❌ Not dynamic
 
 // -------------------------------------------------
+
+// var Hoisting
+// console.log(x); // undefined (NOT ReferenceError)
+// var x = 5;
+
+// // Internally JS does:
+// var x;         // declaration hoisted
+// console.log(x); // undefined
+// x = 5;         // initialization
+
+//  Temporal Dead Zone (TDZ)
+// The Temporal Dead Zone is the time between hoisting and declaration where accessing a let or const variable causes a ReferenceError.
+// a is hoisted but not initialized.
+// console.log(a); // ❌ ReferenceError
+// let a = 20;
+
+// ---------------------------------------------------------
 
     // A variable is not defined if you try to use it without declaring it first.
     // console.log(x); // ❌ ReferenceError: x is not defined
@@ -810,6 +518,7 @@
 //   console.log('Microtask - Promise');
 // });
 // console.log('End');
+
 // Start
 // End
 // Microtask - Promise (High-priority tasks, run immediately after the current execution context and before any rendering)
@@ -836,6 +545,29 @@
 
   //.forEach() doesn't wait for async callbacks.
   //So even though you're using await inside the callback, the outer function doesn't pause for them to finish.
+
+//   const items = [1, 2, 3];
+
+// items.forEach(async (item) => {
+//   await new Promise((resolve) => setTimeout(resolve, 1000));    //it didn't wait for 1 sec
+//   console.log(item);
+// });
+
+// console.log("Done");
+// `
+
+
+// const items = [1, 2, 3];
+
+// async function processItems() {
+//   for (const item of items) {
+//     await new Promise((resolve) => setTimeout(resolve, 1000));   //it waits for 1 sec
+//     console.log(item);
+//   }
+// }
+// console.log("Done");
+
+// processItems();
     
     // FOR IN
     // Note : Use array notation in forin and forof loops to get a value
@@ -850,9 +582,14 @@
     //   console.log(obj[key]);
     // }
 
+    // const keys = Object.keys(obj)
+    // const values = Object.values(obj)
+    // console.log("KEYS",keys);
+    // console.log("VALUES",values);
+
     // for (let key in obj) {
     //   console.log("key",key); // Output: 'a', 'b', 'c'
-    //   console.log(obj[key]); // Output: 1, 2, 3
+    //   console.log("value",obj[key]); // Output: 1, 2, 3
     // }
 
     // // FOR OF
@@ -865,7 +602,6 @@
 
     // for (const element of arr) {
     //   console.log(element);
-      
     // }
 
     // for (let value of arr) {
@@ -878,6 +614,11 @@
     //   age: 30,
     //   arr: ["John", "qwe"],
     // };
+
+    // for (const [key,value] of Object.entries(person)) {
+    //   console.log("key",key);
+    //   console.log("value",value);
+    // }
 
     // for (const [key,value] of Object.entries(person)) {
     //   console.log("key",key);
@@ -902,9 +643,9 @@
     // check if they both contains same items or not
     // const a = [1, 2, 3];
     // const b = [1, 3, 2];
+
     // const ascendingsort = (arr)=>{
     //     const newArr = [...arr]; // make a copy to avoid mutating the original
-
     //     for (let i = 0; i < newArr.length; i++) {
     //       console.log("IIIIII Value",newArr[i]);
     //       for (let j = 0; j < newArr.length - 1 - i; j++) {
@@ -917,14 +658,16 @@
     //       }
     //     }
     //   }
-
     //   return newArr
     // } 
 
     // console.log(ascendingsort(b));
     
-
+    // const equalItem = a.length === b.length && a.every((item)=>b.includes(item))
     // const conditioon = a.length === b.length && a.every((item)=>b.includes(item))
+
+    // console.log("equalItem",equalItem);
+    
 
     // console.log(conditioon);
     
@@ -936,19 +679,11 @@
     //     return "Not same"
     //   }
     //   // const dd =obj1.every((it)=>obj2.includes(it))
-      // const dd =   JSON.stringify(obj1.sort()) === JSON.stringify(obj2.sort())
+    //   const dd =   JSON.stringify(obj1.sort()) === JSON.stringify(obj2.sort())
     //   return dd ? "Same" : "Not same"
     // }
 
     // console.log("ss",sameItems(a,b));
-
-    // const resul = a.length === b.length && b.every((item,index)=>a.includes(item));
-    // console.log(resul);
-    
-
-    // const bb =
-    //   a.length === b.length && a.every((item, index) => b.includes(item));
-    // console.log("bb", bb);
 
     // const check = a.every((item)=>b.includes(item));
     // console.log(check);
@@ -999,7 +734,7 @@
     // console.log('true' == true);  //== operator triggers numeric conversion,;'true' is converted to number i.e, to NaN and true is 1
     // console.log(42 == "42");  //In this case, the loose equality operator == coerces the string "42" into a number before comparing it with the number 42.
     // console.log([]=="");
-    // **console.log([]==![]);   //here ![] == false then "" == ""    //![] = 0
+    // console.log([]==![]);   //here ![] == false then "" == ""    //![] = 0
     // !coverts it to boolean(false) JavaScript attempts to convert the operands to the same type.
     // "" == 0    //type coercion if the operands are of different types
     //0 == 0    //again coercion
@@ -1101,9 +836,9 @@
     // 5. Set removes duplicay from array [...new Set(array)]
     // 6. a=[] ...a makes array element out removing , (array to string conversion)
     // console.log(...[1,2]);
-    // a=[1,2,3] // {...a} makes array of object with index as keys
-    // console.log({...a});
-    // console.log({a});
+    a=[1,2,3] // {...a} makes array of object with index as keys
+    console.log({...a});
+    console.log({a});
     
     // console.log(1+[1,2]);
     // console.log("1"+[1,2]);
