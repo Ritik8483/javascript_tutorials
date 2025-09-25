@@ -9,6 +9,95 @@
 
   <script>
       // --------------------------
+// [] == [] // false 
+// [] !== [] // true 
+// ![] == ![] // true 
+// !true == [] // true 
+// ![] == [] // true 
+    // console.log([] == [])
+    // console.log([] !== [])
+    // console.log(![] == ![])
+    // console.log(!true == [])
+    // console.log(![] == [])
+
+
+      // if pay1[item] === pay2[item]
+      // As soon as the loop checks the first item and finds that pay1[item] === pay2[item],
+      // it will execute the else block and immediately return "Same Payload".
+      // This causes the function to stop without fully checking all other key-value pairs.
+
+
+    //    function samePayload(a, b) {
+    //   const aLength = Object.keys(a).length;
+    //   const bLength = Object.keys(b).length;
+    //   const keys = Object.keys(a);
+
+    //   if (aLength !== bLength) {
+    //     return "Not Same";
+    //   }
+
+    //   for (let key of keys) {
+    //     if (a[key] !== b[key]) {
+    //       return "Not Same Keys"; //This Exits the function
+    //     }
+    //   }
+
+    //   keys.forEach((item)=>{
+    //     if(a[item]!==b[item]){
+    //       return "Not Same Keys"      // This only exits the callback
+    //     }
+    //     return "Same Keys"      // This only exits the callback
+    //   })
+    // }
+
+
+    // SWAPPING 
+    // let a = 66;let b = 9;
+    // [a,b] = [b,a];
+    // console.log(`A`,a);
+    // console.log(`B`,b);
+
+
+    // FLATTING 
+    // const arr = [1,[2,[3,4,5]]]
+    // console.log(arr.flat(Infinity));
+
+
+    //SHUFFLING
+    // const arr = [1,2,3,4,5]
+    // const shuffleArr = arr.sort(() => Math.random() - 0.5);
+    // console.log(shuffleArr);
+
+    // const arr = [1, 2, 3, 4, 5];
+    // function shuffle(array) {
+    //   for (let i = array.length - 1; i > 0; i--) {
+    //     console.log("I---",i);
+        
+    // // Pick a random index from 0 to i
+    //     const j = Math.floor(Math.random() * (i + 1));
+    //     // Math.random() gives a number between 0 and 1.
+    //     console.log("---------J----------",j);
+        
+    // // Swap elements at i and j
+    //     [array[i], array[j]] = [array[j], array[i]];
+    //   }
+    //   return array;
+    // }
+    // console.log(shuffle([...arr]));
+    
+
+
+    
+
+// console.log([] + []);      // ""   (empty string)
+// console.log([] + {});      // "[object Object]"
+// console.log({} + []);      // 0
+// console.log(typeof NaN);    // "number"
+// console.log("true" == true);  // false
+// console.log(null == undefined); // true
+// console.log([] == 0);      // true
+// console.log([] == ![]);     // true (what?!)
+
 
 //       const url = [
 //   'https://pokeapi.co/api/v2/pokemon?limit=1',
@@ -22,6 +111,27 @@
 //   'https://pokeapi.co/api/v2/pokemon?limit=9',
 //   'https://pokeapi.co/api/v2/pokemon?limit=10'
 // ];
+
+// async function getAllData(){
+  // try {
+  //   const resp = await Promise.all(url.map((item)=>fetch(item)))
+  //   const respJSON = await Promise.all(resp.map((item)=>item.json()))
+  //   console.log("respJSON",respJSON);
+    
+  // } catch (error) {
+  //   consol.log("error",error)
+  // }
+// }
+
+
+// async function getAllData(){
+//   await Promise.all(url.map((item)=>fetch(item)))
+//   .then(async(resp)=> Promise.all(resp.map((item)=>item.json())))
+//   .then((resp)=>console.log("resp",resp))
+//   .catch((err)=>console.log("err",err))
+// }
+
+// getAllData()
 
 // async function newFunc(){
 //   try {
@@ -37,6 +147,23 @@
 
 
     // ------------------------
+    // console.log(personInfo.myCallFn(person,"25"));
+    // console.log(personInfo.myApplyFunc(person,["25"]));
+    // const bindFn = personInfo.myBind(person,"25");
+    // bindFn();
+    
+    
+
+
+    // myFunction.apply(person,"25")
+    // const apply = myFunction.bind(person,"25")
+    // console.log(apply());
+
+    // myFunction.call(person,"25")
+    // myFunction.apply(person,"25")
+    // const apply = myFunction.bind(person,"25")
+    // console.log(apply());
+    
 
 //     Function.prototype.myCall = function (context, ...args) {
 //       //globalThis refers to the global object in any JavaScript environment:
@@ -81,12 +208,10 @@
 
 
 
-
-
-
 // -------------------------------------------
 
-    // const arr = [10, 20, 30];
+//PRESENT IN ARRAY
+// const arr = [10, 20, 30];
 // console.log(1 in arr); // true — because index 1 exists (value = 20)
 // console.log(5 in arr); // false — index 5 does not exist
 
@@ -180,12 +305,47 @@
       
     // -------------------------------------------------------
 
+    const arr = [1,2,3,4,5]
 
-    // const arr = [1,2,3,4,5]
-    // const data = arr.myFilterFunc((item)=>item%2===0);
-    // const data = arr.myReduceFunc((acc,curr)=>(acc + curr),20);
-    // console.log("data",data);
+    // const myMapFunc = arr.map((item)=>item*2);
+    // const myFilterFunc = arr.filter((item)=>item%2===0);
+    // const myReduceFunc = arr.reduce((x,y)=>x+y,10);
+    // console.log(myReduceFunc);
+
+    Array.prototype.myMapFunc = function(calbck){
+      const emptyArr = []
+      for (let i = 0; i < this.length; i++) {
+        emptyArr.push(calbck(this[i],i,this))
+      }
+
+      return emptyArr
+    }
+
+    Array.prototype.myFilterFunc=function(calbck){
+      const emptyArr = []
+      for (let i = 0; i < this.length; i++) {
+        if(calbck(this[i],i,this)){
+          emptyArr.push(this[i])
+        }
+      }
+
+      return emptyArr
+    }
+
+    Array.prototype.myReduceFunc = function(calbck,initialVal){
+      const array = this
+      let startIndex = 0;
+      let accumulator
+
+      if(initialVal!==undefined){
+        
+      }
+    }
     
+    // const newArr = arr.myFilterFunc((item,index)=>item%2===0);
+    // console.log(newArr);
+    
+
 
     // Array.prototype.myMap=function(callback){
     //   const emptyArr = [];
@@ -401,18 +561,18 @@
 //->Only copies the first level of an object or array.
 //->Nested objects or arrays are still referenced 
 // =>So name remain unchanged but city changes
-// const original = {
-//   name: "Ritik",
-//   address: { city: "Delhi" },
-// };
+  // const original = {
+  //   name: "Ritik",
+  //   address: { city: "Delhi" },
+  // };
 
-// const shallowCopy = { ...original };
+  // const shallowCopy = { ...original };
 
-// shallowCopy.name = "Chauhan";
-// shallowCopy.address.city = "Mumbai";
+  // shallowCopy.name = "Chauhan";
+  // shallowCopy.address.city = "Mumbai";
 
-// console.log(original.name); // Ritik ❌→ Chauhan (not affected)
-// console.log(original.address.city);
+  // console.log(original.name); // Ritik ❌→ Chauhan (not affected)
+  // console.log(original.address.city);
 
 // ----------
 
@@ -461,7 +621,7 @@
 // }
 
 
-// //Instead of hardcoding a property name, you compute it at runtime using square brackets
+//Instead of hardcoding a property name, you compute it at runtime using square brackets
 // const key = "email";
 // const obj = {
 //   [key]: "example@example.com"
@@ -527,7 +687,7 @@
 // const user = {username:"Ritik"}
 // const key = [[[["username"]]]]  //When arrays are used as keys or property accessors, JavaScript coerces them to strings using .toString().
 // console.log(user[key]);   //JavaScript implicitly converts the array to a string
-// // key == [[[["username"]]]] → becomes "username" (because of array to string coercion)
+// key == [[[["username"]]]] → becomes "username" (because of array to string coercion)
 // console.log([[["username"]]].toString());
 
     // console.log([]+{})    //"" + "[object Object]" → "[object Object]"
@@ -543,7 +703,7 @@
     //for...of with await runs each assignToUser() call sequentially, waiting for each one to finish.
     // Always use for...of (or for, while) when you need to use await inside a loop and want it to actually wait.
 
-  //.forEach() doesn't wait for async callbacks.
+  // .forEach() doesn't wait for async callbacks.
   //So even though you're using await inside the callback, the outer function doesn't pause for them to finish.
 
 //   const items = [1, 2, 3];
@@ -571,7 +731,7 @@
     
     // FOR IN
     // Note : Use array notation in forin and forof loops to get a value
-    // const obj = { a: 1, b: 2, c: 3 };
+    // const obj = { a: 1, b: 2, c: 3 }
 
     // for (const key in obj) {
     //   console.log(key);
@@ -593,11 +753,11 @@
     // }
 
     // // FOR OF
-    // const arr = [1, 2, 3];
+    // const arr = [1, 2,8, 3];
 
     // for (const element of arr) {
-    //   console.log(element);
-    //   console.log(arr[element]);
+      // console.log(element);
+      // console.log(arr[element]);  //arr[1],arr[2],arr[8]
     // }
 
     // for (const element of arr) {
@@ -607,6 +767,11 @@
     // for (let value of arr) {
     //   console.log(value); // Output: 1, 2, 3
     // }
+
+
+    // const [key,value] = [["firstName","John"],["lastName","Doe"],["age",30],["arr",["John","qwe"]]]
+    //   console.log("key",key);
+    //   console.log("value",value);
 
     // const person = {
     //   firstName: "John",
@@ -672,7 +837,7 @@
     // console.log(conditioon);
     
 
-    // console.log(b.sort().reverse());
+    // console.log(b.sort().reverse(  ));
     
     // const sameItems = (obj1,obj2)=>{
     //   if(obj1?.length !== obj2.length){
@@ -722,6 +887,7 @@
     // console.log(typeof(cc));
     // console.log("number" + 15 + 3)  //+ has left-to-right associativity, so expression "number" + 15
     // console.log(15 + 3 + "number" )
+    // console.log(15 + 3 + +"number" )
     //Boolean to Number
     // console.log(false + 2); //converts false to 0 and then 0 + 2
     // console.log(Number(null));
@@ -836,9 +1002,9 @@
     // 5. Set removes duplicay from array [...new Set(array)]
     // 6. a=[] ...a makes array element out removing , (array to string conversion)
     // console.log(...[1,2]);
-    a=[1,2,3] // {...a} makes array of object with index as keys
-    console.log({...a});
-    console.log({a});
+    // const a=[1,2,3] // {...a} makes array of object with index as keys
+    // console.log({...a});
+    // console.log({a});
     
     // console.log(1+[1,2]);
     // console.log("1"+[1,2]);
@@ -851,7 +1017,7 @@
     // console.log(true || true && console.log("1"));
     // console.log(true || true && 10);
     // 8. bCondition1 && bCondition2 is same !(!bCondition1 || !bCondition2)
-//     console.log(A || B);                     // true
+    // console.log(A || B);                     // true
 // console.log(!(!A && !B));   
     // 9. FALSE  =  null ; NaN ; 0 ; empty string ("" or '' or ``) ; undefined.
     // console.log(Boolean({}))
@@ -888,7 +1054,7 @@
     // console.log({ abs });
     // console.log([ abs ]);
 
-//     const mySet = new Set();
+    // const mySet = new Set();
 
 // mySet.add(1);
 // mySet.add(2);
@@ -913,7 +1079,7 @@
       // console.log(item);
       // console.log(index);
       // console.log(array);
-    //   return item !== 2
+      // return item !== 2
     // }); //returns new array with filtered values, it removes the element whose condition becomes false
     // let newArr = arr.filter((item) => item === 2); //if condition is true it takes it out that item
     // let newArr=arr.find((item)=>item>2);     //returns only(7) first array value after condition matches
@@ -993,10 +1159,11 @@
 
     //extract a section of an array and return a new array.(SLICE) It doesn't modify the orignal array
     // NOTE:If the start index is greater than or equal to the end index, it returns an empty array.
-    // var originalArray = [1, 2, 3, 4, 5]; 
+    // var originalArray = [1, 2, 3, 4, 5];
     // var portion = originalArray.slice();
     // var portion = originalArray.slice(6, 3);
     // var portion = originalArray.slice(4, 3);
+    // var portion = originalArray.slice(3, 3);
     // ***var portion = originalArray.slice(3, 1);    //as start index is greater than end index
     // var portion = originalArray.slice(1, 4); //This extracts elements from index 1 to (4-1) = 3. The resulting portion array will be [2, 3, 4].
     // var portion = originalArray.slice(2, 4);      //4-1 means 3rd index
@@ -1004,12 +1171,14 @@
     // var portion = originalArray.slice(2);       //This extracts elements starting from index 2 to the end of the array. The resulting copyToEnd array will be [3, 4, 5].
     // var portion = originalArray.slice(-4);        // (-3-1 = 2index) This extracts the last three elements of the array, regardless of the array's length.
     // var portion = originalArray.slice(-3,4);
+    // var portion = originalArray.slice(-3,-1);
+    // var portion = originalArray.slice(-1,-3);
     // console.log("originalArray", originalArray);
     // console.log("portion", portion);
 
     //(SPLICE)It modifies the array it's called on and (laster no - 1)
     //  **returns an array containing the deleted elements;
-    // return empty []array with added values
+    // return empty [] array with added values
     // var array = [1, 2, 3, 4, 5, 6, 2];
     // var removed = array.splice(2, 2); //removes two elements starting from index 2(start from index inclusive means delete it also).
     // var addArr = array.splice(2, 0, 6, 7);    //inserts 6 and 7 at index 2(start from index inclusive means add at it place also) without removing any elements.
@@ -1934,7 +2103,7 @@
     // }
 
     // console.log(timer(5));
-    
+        
 
     //THIS
     //In the global level this points to window object
@@ -1964,6 +2133,25 @@
 
 
     // var array = [1, 2, 3, [7, 8, [9]], 4, [5], 6];
+
+    // function flatArr(data){
+    //   const emptyArr = []
+    //   data.forEach((element) => {
+    //     if(Array.isArray(element)){
+    //       emptyArr.push(...flatArr(element))
+    //     }
+    //     else{
+    //       emptyArr.push(element)
+    //     }
+    //   });
+
+    //   return emptyArr
+    // }
+
+    // console.log(flatArr(array));
+    
+
+
     //   var obj={name:"ritik"}
     // function flattenArray(arr) {
     //   var flattened = [];
@@ -1985,6 +2173,28 @@
     // console.log(flattenedArray);
 
     // PALENDROME
+    // const input = window.prompt("Enter name")
+    // function isPalen(text){
+    //   const strLength = text.length;
+    //   for (let i = 0; i < strLength/2; i++) {
+    //     if(text[i] !== text[strLength - i - 1]){
+    //       return false
+    //     }
+
+    //     return true
+    //   }
+    // }
+
+    // console.log("input",input);
+    
+    // const revInput = input.split('').reverse().join('');
+    // console.log("revInput",revInput);
+    // console.log(input===revInput ? "Palendrome" : "Not Palendrome");
+    
+    
+
+    // console.log(isPalen(input) ? "Palendrome" : "Not Palendrome" );
+    
 
     // const a = window.prompt("Enter value of a");
     // const straight = a.split('').reverse().join('');
@@ -2030,6 +2240,47 @@
     // AN object there are 3 states of promise object,pending,resolved,rejected
     // resolved .then()
     // rejected .catch()
+
+    // const prom1 = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     resolve("Promise 1 is resolved")
+    //   }, 110);
+    // })
+
+    // const prom2 = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     resolve("Promise 2 is resolved")
+    //   }, 800);
+    // })
+
+    // const prom3 = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     resolve("Promise 3 is resolved")
+    //   }, 600);
+    // })
+
+    // Promise.race([prom1,prom2,prom3])
+    // .then((resp)=>console.log("resp",resp))
+    // .catch((err)=>console.log("err",err))
+
+
+
+    // const newProm1 = new Promise((resolve,reject)=>{
+    //   setTimeout(()=>resolve("1"),1000)
+    // })
+
+    // const newProm2 = new Promise((resolve,reject)=>{
+    //   setTimeout(()=>reject("2"),200)
+    // })
+
+    // const newProm3 = new Promise((resolve,reject)=>{
+    //   setTimeout(()=>resolve("3"),3000)
+    // })
+
+    // newProm.then((resp)=>console.log(resp)).catch((err)=>console.log("Err",err))
+    // Promise.allSettled([newProm1,newProm2,newProm3])
+    // .then((resp)=>console.log("resp",resp))
+    // .catch((err)=>console.log("err",err))
 
     // const promise1 = new Promise((resolve, reject) => {
     //   setTimeout(()=>{
@@ -2324,6 +2575,7 @@
     // }
 
     // console.log("this ", this);
+
     // let userInfo = {
     //   name: "code Improve",
     //   fullName() {
@@ -2345,6 +2597,17 @@
 
     //Currying:function is transformed into a sequence of functions, each taking a single argument.
     // This curried function works by creating closures that capture each argument one by one until all the necessary arguments have been provided
+
+    // function a(x){
+    //   return function b(y){
+    //     return function c(z){
+    //       return x+y+z
+    //     }
+    //   }
+    // }
+
+    // console.log(a(3)(4)(5));
+    
 
     // function a(x){
     //   return function b(y){
@@ -2402,28 +2665,23 @@
     // console.log(curryUnaryFunction(1)(2)(3));
 
     // High order function:Ex map, filter, and reduce,setTimeout(), setInterval(),fetch().then()
-
     // A higher-order function is a function that accepts another function as an argument or returns a function as a return value.
+    // Takes another function as an argument (e.g., map, filter, forEach), OR
+    // Returns another function.
 
-    // function aa(a){
-    //   return function(b){
-    //     return a + b
+
+    // function highfunc(x){
+    //   const y = 10;
+    //   return function(y){
+    //     return x+y
     //   }
     // }
 
-    // const abc = aa(2);
-    // console.log(abc(6));
+    // const highfuncVar = highfunc(5) 
+    // console.log(highfuncVar(10));
     
 
-    // const sum = (a) =>{
-    //   return function(b){
-    //     console.log(a + b);
-    //   }
-    // }
 
-    // const dd = sum(5)
-    // console.log(dd(2));
-    
     // const multiplier=(num)=>{
     //   return function(numInside){
     //     return num*numInside
@@ -2503,6 +2761,7 @@
     // callback function
     // Call back is a function passed as an arguement to another function which is then invoked inside the outer function
     // to complete some kind of routine or action
+    
 
     // function students(){
     //   console.log("Students Called")
@@ -2560,6 +2819,7 @@
     // }
 
     // console.log(result(3,8));
+    
 
     // let resultVar = 0
     // console.log(resultVar);
@@ -2650,9 +2910,22 @@
 // console.log(flat);
 
 
+  // const flatObj = (obj,parentKey='',result={})=>{
+  //   for (const key in obj) {
+  //     const newKey = parentKey ? `${parentKey}.${key}` : key;
+  //     if(typeof obj[key]==='object' && obj[key] !== null){    //if zip is null
+  //       flatObj(obj[key],newKey,result)
+  //     }
+  //     else{
+  //       result[newKey] = obj[key]
+  //     }
+  //   }
 
-    
-    
+  //   return result
+  // }
+      
+  // console.log("nestedObj",flatObj(nestedObj));
+  
   </script>
 
   <body>

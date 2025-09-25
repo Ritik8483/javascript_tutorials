@@ -94,6 +94,29 @@
 //         `;
 //     card_container.appendChild(createEmptyDiv);
 //   });
+
+// const productBox = document.createElement("div");
+
+// const title = document.createElement("h2");
+// title.textContent = item.title;
+
+// const description = document.createElement("h4");
+// description.textContent = item.description;
+
+// const category = document.createElement("h4");
+// category.textContent = item.category;
+
+// const price = document.createElement("h4");
+// price.textContent = `$${item.price}`;
+
+// const img = document.createElement("img");
+// img.src = item.image;
+// img.alt = item.title;
+// img.height = 200;
+// img.width = 200;
+
+// productBox.append(title, description, category, price, img);
+// fragment.appendChild(productBox);
 // }
 
 // getAllCartInfo();
@@ -162,62 +185,62 @@
 
 // -----------------------6th----------------------------
 
-// const apiurl = "https://pokeapi.co/api/v2/pokemon?limit=50";
+const apiurl = "https://pokeapi.co/api/v2/pokemon?limit=50";
 
-// const selectElelment = document.getElementById("pokimon_select");
-// const pokinmonAbilityContainer = document.getElementById(
-//   "pokinmon_ability_container"
-// );
+const selectElelment = document.getElementById("pokimon_select");
+const pokinmonAbilityContainer = document.getElementById(
+  "pokinmon_ability_container"
+);
 
-// const cache = {};
+const cache = {};
 
-// async function getAllPokimons() {
-//   try {
-//     const resp = await fetch(apiurl);
-//     const respJson = await resp.json();
-//     const pokimonsData = respJson?.results;
-//     pokimonsData?.map((item) => {
-//       const createOptionElelment = document.createElement("option");
-//       createOptionElelment.innerHTML = item.name;
-//       createOptionElelment.setAttribute("data-url", item.url);
-//       createOptionElelment.value = item.name;
-//       selectElelment.appendChild(createOptionElelment);
-//     });
-//     console.log("pokimonsData", pokimonsData);
-//   } catch (error) {
-//     console.log("error", error);
-//   }
-// }
+async function getAllPokimons() {
+  try {
+    const resp = await fetch(apiurl);
+    const respJson = await resp.json();
+    const pokimonsData = respJson?.results;
+    pokimonsData?.map((item) => {
+      const createOptionElelment = document.createElement("option");
+      createOptionElelment.innerHTML = item.name;
+      createOptionElelment.setAttribute("data-url", item.url);
+      createOptionElelment.value = item.name;
+      selectElelment.appendChild(createOptionElelment);
+    });
+    console.log("pokimonsData", pokimonsData);
+  } catch (error) {
+    console.log("error", error);
+  }
+}
 
-// selectElelment.addEventListener("change", async () => {
-//   const selectedPokimon = selectElelment.options[selectElelment.selectedIndex];
-//   const { value } = selectedPokimon;
-//   const dataUrl = selectedPokimon.getAttribute("data-url");
-//   if (cache[value]) {
-//     displayAbilities(value, cache[value]);
-//     return;
-//   }
-//   try {
-//     const resp = await fetch(dataUrl);
-//     const respJson = await resp.json();
-//     const abilities = respJson?.abilities?.map((item) => item.ability.name);
-//     cache[value] = abilities;
-//     displayAbilities(value, cache[value]);
-//   } catch (error) {
-//     console.log("error", error);
-//   }
-// });
+selectElelment.addEventListener("change", async () => {
+  const selectedPokimon = selectElelment.options[selectElelment.selectedIndex];
+  const { value } = selectedPokimon;
+  const dataUrl = selectedPokimon.getAttribute("data-url");
+  if (cache[value]) {
+    displayAbilities(value, cache[value]);
+    return;
+  }
+  try {
+    const resp = await fetch(dataUrl);
+    const respJson = await resp.json();
+    const abilities = respJson?.abilities?.map((item) => item.ability.name);
+    cache[value] = abilities;
+    displayAbilities(value, cache[value]);
+  } catch (error) {
+    console.log("error", error);
+  }
+});
 
-// function displayAbilities(pokimonName, abilities) {
-//   pokinmonAbilityContainer.innerHTML = `
-//             <h3>${pokimonName}</h3>
-//             <ul>
-//                 ${abilities.map((item) => `<li>${item}</li>`)}
-//             </ul>
-//         `;
-// }
+function displayAbilities(pokimonName, abilities) {
+  pokinmonAbilityContainer.innerHTML = `
+            <h3>${pokimonName}</h3>
+            <ul>
+                ${abilities.map((item) => `<li>${item}</li>`)}
+            </ul>
+        `;
+}
 
-// getAllPokimons();
+getAllPokimons();
 
 // ---------------------------OTHER---------------------------------
 
@@ -940,41 +963,127 @@
 
 // -------------------------------------------------------------
 
-const planetUrl = "https://www.swapi.tech/api/planets/";
-const inputField = document.getElementById("planet_input");
-console.log(inputField);
+// const planetUrl = "https://www.swapi.tech/api/planets/";
+// const inputField = document.getElementById("planet_input");
+// console.log(inputField);
 
-async function getAllPlanets() {
-  try {
-    const resp = await fetch(planetUrl);
-    const respJson = await resp.json();
-    const planets = await respJson?.results;
-    console.log("planets", planets);
-  } catch (error) {
-    console.log("error", error);
-  }
-}
+// async function getAllPlanets() {
+//   try {
+//     const resp = await fetch(planetUrl);
+//     const respJson = await resp.json();
+//     const planets = await respJson?.results;
+//     console.log("planets", planets);
+//   } catch (error) {
+//     console.log("error", error);
+//   }
+// }
 
-// function debounce(){
+// // function debounce(){
+
+// // }
+// function handleChange(e) {
+//   console.log("Searched Value : ", e.target.value);
+// }
+
+// function debounce(func,delay){
+//     let initialTimeId;
+//     return function(...args){
+//         clearTimeout(initialTimeId);
+//         setTimeout(() => {
+//             func.apply(this,[])
+//         }, delay);
+//     }
 
 // }
-function handleChange(e) {
-  console.log("Searched Value : ", e.target.value);
+// const debouncedText = debounce(handleChange,1000)
+// console.log("debouncedText",debouncedText);
+
+// document.addEventListener("DOMContentLoaded", getAllPlanets);
+// inputField.addEventListener("input", handleChange);
+
+// -------------------------------------------------------------\
+
+
+// const inputField = document.getElementById("input_field");
+
+// function handleChange(e){
+//   console.log("input",e.target.value);
+// }
+
+// function debounce(func,delay){
+//   let initialTimeID;
+//   return function(...args){
+//     clearTimeout(initialTimeID);
+//     initialTimeID = setTimeout(() => {
+//       func.apply(this,args)
+//     }, delay);
+//   }
+// }
+
+// const debouncedText = debounce(handleChange,1000)
+
+// inputField.addEventListener('input',debouncedText)
+
+
+
+// const buttonClick = document.getElementById("button_click");
+
+// // function throttle(func,delay){
+// //     let initialValue = 0
+// //     return function (...args){
+// //         const current = Date.now();
+// //         if(current - initialValue >= delay){
+// //             initialValue = current
+// //             func.apply(this,args)
+// //         }
+// //     }
+// // }
+
+// function throttle(func,delay){
+  
+// }
+
+// function handleClick(){
+//     console.log("you clicked button at ",new Date());
+// }
+
+// const handleThrottle = throttle(handleClick,2000)
+
+// buttonClick.addEventListener("click",handleThrottle)
+
+
+
+
+// const inputField = document.getElementById("input_field");
+
+// function debounce(callback,delay){
+//   let initialTimeId
+//   return function(...args){
+//     clearTimeout(initialTimeId)
+//     initialTimeId = setTimeout(() => {
+//       callback.apply(this,args)
+//     }, delay);
+//   }
+// }
+
+// function handleChange(e){
+//   console.log("Value : ",e.target.value);
+// }
+
+// const debouncedValue = debounce(handleChange,1000)
+
+
+// document.addEventListener("input",debouncedValue)
+
+
+
+const buttonClick = document.getElementById("button_click");
+
+function handleClick(){
+  console.log(`Clicked at`,new Date().toLocaleTimeString());
 }
 
-function debounce(func,delay){
-    let initialTimeId;
-    return function(...args){
-        clearTimeout(initialTimeId);
-        setTimeout(() => {
-            func.apply(this,[])
-        }, delay);
-    }
+const throttleClick = 
 
-}
-const debouncedText = debounce(handleChange,1000)
-console.log("debouncedText",debouncedText);
+document.addEventListener("click",handleClick)
 
-
-document.addEventListener("DOMContentLoaded", getAllPlanets);
-inputField.addEventListener("input", handleChange);

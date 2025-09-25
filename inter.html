@@ -4,7 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- <style>
+      .planet_ul_class {
+        list-style: none;
+        margin-top: 0;
+        padding-left: 0;
+        width: 170px;
+      }
+      .planet_li_class {
+        cursor: pointer;
+      }
+      .planet_li_class:hover {
+        background-color: lightgrey;
+      }
+    </style> -->
   </head>
+
+  <!-- <div> -->
+  <!-- <input type="text" placeholder="Enter name" id="name_input" />
+    <button id="button_input" >Click Me fast!</button> -->
+
+  <!-- <div>
+      <h1>Planets</h1>
+      <input type="text" placeholder="Search Planet" id="planet_input" />
+      <ul id="planet_ul" class="planet_ul_class">
+        <li id="planet_li" class="planet_li_class"></li>
+      </ul>
+    </div> -->
+
+  <!-- <h1>All Carts info</h1>
+    <div id="cart_container"></div>
+  </div> -->
+
+  <div>
+    <h3>Products</h3>
+    <select id="product_select_input">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+    <div id="product_container"></div>
+  </div>
+
   <script>
     // const a= window.prompt("Enter value of a");
     // const b= window.prompt("Enter value of b");
@@ -719,7 +759,6 @@
     // }
     // console.log(flatArr(array));
 
-
     // const flatArr = (arr) => {
     //   let emptyArr = [];
     //   const flat = arr.forEach((item) => {
@@ -747,6 +786,708 @@
     // }
 
     // console.log(fatco(number));
+
+    // ---------------------------------------------SOPRA---------------------------------------
+    // const arr = [2, 4, 6, 4, 1, 8];
+
+    // const increMentSort = arr.sort();
+    // // console.log("increMentSort",increMentSort);
+
+    // const decreMentSort = arr.sort().reverse();
+    // // console.log("decreMentSort",decreMentSort);
+
+    // function sortArr(data){
+    //   for (let i = 0; i < data.length; i++) {
+    //     console.log("---I---",i);
+    //     for (let j = 0; j < data.length - 1 - i; j++) {
+    //       console.log("J",j);
+
+    //       if(data[j] < data[j+1]){
+    //         let temp = data[j]
+    //         data[j] = data[j+1]
+    //         data[j+1] = temp
+    //       }
+    //     }
+    //   }
+
+    //   return data
+    // }
+
+    // console.log(sortArr(arr));
+
+    // const recurrArr = [{ Sunday: "true" }, { Monday: "true" }];
+    // let emptyObj = {}
+    // recurrArr.forEach((item)=>{
+    //   Object.keys(item).forEach((element)=>{
+    //     emptyObj[element] = item[element]
+    //   })
+    // })
+
+    // console.log("emptyObj",emptyObj);
+
+    // const existingPayload = {
+    //   name: "ritik",
+    //   age: "24",
+    //   techStack: "ReactJS",
+    // };
+
+    // const newPayload = {
+    //   name: "ritik",
+    //   age: "24",
+    //   techStack: "ReactJS",
+    // };
+
+    // // console.log(JSON.stringify(existingPayload)===JSON.stringify(newPayload));
+
+    // function samePayload(a, b) {
+    //   const aLength = Object.keys(a).length;
+    //   const bLength = Object.keys(b).length;
+    //   const keys = Object.keys(a);
+
+    //   if (aLength !== bLength) {
+    //     return "Not Same";
+    //   }
+
+    //   return keys.every((item)=>a[item]===b[item]) ? "Same" : "Not Same"
+    // }
+
+    // console.log(samePayload(existingPayload, newPayload));
+
+    // let obj1 = [
+    //   {
+    //     id: 1,
+    //     name: "jack",
+    //   },
+    //   {
+    //     id: 2,
+    //     name: "leo",
+    //   },
+    //   {
+    //     id: 3,
+    //     name: "annie",
+    //   },
+    // ];
+
+    // let obj2 = [
+    //   {
+    //     id: 4,
+    //     name: "neil",
+    //   },
+    //   {
+    //     id: 2,
+    //     name: "nitin",
+    //   },
+    //   {
+    //     id: 3,
+    //     name: "mukesh",
+    //   },
+    // ];
+
+    // const combinedArr = [...obj1, ...obj2];
+    // console.log("combinedArr", combinedArr);
+    // const onlyIds = combinedArr?.map((item) => item.id);
+    // console.log("onlyIds", onlyIds);
+    // const uniqueIds = onlyIds.filter(
+    //   (item, index) => onlyIds.indexOf(item) !== index
+    // );
+    // console.log(uniqueIds);
+    // const repats = combinedArr.filter((item)=>uniqueIds.includes(item.id));
+    // console.log("repeats",repats);
+
+    // const a = [1, 2, 3];
+    // const b = [1, 2,4, 3];
+
+    // const sameArr = (arr1,arr2)=>{
+    //   if(arr1.length!==arr2.length){
+    //     return "Not"
+    //   }
+    //   const resp = arr1.every((item)=>b.includes(item))
+    //   return resp ? "Same Payload" : "Not Same"
+    // }
+
+    // console.log("sameArr",sameArr(a,b));
+
+    // const a = window.prompt("Enter Value of A")
+    // const b = window.prompt("Enter Value of B")
+    // const c = window.prompt("Enter Value of C")
+
+    // function greater(x,y,z){
+    //   if(x>y && y>z){
+    //     return "X is greater"
+    //   }
+    //   else if(y>z && y>x){
+    //     return "Y is greater"
+    //   }
+    //   else return "Z is greater"
+    // }
+
+    // console.log(greater(+a,+b,+c));
+
+    // const a = +window.prompt("Enter Value of A")
+
+    // function isPrime(num){
+    //   if(num<=1){
+    //     return "Not a Prime"
+    //   }
+    //   for (let i = 2; i < num; i++) {
+    //     if(num%i === 0){
+    //       return "Not a PRIME no."
+    //     }
+    //     return "Prime No"
+    //   }
+    // }
+
+    // console.log(isPrime(a));
+
+    // const name = window.prompt("Enter Value")
+    // // const rev = name.split('').reverse().join('');
+    // // console.log(name===rev ? "Palendrome" : "Not - Palendrome");
+
+    // function isPalen(str){
+    //   const strlen = str.length;
+
+    //   for (let i = 0; i < strlen/2; i++) {
+    //     if(str[i]!==str[strlen - 1 - i]){
+    //       return "Not Palendrome"
+    //     }
+    //   }
+
+    //   return "Palendrome"
+    // }
+    // console.log(isPalen(name));
+
+    // const arrays = [1, 2, 3, 5, [7, 8, [9]], 4, [5], 6];
+
+    // function recurrArr(arr){
+    //   const emptyArr = []
+
+    //   for (let i = 0; i < arr.length; i++) {
+    //     if(Array.isArray(arr[i])){
+    //       emptyArr.push(...recurrArr(arr[i]))
+    //     }
+    //     else{
+    //       emptyArr.push(arr[i])
+    //     }
+    //   }
+
+    //   return emptyArr
+    // }
+    // console.log(recurrArr(arrays));
+
+    // const text = "While the article guides you through the import";
+    // const lowerText = text.toLowerCase()
+    // const count = lowerText.split('t').length - 1;
+    // console.log(count);
+
+    //     function charFrequency(text) {
+    //   const freq = {};
+    //   for (let char of text) {
+    //     console.log(freq[char]);
+
+    //     freq[char] = (freq[char] || 0) + 1;
+    //   }
+    //   return freq;
+    // }
+
+    // console.log(charFrequency("While the article guides you through the import"));
+
+    //       const url = [
+    //   'https://pokeapi.co/api/v2/pokemon?limit=1',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=2',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=3',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=4',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=5',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=6',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=7',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=8',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=9',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=10'
+    // ];
+
+    //     async function getAllPokimons(params) {
+    //       try {
+    //         const resp = await Promise.allSettled(url.map((item)=>fetch(item)))
+    //         console.log("resp",resp);
+    //         const onlyValuesArr = resp?.map((item)=>item.value)
+    //         console.log(onlyValuesArr);
+
+    //         const respJson = await Promise.all(onlyValuesArr.map((item)=>item.json()));
+    //         console.log(respJson);
+
+    //       } catch (error) {
+    //         console.log("error",error);
+    //       }
+    //     }
+    //     getAllPokimons()
+
+    // function greet(age){
+    //   console.log(`Hello ${this.name}.You are ${age} years old.`)
+    // }
+    // const person = {name:"Ritik Chauhan"}
+
+    // Function.prototype.myCallFunc = function(context,...args){
+    //   context = context || globalThis;
+    //   const fnSymbol = Symbol()
+    //   context[fnSymbol] = this
+    //   const result = context[fnSymbol](...args);
+    //   delete context[fnSymbol]
+    //   return result
+    // }
+
+    // Function.prototype.myApplyFunc=function(context,args){
+    //   context = context || globalThis;
+    //   const fnSymbol = Symbol();
+    //   context[fnSymbol] = this;
+    //   const result = args ? context[fnSymbol](...args) : context[fnSymbol]
+    //   delete context[fnSymbol]
+    //   return result
+    // }
+
+    // Function.prototype.myBindFunc = function(context,...args){
+    //   const fn = this;
+    //   return function(...childArgs){
+    //     fn.apply(context,[...args,...childArgs])
+    //   }
+    // }
+
+    // greet.myCallFunc(person,"25")
+    // greet.myApplyFunc(person,["25"])
+    // const bind = greet.myBindFunc(person,25)
+    // console.log("bind",bind());
+
+    //  const arr = [1, 2, 3,6,3];
+    //  Array.prototype.myMapFunc = function(calbck){
+    //   const emptyArr = [];
+    //   for (let i = 0; i < this.length; i++) {
+    //     emptyArr.push(calbck(this[i],i,this))
+    //   }
+
+    //   return emptyArr
+    //  }
+
+    //  Array.prototype.myFilterFunc=function(calbck){
+    //   const emptArr = [];
+    //   for (let i = 0; i < this.length; i++) {
+    //     if(calbck(this[i],i,this)){
+    //       emptArr.push(this[i])
+    //     }
+    //   }
+
+    //   return emptArr
+    //  }
+
+    //  Array.prototype.myReduceFunc=function(calbck,initialValue){
+    //   const array = this;
+    //   let accumulator
+    //   let startIndex = 0
+
+    //   if(initialValue!==undefined){
+    //     accumulator = initialValue
+    //   }
+    //   else{
+    //     while(startIndex < initialValue && !(startIndex in array)){
+    //       startIndex++
+    //     }
+    //     if(startIndex >= initialValue){
+    //       throw new Error("Error in reducing");
+    //     }
+    //     accumulator = array[startIndex]
+    //     startIndex++
+    //   }
+
+    //   for (let i = startIndex; i < array.length; i++) {
+    //     accumulator = calbck(accumulator,array[i],i,array)
+    //   }
+
+    //   return accumulator
+    //  }
+
+    //  const resp = arr.myMapFunc((item)=>item*2);
+    //  console.log(resp);
+
+    // const resp = arr.myFilterFunc((item)=>item%2===0);
+    // console.log(resp);
+
+    // const resp = arr.myReduceFunc((acc,curr)=>(acc + curr),10)
+    // console.log(resp);
+
+    // ================================================================
+    // const arr = [2, 4, 6, 4, 1, 8];
+    // function sortArr(data) {
+    //   for (let i = 0; i < data.length; i++) {
+    //     for (let j = 0; j < data.length - i - 1; j++) {
+    //       if (data[j] < data[j + 1]) {
+    //         let temp = data[j];
+    //         data[j] = data[j + 1];
+    //         data[j+1] = temp
+    //       }
+    //     }
+    //   }
+    //   return data
+    // }
+
+    // const asc = arr.sort().reverse();
+    // console.log(asc);
+
+    // console.log(sortArr(arr));
+
+    // const recurrArr = [{ Sunday: "true" }, { Monday: "true" }];
+    // function desiredFunc(data) {
+    //   const emptyObj = {};
+    //   data.forEach((item) => {
+    //     console.log(item);
+    //     Object.keys(item).forEach((el) => {
+    //       emptyObj[el] = item[el];
+    //     });
+    //   });
+    //   return emptyObj;
+    // }
+
+    // console.log("desiredFunc",desiredFunc(recurrArr));
+
+    // const existingPayload = {
+    //   name: "ritik",
+    //   age: "24",
+    //   techStack: "ReactJS",
+    // };
+
+    // const newPayload = {
+    //   name: "ritik",
+    //   age: "24",
+    //   techStack: "ReactJS",
+    // };
+
+    // function samePayload(obj1, obj2) {
+    //   const objOneLength = Object.keys(obj1).length;
+    //   const objTwoLength = Object.keys(obj2).length;
+    //   const objOneKeys = Object.keys(obj1);
+    //   if (objOneLength !== objTwoLength) return "Not Same payload";
+    //   for (const item of objOneKeys) {
+    //     if (obj1[item] !== obj2[item]) {
+    //       return "Not Same objects";
+    //     }
+    //   }
+
+    //   return "SAME OBJECTS";
+    //   console.log("objOneLength", objOneLengths);
+    // }
+
+    // const isSame = JSON.stringify(existingPayload)===JSON.stringify(newPayload);
+    // console.log(isSame ? "Same" : "Not Same");
+
+    // console.log(samePayload(existingPayload, newPayload));
+
+    // let obj1 = [
+    //     {
+    //       id: 1,
+    //       name: "jack",
+    //     },
+    //     {
+    //       id: 2,
+    //       name: "leo",
+    //     },
+    //     {
+    //       id: 3,
+    //       name: "annie",
+    //     },
+    //   ];
+
+    //   let obj2 = [
+    //     {
+    //       id: 4,
+    //       name: "neil",
+    //     },
+    //     {
+    //       id: 2,
+    //       name: "nitin",
+    //     },
+    //     {
+    //       id: 3,
+    //       name: "mukesh",
+    //     },
+    //   ];
+
+    //   const combineObj = [...obj1,...obj2];
+    //   console.log(combineObj);
+    //   const onlyIds = combineObj?.map((item)=>item.id);
+    //   console.log("onlyIds",onlyIds);
+    //   const repeatIds = onlyIds.filter((item,index)=>onlyIds.indexOf(item)!==index);
+    //   console.log(repeatIds);
+    //   const repeats = combineObj.filter((item)=>repeatIds.includes(item.id));
+    //   console.log(repeats);
+
+    //  const a = [1, 2, 3];
+    // const b = [1, 2, 3];
+
+    // function containSame(x,y){
+    //   if(x.length!==y.length) return "NOT SAME"
+    //   for (let i = 0; i < x.length; i++) {
+    //     if(x[i]!==y[i]){
+    //       return "NOT SAME ITEMS"
+    //     }
+    //   }
+
+    //   return "Same"
+    // }
+    // console.log(containSame(a,b));
+
+    // const a = +window.prompt("Enter value of A");
+    // const b = +window.prompt("Enter value of B");
+    // const c = +window.prompt("Enter value of C");
+    // function greaterFunc(x, y, z) {
+    //   if (x > y && y > z) {
+    //     return "A is greater";
+    //   } else if (y > z && y > x) {
+    //     return "B is greater";
+    //   } else {
+    //     return "C is greater";
+    //   }
+    // }
+
+    // console.log(greaterFunc(a, b, c));
+
+    //  const name = window.prompt("Enter value of A");
+
+    //  function isPalenDrome(data){
+    //   const strLength = data.length;
+    //   for (let i = 0; i < strLength/2; i++) {
+    //     if(data[i]!==data[strLength-i-1]){
+    //       return "NOT _ PALENDROME"
+    //     }
+
+    //   }
+
+    //   return "Palendrome"
+    //  }
+    //  console.log(isPalenDrome(name));
+
+    // const arrays = [1, 2, 3, 5, [7, 8, [9]], 4, [5], 6];
+    // function recurrFunc(data){
+    //   const emptyArr = [];
+    //   data.forEach((item) => {
+    //     if(Array.isArray(item)){
+    //       emptyArr.push(...recurrFunc(item))
+    //     }
+    //     else{
+    //       emptyArr.push(item)
+    //     }
+    //   });
+
+    //   return emptyArr
+    // }
+    // console.log(recurrFunc(arrays));
+
+    // const inputField = document.getElementById("name_input");
+    // console.log("inputField",inputField);
+
+    // function debounce(func,delay){
+    //   let initialtimeId;
+    //   return function(...args){
+    //     clearTimeout(initialtimeId);
+    //     // clearInterval(initialtimeId);
+    //     initialtimeId = setTimeout(() => {
+    //       func.apply(this,args)
+    //     }, delay);
+    //   }
+
+    // }
+
+    // function handleInput(e){
+    //   console.log(e.target.value);
+    // }
+
+    // const debouncedText = debounce(handleInput,1000)
+
+    // document.addEventListener("input",debouncedText)
+
+    // const buttonInput = document.getElementById("button_input");
+
+    // function throttle(func,delay){
+    //   let initialValue = 0
+    //   return function(...args){
+    //     const currentDate = Date.now();
+    //     if(currentDate - initialValue >=delay){
+    //       initialValue = currentDate;
+    //       func.apply(this,args)
+    //     }
+    //   }
+    // }
+
+    // function handleClick(e){
+    //   console.log("You clicked at ",new Date().toLocaleTimeString());
+    // }
+
+    // const throttleClick = throttle(handleClick,2000)
+
+    // document.addEventListener("click",throttleClick)
+
+    // const planetUrl = "https://www.swapi.tech/api/planets/";
+    // const planetInput = document.getElementById("planet_input");
+    // const planetUl = document.getElementById("planet_ul");
+    // let planets = [];
+
+    // function debounce(func, delay) {
+    //   let initoialTimeId;
+    //   return function (...args) {
+    //     clearTimeout(initoialTimeId);
+    //     initoialTimeId = setTimeout(() => {
+    //       func.apply(this, args);
+    //     }, delay);
+    //   };
+    // }
+
+    // async function getAllPlanets() {
+    //   try {
+    //     const resp = await fetch(planetUrl);
+    //     const respJson = await resp.json();
+    //     planets = respJson?.results?.map((item) => item.name);
+    //   } catch (error) {
+    //     console.log("error", error);
+    //   }
+    // }
+
+    // function showPlanets(data) {
+    //   console.log("data", data);
+    //   data.map((item) => {
+    //     const createLi = document.createElement("li");
+    //     createLi.id = "planet_li";
+    //     createLi.className = "planet_li_class";
+    //     createLi.innerText = item;
+    //     planetUl.appendChild(createLi);
+    //   });
+    // }
+
+    // function handleChange(e) {
+    //   const inputValue = e.target.value.toLowerCase();
+    //   planetUl.innerHTML = "";
+    //   console.log("inputValue", inputValue);
+    //   console.log("planets", planets);
+
+    //   const filteredPlanets = inputValue?.length
+    //     ? planets?.filter((item) => item.toLowerCase().includes(inputValue))
+    //     : [];
+    //   console.log("filteredPlanets", filteredPlanets);
+    //   if (filteredPlanets?.length) {
+    //     showPlanets(filteredPlanets);
+    //   }
+    // }
+
+    // const debouncedText = debounce(handleChange, 1000);
+
+    // document.addEventListener("DOMContentLoaded", getAllPlanets());
+    // document.addEventListener("input", debouncedText);
+
+    // const cartContainer = document.getElementById("cart_container");
+    // const apiUrl = "https://fakestoreapi.com/carts/2";
+
+    // async function getAllProducts() {
+    //   try {
+    //     const resp = await fetch(apiUrl);
+    //     const respJSON = await resp.json();
+    //     const onlyProductIds = respJSON?.products?.map(
+    //       (item) => item.productId
+    //     );
+    //     console.log(onlyProductIds);
+    //     if (onlyProductIds?.length) {
+    //       getAllTheDetails(onlyProductIds);
+    //     }
+    //   } catch (error) {
+    //     console.log("error", error);
+    //   }
+    // }
+
+    // async function getAllTheDetails(data) {
+    //   try {
+    //     const resp = await Promise.all(
+    //       data?.map((item) =>
+    //         fetch(`https://fakestoreapi.com/products/${item}`)
+    //       )
+    //     );
+    //     const respJSON = await Promise.all(resp?.map((item) => item.json()));
+    //     showAllDetails(respJSON);
+    //   } catch (error) {
+    //     console.log("error", error);
+    //   }
+    // }
+
+    // function showAllDetails(data) {
+    //   data.map((item) => {
+    //     const createEmptyParentBox = document.createElement("div")
+    //     createEmptyParentBox.innerHTML = `
+    //       <h2>${item.title}</h2>
+    //       <h4>${item.description}</h4>
+    //       <h4>${item.category}</h4>
+    //       <h4>${item.price}</h4>
+    //       <img src=${item.image} alt=${item.title} height="200" width="200" >`
+    //       cartContainer.appendChild(createEmptyParentBox)
+    //   });
+    // }
+
+    // document.addEventListener("DOMContentLoaded", getAllProducts());
+
+    const productSelectInput = document.getElementById("product_select_input");
+    const productContainer = document.getElementById("product_container");
+    const url = "https://fakestoreapi.com/products?sort=";
+
+    async function getAllProducts(order) {
+      console.log(order);
+
+      try {
+        const resp = await fetch(url);
+        const respJson = await resp.json();
+        if (respJson?.length && order === "asc") {
+          const ascOrder = respJson.sort((a, b) => a.price - b.price);
+          console.log("ascOrder",ascOrder);
+          
+          showAllProducts(ascOrder);
+        } else {
+          const descOrder = respJson.sort((a, b) => b.price - a.price);
+          console.log("descOrder",descOrder);
+
+          showAllProducts(descOrder);
+        }
+      } catch (err) {
+        console.log("error", error);
+      }
+    }
+
+    function showAllProducts(data) {
+      data?.map((item) => {
+        const createEmptyDiv = document.createElement("div");
+        const createTitleTag = document.createElement("h3");
+        const createCategoryTag = document.createElement("h4");
+        const createPriceTag = document.createElement("h4");
+        const createImgElement = document.createElement("img");
+        createTitleTag.textContent = item.title;
+        createCategoryTag.textContent = item.category;
+        createPriceTag.textContent = item.price;
+        createImgElement.src = item.image;
+        createImgElement.alt = item.title;
+        createImgElement.height = 200;
+        createImgElement.width = 200;
+        createEmptyDiv.style = "border:1px solid black";
+        createEmptyDiv.append(
+          createTitleTag,
+          createCategoryTag,
+          createPriceTag,
+          createImgElement
+        );
+        productContainer.appendChild(createEmptyDiv);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", getAllProducts("asc"));
+    productSelectInput.addEventListener("change", () => {
+      const getSelectedValue =
+        productSelectInput.options[productSelectInput.selectedIndex];
+      const value = getSelectedValue.value;
+      console.log(value);
+      productContainer.innerHTML = ''
+      getAllProducts(value || "asc");
+    });
+
+
+    
   </script>
   <body></body>
 </html>
