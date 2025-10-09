@@ -123,51 +123,51 @@
 
 // ---------------------------3rd---------------
 
-// const url = "https://fakestoreapi.com/products?sort=";
-// const product_container = document.getElementById("product_container");
-// const select_container = document.getElementById("select_container");
+const url = "https://fakestoreapi.com/products?sort=";
+const product_container = document.getElementById("product_container");
+const select_container = document.getElementById("select_container");
 
-// async function getAllProducts(data) {
-//   console.log("called", data);
+async function getAllProducts(data) {
+  console.log("called", data);
 
-//   try {
-//     console.log(url + data);
-//     const resp = await fetch(`${url}${data}`);
-//     const respJson = await resp.json();
-//     respJson?.sort((a, b) =>
-//       data === "asc" ? a.price - b.price : b.price - a.price
-//     );
-//     console.log("respJson", respJson);
+  try {
+    console.log(url + data);
+    const resp = await fetch(`${url}${data}`);
+    const respJson = await resp.json();
+    respJson?.sort((a, b) =>
+      data === "asc" ? a.price - b.price : b.price - a.price
+    );
+    console.log("respJson", respJson);
 
-//     display(respJson);
-//   } catch (error) {
-//     console.log("error", error);
-//   }
-// }
+    display(respJson);
+  } catch (error) {
+    console.log("error", error);
+  }
+}
 
-// function display(data) {
-//   console.log("data", data);
-//   data?.map((item) => {
-//     const empty_div = document.createElement("empty_div");
-//     empty_div.className = "empty_div";
-//     empty_div.innerHTML = `
-//         <h3>${item.title}</h3>
-//         <p>${item.description}</p>
-//         <p>${item.price}</p>
-//         `;
-//     product_container.appendChild(empty_div);
-//   });
-// }
+function display(data) {
+  console.log("data", data);
+  data?.map((item) => {
+    const empty_div = document.createElement("empty_div");
+    empty_div.className = "empty_div";
+    empty_div.innerHTML = `
+        <h3>${item.title}</h3>
+        <p>${item.description}</p>
+        <p>${item.price}</p>
+        `;
+    product_container.appendChild(empty_div);
+  });
+}
 
-// select_container.addEventListener("change", () => {
-//     product_container.innerHTML = ""
-//   const selectedOption =
-//     select_container.options[select_container.selectedIndex];
-//   const { value } = selectedOption;
-//   getAllProducts(value);
-// });
+select_container.addEventListener("change", () => {
+    product_container.innerHTML = ""
+  const selectedOption =
+    select_container.options[select_container.selectedIndex];
+  const { value } = selectedOption;
+  getAllProducts(value);
+});
 
-// getAllProducts("asc");
+getAllProducts("asc");
 
 // ----------------------------------5rth-------------------------
 
@@ -185,62 +185,62 @@
 
 // -----------------------6th----------------------------
 
-const apiurl = "https://pokeapi.co/api/v2/pokemon?limit=50";
+// const apiurl = "https://pokeapi.co/api/v2/pokemon?limit=50";
 
-const selectElelment = document.getElementById("pokimon_select");
-const pokinmonAbilityContainer = document.getElementById(
-  "pokinmon_ability_container"
-);
+// const selectElelment = document.getElementById("pokimon_select");
+// const pokinmonAbilityContainer = document.getElementById(
+//   "pokinmon_ability_container"
+// );
 
-const cache = {};
+// const cache = {};
 
-async function getAllPokimons() {
-  try {
-    const resp = await fetch(apiurl);
-    const respJson = await resp.json();
-    const pokimonsData = respJson?.results;
-    pokimonsData?.map((item) => {
-      const createOptionElelment = document.createElement("option");
-      createOptionElelment.innerHTML = item.name;
-      createOptionElelment.setAttribute("data-url", item.url);
-      createOptionElelment.value = item.name;
-      selectElelment.appendChild(createOptionElelment);
-    });
-    console.log("pokimonsData", pokimonsData);
-  } catch (error) {
-    console.log("error", error);
-  }
-}
+// async function getAllPokimons() {
+//   try {
+//     const resp = await fetch(apiurl);
+//     const respJson = await resp.json();
+//     const pokimonsData = respJson?.results;
+//     pokimonsData?.map((item) => {
+//       const createOptionElelment = document.createElement("option");
+//       createOptionElelment.innerHTML = item.name;
+//       createOptionElelment.setAttribute("data-url", item.url);
+//       createOptionElelment.value = item.name;
+//       selectElelment.appendChild(createOptionElelment);
+//     });
+//     console.log("pokimonsData", pokimonsData);
+//   } catch (error) {
+//     console.log("error", error);
+//   }
+// }
 
-selectElelment.addEventListener("change", async () => {
-  const selectedPokimon = selectElelment.options[selectElelment.selectedIndex];
-  const { value } = selectedPokimon;
-  const dataUrl = selectedPokimon.getAttribute("data-url");
-  if (cache[value]) {
-    displayAbilities(value, cache[value]);
-    return;
-  }
-  try {
-    const resp = await fetch(dataUrl);
-    const respJson = await resp.json();
-    const abilities = respJson?.abilities?.map((item) => item.ability.name);
-    cache[value] = abilities;
-    displayAbilities(value, cache[value]);
-  } catch (error) {
-    console.log("error", error);
-  }
-});
+// selectElelment.addEventListener("change", async () => {
+//   const selectedPokimon = selectElelment.options[selectElelment.selectedIndex];
+//   const { value } = selectedPokimon;
+//   const dataUrl = selectedPokimon.getAttribute("data-url");
+//   if (cache[value]) {
+//     displayAbilities(value, cache[value]);
+//     return;
+//   }
+//   try {
+//     const resp = await fetch(dataUrl);
+//     const respJson = await resp.json();
+//     const abilities = respJson?.abilities?.map((item) => item.ability.name);
+//     cache[value] = abilities;
+//     displayAbilities(value, cache[value]);
+//   } catch (error) {
+//     console.log("error", error);
+//   }
+// });
 
-function displayAbilities(pokimonName, abilities) {
-  pokinmonAbilityContainer.innerHTML = `
-            <h3>${pokimonName}</h3>
-            <ul>
-                ${abilities.map((item) => `<li>${item}</li>`)}
-            </ul>
-        `;
-}
+// function displayAbilities(pokimonName, abilities) {
+//   pokinmonAbilityContainer.innerHTML = `
+//             <h3>${pokimonName}</h3>
+//             <ul>
+//                 ${abilities.map((item) => `<li>${item}</li>`)}
+//             </ul>
+//         `;
+// }
 
-getAllPokimons();
+// getAllPokimons();
 
 // ---------------------------OTHER---------------------------------
 
@@ -1077,13 +1077,13 @@ getAllPokimons();
 
 
 
-const buttonClick = document.getElementById("button_click");
+// const buttonClick = document.getElementById("button_click");
 
-function handleClick(){
-  console.log(`Clicked at`,new Date().toLocaleTimeString());
-}
+// function handleClick(){
+//   console.log(`Clicked at`,new Date().toLocaleTimeString());
+// }
 
-const throttleClick = 
+// const throttleClick = 
 
-document.addEventListener("click",handleClick)
+// document.addEventListener("click",handleClick)
 

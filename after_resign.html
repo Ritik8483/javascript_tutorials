@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .li_class {
+        list-style: none;
+        background-color: grey;
+    }
+
+    .li_class:hover {
+        list-style: none;
+        background-color: rgb(126, 112, 112);
+    }
+
+    #planet_ul_list {
+        margin-top: 0;
+        padding: 0;
+        width: 170px;
+    }
+</style>
+
+<body>
+    <h1>Info.html(after_resign)</h1>
+
+    <!-- <input type="text" placeholder="Enter value" id="search_input" />
+    <button id="throttle_btn">ThrottleBTN</button> -->
+
+    <!-- -------------------------QUESTION 1------------------------ -->
+
+    <!-- <div>
+        <h1>Search Planets</h1>
+        <input type="text" placeholder="Search planets" id="search_planet_input" />
+        <ul id="planet_ul_list"></ul>
+    </div> -->
+
+
+    <!-- -------------------------QUESTION 2------------------------ -->
+
+    <!-- <div>
+        <h1>Show all Products</h1>
+        <div id="product_main_container" >
+
+        </div>
+    </div> -->
+
+
+    <!-- -------------------------QUESTION 3------------------------ -->
+
+    <div>
+        <select id="select_order">
+            <option name="ascending" value="asc">Ascending</option>
+            <option name="descending" value="desc">Descending</option>
+        </select>
+        <div id="product_container">
+
+        </div>
+    </div>
+
+    <script>
+
+        // 1. FLAT OBJECT
+        // const nestedObj = {
+        //     name: "John",
+        //     address: {
+        //         city: "New York",
+        //         zip: {
+        //             code: 10001,
+        //             plus4: 1234
+        //         }
+        //     }
+        // };
+
+        // {
+        //     "name": "John",
+        //         "address.city": "New York",
+        //             "address.zip.code": 10001,
+        //                 "address.zip.plus4": 1234
+        // }
+
+
+        //Without parentKey, we’d lose the nesting context and it results in overwriting keys
+        //result – To store the flattened key-value pairs across recursive calls
+        // function flatObj(obj, parentKey = "", result = {}) {
+        //     for (const key in obj) {
+        //         console.log("---key", key);
+        //         console.log("---objectType---", typeof obj[key]);
+        //         const newKey = parentKey ? `${parentKey}_${key}` : key
+        //         if (typeof obj[key] === "object" && obj[key] !== null) {
+        //             flatObj(obj[key], newKey, result)
+        //         }
+        //         else {
+        //             result[newKey] = obj[key]
+        //         }
+        //     }
+
+        //     return result
+        // }
+        // console.log(flatObj(nestedObj));
+
+        // ---------------------------------------------------------------------------------------
+
+        //         2. FLAT ARRAY
+
+        // const nestedArray = [1, 2, 3, [7, 8, [9]], 4, [5], 6];
+
+        // const flatArray = (data) => {
+        //     const emptyArr = []
+        //     for (const element of data) {
+        //         if (Array.isArray(element)) {
+        //             emptyArr.push(...flatArray(element))
+        //         }
+        //         else {
+        //             emptyArr.push(element)
+        //         }
+        //     }
+
+        //     return emptyArr
+        // }
+
+        // console.log(flatArray(nestedArray));
+
+        // ---------------------------------------------------------------------------------------
+
+        //         3. PALENDROME
+        // const name = window.prompt("Enter your name")
+        // const revString = name.split('').reverse().join('')
+        // console.log(name===revString ? "Palendrome" : "Not Palendrome");
+
+        // function isPalendrome(data){
+        //     const strLength = data.length;
+        //     for (let i = 0; i < strLength/2; i++) {
+        //         if(data[i]!==data[strLength - i - 1]){
+        //             return "NOT PALENDROME"
+        //         }
+        //     }
+        //     return "PALENDROME"
+        // }
+        // console.log(isPalendrome(name));
+
+
+        // ---------------------------------------------------------------------------------------
+
+        //         4. SORT (BUBBLE SORT)
+
+        // const arr = [2, 4, 6, 4, 1, 8];
+        // const ascOrderArr = arr.sort();
+        // const descOrderArr = arr.sort().reverse();
+        // console.log(descOrderArr);
+
+        // const sortArr = (data) => {
+        //     for (let i = 0; i < data.length; i++) {
+        //         console.log("i",i);
+        //         for (let j = 0; j < data.length - i - 1; j++) {
+        //             console.log("---j---",j);
+        //             if (data[j] > data[j + 1]) {
+        //                 let temp = data[j]
+        //                 data[j] = data[j + 1]
+        //                 data[j + 1] = temp
+        //             }
+        //         }
+        //     }
+        //     return data
+        // }
+        // console.log(sortArr(arr));
+
+
+        // ---------------------------------------------------------------------------------------
+
+        //         5. FLAT ARRAY IN SIMPLE OBJECT
+        // const recurrArr = [{ Sunday: "true" }, { Monday: "true" }];
+        // ANS
+        // {
+        //   "Sunday": true,
+        //   "Monday": true
+        // }
+
+        // const fltArr = (data)=>{
+        //     const emptyObj = {}
+        //     data.map((item)=>{
+        //         console.log("item",item);
+        //         Object.keys(item).map((val)=>{
+        //             emptyObj[val] = item[val]
+        //         })
+        //     })
+        //     return emptyObj
+        // }
+        // console.log(fltArr(recurrArr));
+
+
+        // ---------------------------------------------------------------------------------------
+
+        //         6. SAME PAYLOAD
+        // const existingPayload = {
+        //     name: "ritik",
+        //     age: "24",
+        //     techStack: "ReactJS",
+        // };
+
+        // const newPayload = {
+        //     name: "ritik",
+        //     age: "24",
+        //     techStack: "ReactJS",
+        // };
+
+        // const samePayload = (obj1,obj2)=>{
+        //     const objOneKeys = Object.keys(obj1);
+        //     const objTwoKeys = Object.keys(obj2);
+        //     if(objOneKeys.length !== objTwoKeys.length) return "NOT SAME LENGTH"
+        //     for (const element of objOneKeys) {
+        //         if(obj1[element]!==obj2[element]){
+        //             return "NOT SAME"
+        //         }
+        //     }
+        //     return "SAME OBJECTS"
+        // }
+
+        // console.log(JSON.stringify(existingPayload)===JSON.stringify(newPayload));
+
+        // console.log(samePayload(existingPayload,newPayload));
+
+
+        // ---------------------------------------------------------------------------------------
+
+        //         7. SAME PAYLOAD
+        // let obj1 = [
+        //     {
+        //         id: 1,
+        //         name: "jack",
+        //     },
+        //     {
+        //         id: 2,
+        //         name: "leo",
+        //     },
+        //     {
+        //         id: 3,
+        //         name: "annie",
+        //     },
+        // ];
+
+        // let obj2 = [
+        //     {
+        //         id: 4,
+        //         name: "neil",
+        //     },
+        //     {
+        //         id: 2,
+        //         name: "nitin",
+        //     },
+        //     {
+        //         id: 3,
+        //         name: "mukesh",
+        //     },
+        // ];
+
+        // const combinedObj = [...obj1,...obj2]
+        // console.log(combinedObj);
+        // const onlyIds = combinedObj.map((item)=>item.id)
+        // console.log("onlyIds",onlyIds);
+        // const repeatIds = onlyIds.filter((item,index)=>onlyIds.indexOf(item)!==index);
+        // console.log(repeatIds);
+        // const repeatObjs = combinedObj.filter((item,index)=>repeatIds.includes(item.id));
+        // console.log(repeatObjs);
+
+        // ---------------------------------------------------------------------------------------
+
+        //         8. SAME ARRAY ELEMENTS OR NOT
+
+        // const a = [1, 2, 3];
+        // const b = [1, 2, 3];
+
+        // const sameElements=(x,y)=>{
+        //     if(x.length !== y.length){
+        //         return "Not Same elements"
+        //     }
+        //     const condition = x.every((item,index)=>b.includes(item))
+        //     return condition ? "Same elements" : "Not Same elements"
+        // }
+        // console.log(sameElements(a,b));
+
+
+        // ---------------------------------------------------------------------------------------
+
+        //         9. WHICH ONE IS GREATER
+
+        // const a = +window.prompt("Enter value of a")
+        // const b = +window.prompt("Enter value of b")
+        // const c = +window.prompt("Enter value of c")
+        // console.log(a,b,c);
+
+
+        // const greaterFunc = (x, y, z) => {
+        //     if (x > y && y > z) {
+        //         return `${x} is greater`;
+        //     }
+        //     if (y > z && y > x) {
+        //         return `${y} is greater`;
+        //     }
+        //     else return `${z} is greater`;
+        // }
+
+        // console.log(greaterFunc(a, b, c));
+
+        // ---------------------------------------------------------------------------------------
+
+        //         10. SWAP VALUES
+
+        // let a = +window.prompt("Enter value of a")
+        // let b = +window.prompt("Enter value of b")
+        // console.log(a, b);
+
+        // let temp = a
+        // a = b
+        // b = temp
+
+        // console.log(a, b);
+
+
+        // ---------------------------------------------------------------------------------------
+
+        //         11.  Prime Number
+
+        // const num = +window.prompt("Enter value")
+        // function isPrimeNo(data) {
+        //     if (data <= 1) {
+        //         return "Numbers less than one are not prime numbers"
+        //     }
+        //     else {
+        //         for (let i = 2; i < data; i++) {
+        //             if (data % i === 0) {
+        //                 return "NOT A PRIME NUMBER"
+        //             }
+        //         }
+        //         return "PRIME NUMBER"
+        //     }
+        // }
+        // console.log(isPrimeNo(num));
+
+
+
+        // ---------------------------------------------------------------------------------------
+
+        //         12.  FACTORIAL
+
+        // const num = +window.prompt("Enter value")
+
+        // function fact(data){
+        //     let factValue = 1
+        //     for (let i = 1; i <= data; i++) {
+        //         factValue = factValue * i
+        //     }
+
+        //     return factValue
+        // }
+        // console.log(fact(num));
+
+
+        // ---------------------------------------------------------------------------------------
+
+        //         13.  Fibonacci series
+
+        // const num = +window.prompt("Enter value")
+
+        // function fibonacciSeries(data) {
+        //     const series = [0, 1]; // start with first two terms
+
+        //     for (let i = 2; i < data; i++) {
+        //         series.push(series[i - 1] + series[i - 2]); // next = previous + one before previous
+        //     }
+
+        //     return series;
+        // }
+
+        // console.log(fibonacciSeries(num));
+        // //Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34] for 10 input
+
+        // //If you just want the nth Fibonacci number, you can use recursion:
+        // function fibonacci(data) {
+        //     if (data <= 1) return data;
+        //     return fibonacci(data - 1) + fibonacci(data - 2);
+        // }
+
+        // console.log(fibonacci(num));
+
+
+
+        // ---------------------------------------------------------------------------------------
+
+        //         14.  DEBOUNCING
+
+        // const searchInput = document.getElementById("search_input");
+
+        // function debounce(func,delay){
+        //     let initialTimeId
+        //     return function(...args){
+        //         clearTimeout(initialTimeId);
+        //         initialTimeId = setTimeout(() => {
+        //             func.apply(this,args)
+        //         }, delay);
+        //     }
+        // }
+
+        // function handleChange(e){
+        //     console.log("searchedValue : ",e.target.value);
+        // }
+
+        // const debouncedText = debounce(handleChange,2000)
+
+        // searchInput.addEventListener("input",handleChange)
+        // searchInput.addEventListener("input",debouncedText)
+
+        // ---------------------------------------------------------------------------------------
+
+        //         15.  Throttling
+
+        // const throttleBtn = document.getElementById("throttle_btn");
+
+        // function throttle(func, delay) {
+        //     let initialTimeId = 0
+        //     return function (...args) {
+        //         const currentTime = Date.now();
+        //         if (currentTime - initialTimeId >= delay) {
+        //             initialTimeId = currentTime
+        //             func.apply(this, args)
+        //         }
+        //     }
+        // }
+
+        // function handleClick() {
+        //     console.log(`You clicked at ${new Date().toLocaleTimeString()}`);
+        // }
+
+        // const throttleClick = throttle(handleClick,2000)
+
+        // throttleBtn.addEventListener("click", handleClick)
+        // throttleBtn.addEventListener("click", throttleClick)
+
+
+
+        // -------------------------QUESTION 1------------------------
+
+        // const planetUrl = "https://www.swapi.tech/api/planets/";
+        // const searchPlanetInput = document.getElementById("search_planet_input")
+        // const planetULlist = document.getElementById("planet_ul_list")
+        // let emptyPlanetsArr = []
+
+        // async function getAllPlanets() {
+        //     try {
+        //         const resp = await fetch(planetUrl);
+        //         const respJSON = await resp.json();
+        //         if (respJSON?.results?.length) {
+        //             const planetsArr = respJSON.results.map((item) => item.name.toLowerCase());
+        //             console.log(planetsArr);
+        //             emptyPlanetsArr = planetsArr
+        //         }
+
+        //     } catch (error) {
+        //         console.log("error", error);
+        //     }
+        // }
+
+        // function displayPlanets(data) {
+        //     data?.map((item) => {
+        //         const createLi = document.createElement("li");
+        //         createLi.innerText = item;
+        //         createLi.className = "li_class"
+        //         planetULlist.appendChild(createLi)
+        //     })
+        // }
+
+        // function debounce(func, delay) {
+        //     let initialTimeId;
+        //     return function (...args) {
+        //         clearTimeout(initialTimeId)
+        //         initialTimeId = setTimeout(() => {
+        //             func.apply(this, args)
+        //         }, delay);
+        //     }
+        // }
+
+        // function handleChange(e) {
+        //     planetULlist.innerHTML = ""
+        //     const searchedPlanet = e.target.value.toLowerCase();
+        //     if(!searchedPlanet?.length) return
+        //     const matchedValues = emptyPlanetsArr?.filter((item) => item.includes(searchedPlanet));
+        //     displayPlanets(matchedValues)
+        // }
+
+        // const debouncedText = debounce(handleChange, 1000)
+
+        // searchPlanetInput.addEventListener("input", debouncedText)
+        // document.addEventListener("DOMContentLoaded", getAllPlanets)
+
+
+        // -------------------------QUESTION 2------------------------
+
+        // const productMainContainer = document.getElementById("product_main_container");
+
+        // const apiUrl = "https://fakestoreapi.com/carts/2"
+
+        // async function getAllCarts(params) {
+        //     try {
+        //         const resp = await fetch(apiUrl);
+        //         const respJson = await resp.json();
+        //         if(respJson?.products?.length){
+        //             const productsArr = respJson.products.map((item)=>item.productId);
+        //             console.log("productsArr",productsArr);
+        //             getAllProducts(productsArr)
+        //         }
+        //         console.log(respJson);
+        //     } catch (error) {
+        //         console.log("error", error);
+        //     }
+        // }
+
+        // async function getAllProducts(data) {
+        //     try {
+        //         const resp = await Promise.all(data?.map((item)=>fetch(`https://fakestoreapi.com/products/${item}`)))
+        //         const respJson = await Promise.all(resp.map((item)=>item.json()));
+        //         if(respJson.length){
+        //             showAllProducts(respJson)
+        //         }
+        //         console.log(respJson);
+        //     } catch (error) {
+        //         console.log("error",error);
+        //     }
+        // }
+
+        // function showAllProducts(data){
+        //     data?.map((item)=>{
+        //         const createProductBox = document.createElement('div');
+        //         const productTitle = document.createElement('h2');
+        //         const productDescription = document.createElement('h4');
+        //         const productPrice = document.createElement('p');
+        //         const productImage = document.createElement('img');
+        //         createProductBox.className = 'product_box'
+        //         createProductBox.style.border = '1px solid red'
+        //         productTitle.textContent = item.title;
+        //         productDescription.textContent = item.description
+        //         productDescription.productPrice = item.price
+        //         productImage.src = item.image
+        //         productImage.alt = item.title
+        //         productImage.height = 200
+        //         productImage.width = 200
+        //         createProductBox.append(productTitle,productDescription,productPrice,productImage)
+        //         productMainContainer.appendChild(createProductBox)
+        //     })
+        // }
+
+        // document.addEventListener("DOMContentLoaded", getAllCarts)
+
+
+        // -------------------------QUESTION 3------------------------
+
+        const selectOrder = document.getElementById("select_order")
+        const productContainer = document.getElementById("product_container")
+        const url = "https://fakestoreapi.com/products?sort=";
+
+        async function getAllProducts(data) {
+            console.log("data",data);
+            productContainer.innerHTML = ""
+            try {
+                const resp = await fetch(`${url}${data}`);
+                const respJson = await resp.json();
+                console.log(respJson);
+                
+                if (respJson?.length) {
+                    if (data === "asc") {
+                        const ascendingOrder = respJson?.sort((a, b) => a.price - b.price);
+                        showProducts(ascendingOrder)
+                    }
+                    else {
+                        const descendingOrder = respJson?.sort((a, b) => b.price - a.price);
+                        console.log("descendingOrder",descendingOrder);
+                        
+                        showProducts(descendingOrder)
+                    }
+                }
+            } catch (error) {
+                console.log("error", error);
+            }
+        }
+
+        async function showProducts(data) {
+            data?.map((item) => {
+                const productBox = document.createElement("div");
+                productBox.className = "product_box"
+                productBox.innerHTML = ` 
+                    <h1>${item.title}</h1>
+                    <h2>${item.description}</h2>
+                    <h3>${item.price}</h3>
+                    <img src=${item.image} alt=${item.title} height=200 width=200 />
+                    `
+                productContainer.appendChild(productBox)
+            })
+        }
+
+        document.addEventListener("DOMContentLoaded", getAllProducts("asc"))
+        selectOrder.addEventListener("change", () => {
+            const seletedOption = selectOrder.options[selectOrder.selectedIndex];
+            const { value, name } = seletedOption
+            console.log("value",value);
+            getAllProducts(value)
+        })
+
+    </script>
+</body>
+
+</html>
