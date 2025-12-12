@@ -8,34 +8,102 @@
   </head>
 
   <script>
-      // --------------------------
+    // --------------------------
 
-//       ['tatooine', 'alderaan', 'yavin iv', 'hoth', 'dagobah', 'bespin', 'endor', 'naboo', 'coruscant', 'kamino']
-// const matchedValues = emptyPlanetsArr?.filter((item)=>item.includes(searchPlanetInput));
-//             console.log(matchedValues);
+  let globalVar = "I’m global";
+function outer() {
+  let functionVar = "I’m in function scope";
+  if (true) {
+    // var blockVar = "I’m in block scope";       //var has function scope
+    let blockVar = "I’m in block scope";        //let and const have block scope
+    console.log(globalVar);   // ✅ accessible
+    console.log(functionVar); // ✅ accessible
+    console.log(blockVar);    // ✅ accessible
+  }
+  // console.log("OUTSIDE BLOCK",blockVar); // ❌ ReferenceError
+}
+outer();
+// console.log(functionVar); // ❌ ReferenceError
 
-// [] == [] // false 
-// [] !== [] // true 
-// ![] == ![] // true 
-// !true == [] // true 
-// ![] == [] // true 
+//     Execution Priority
+//     1️⃣ Synchronous code
+// 2️⃣ Microtask Queue (Promises)
+// 3️⃣ Callback Queue (setTimeout etc.)
+
+    // console.log("Start");
+ 
+    // setTimeout(() => {
+    // console.log("Inside setTimeout");
+    // }, 1000);
+    
+    // console.log("End")
+
+
+    //     console.log("First");
+    // setTimeout(() => {
+    // console.log("Second");
+    // }, 0);
+    // console.log("Third");
+
+    // function testScope() {
+    //     if (true) {
+    //       var a = 1;      //var is function scoped, NOT block scoped.
+    //       let b = 2;        //let is block scoped, meaning it only exists inside the { }
+    //       const c = 3;
+    //     }
+    //     console.log(a);       //So a is available anywhere inside testScope().
+    //     console.log(b);
+    //     console.log(c);
+    //   }
+
+    //   testScope();
+
+    // async function fetchAllTheProducts(data) { ... }
+//     function declaration
+//     JavaScript moves both the function name and its definition to the top of the scope before execution.
+
+
+//     const fetchAllTheProducts = async (data) => { ... };
+//     function expression
+// this is not a function declaration — it’s a function expression assigned to a variable.
+// JavaScript hoists only the variable name (fetchAllTheProducts) to the top.
+// Because it’s declared with const, the variable is in the temporal dead zone (TDZ) — meaning you cannot use it until that line of code is executed.
+    //https://chatgpt.com/c/68f349a4-af98-8322-a1b2-d2da316c3c47
+
+    // const emptyPlanetsArr = [
+    //   "tatooine",
+    //   "alderaan",
+    //   "yavin iv",
+    //   "hoth",
+    //   "dagobah",
+    //   "bespin",
+    //   "endor",
+    //   "naboo",
+    //   "coruscant",
+    //   "kamino",
+    // ];
+
+    // const searchPlanetInput = window.prompt("Enter value");
+    // const matchedValues = emptyPlanetsArr?.filter((item) =>
+    //   item.includes(searchPlanetInput.toLowerCase())
+    // );
+    // console.log(matchedValues);
+
     // console.log([] == [])
     // console.log([] !== [])
     // console.log(![] == ![])
     // console.log(!true == [])
-    // console.log(![] == [])
+    // console.log(![] == [])    
 
+    // if pay1[item] === pay2[item]
+    // As soon as the loop checks the first item and finds that pay1[item] === pay2[item],
+    // it will execute the else block and immediately return "Same Payload".
+    // This causes the function to stop without fully checking all other key-value pairs.
 
-      // if pay1[item] === pay2[item]
-      // As soon as the loop checks the first item and finds that pay1[item] === pay2[item],
-      // it will execute the else block and immediately return "Same Payload".
-      // This causes the function to stop without fully checking all other key-value pairs.
-
-
-    //    function samePayload(a, b) {
-    //   const aLength = Object.keys(a).length;
-    //   const bLength = Object.keys(b).length;
-    //   const keys = Object.keys(a);
+      //  function samePayload(a, b) {
+      // const aLength = Object.keys(a).length;
+      // const bLength = Object.keys(b).length;
+      // const keys = Object.keys(a);
 
     //   if (aLength !== bLength) {
     //     return "Not Same";
@@ -55,110 +123,145 @@
     //   })
     // }
 
+    // SWAPPING
+    // let a = 66;let b = 9;let c=55;
+    // let temp
+    // temp = a
+    // a = b
+    // b = temp
+    // console.log(a,b);
 
-    // SWAPPING 
-    // let a = 66;let b = 9;
     // [a,b] = [b,a];
     // console.log(`A`,a);
     // console.log(`B`,b);
 
-
-    // FLATTING 
+    // FLATTING
     // const arr = [1,[2,[3,4,5]]]
     // console.log(arr.flat(Infinity));
 
-
     //SHUFFLING
-    // const arr = [1,2,3,4,5]
+    // const arr = [1, 2, 3, 4, 5];
+
+    // function shuffleArr(data){
+    //   for (let i = data.length-1; i > 0; i--) {
+    //     console.log(`--I--`,i);
+    //     const j = Math.floor(Math.random()*(i+1));
+    //     [data[i],data[j]] = [data[j],data[i]]
+    //   }
+    //   return data
+    // }
+
+    // console.log(shuffleArr([...arr]));
+
+    // console.log("--arr--",arr);
+    
+    
+    // //Fisher–Yates
+    // for (let i = arr.length - 1; i > 0; i--) {
+    //   console.log("I---", i);
+      
+    //   const j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+    //   [arr[i], arr[j]] = [arr[j], arr[i]]; // swap
+    // }
+
+    // for (let i = arr.length - 1; i > 0; i--) {
+    //   const j = Math.floor(Math.random()*(i+1));
+    //   [arr[i],arr[j]] = [arr[j],arr[i]]
+    // }
+    // const ascendingOrder = arr.sort((a, b) => a - b);
+    // const descendingOrder = arr.sort((a, b) => b - a);
+    // console.log(ascendingOrder);
+    // console.log(descendingOrder);
+
+    //Math.random() returns a random number between 0 and 1.
+    //Subtracting 0.5 shifts the range to between -0.5 and +0.5.
+
     // const shuffleArr = arr.sort(() => Math.random() - 0.5);
     // console.log(shuffleArr);
+
+    // console.log(arr);
 
     // const arr = [1, 2, 3, 4, 5];
     // function shuffle(array) {
     //   for (let i = array.length - 1; i > 0; i--) {
     //     console.log("I---",i);
-        
+
     // // Pick a random index from 0 to i
     //     const j = Math.floor(Math.random() * (i + 1));
     //     // Math.random() gives a number between 0 and 1.
     //     console.log("---------J----------",j);
-        
+
     // // Swap elements at i and j
     //     [array[i], array[j]] = [array[j], array[i]];
     //   }
     //   return array;
     // }
     // console.log(shuffle([...arr]));
-    
 
+    // console.log([] + []);      // ""   (empty string)
+    // console.log([] + {});      // "[object Object]"
+    // console.log({} + []);      // 0
+    // console.log(typeof NaN);    // "number"
+    // console.log("true" == true);  // false
+    // console.log(null == undefined); // true
+    // console.log([] == 0);      // true
+    // console.log([] == ![]);     // true (what?!)
 
-    
+    //   const url = [
+    //   'https://pokeapi.co/api/v2/pokemon?limit=1',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=2',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=3',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=4',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=5',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=6',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=7',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=8',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=9',
+    //   'https://pokeapi.co/api/v2/pokemon?limit=10'
+    // ];
 
-// console.log([] + []);      // ""   (empty string)
-// console.log([] + {});      // "[object Object]"
-// console.log({} + []);      // 0
-// console.log(typeof NaN);    // "number"
-// console.log("true" == true);  // false
-// console.log(null == undefined); // true
-// console.log([] == 0);      // true
-// console.log([] == ![]);     // true (what?!)
+    // async function getAllData(){
+    // try {
+    //   const resp = await Promise.all(url.map((item)=>fetch(item)))
+    //   const respJSON = await Promise.all(resp.map((item)=>item.json()))
+    //   console.log("respJSON",respJSON);
 
+    // } catch (error) {
+    //   consol.log("error",error)
+    // }
+    // }
 
-//       const url = [
-//   'https://pokeapi.co/api/v2/pokemon?limit=1',
-//   'https://pokeapi.co/api/v2/pokemon?limit=2',
-//   'https://pokeapi.co/api/v2/pokemon?limit=3',
-//   'https://pokeapi.co/api/v2/pokemon?limit=4',
-//   'https://pokeapi.co/api/v2/pokemon?limit=5',
-//   'https://pokeapi.co/api/v2/pokemon?limit=6',
-//   'https://pokeapi.co/api/v2/pokemon?limit=7',
-//   'https://pokeapi.co/api/v2/pokemon?limit=8',
-//   'https://pokeapi.co/api/v2/pokemon?limit=9',
-//   'https://pokeapi.co/api/v2/pokemon?limit=10'
-// ];
+    // async function getAllData(){
+    //   await Promise.all(url.map((item)=>fetch(item)))
+    //   .then(async(resp)=> Promise.all(resp.map((item)=>item.json())))
+    //   .then((resp)=>console.log("resp",resp))
+    //   .catch((err)=>console.log("err",err))
+    // }
 
-// async function getAllData(){
-  // try {
-  //   const resp = await Promise.all(url.map((item)=>fetch(item)))
-  //   const respJSON = await Promise.all(resp.map((item)=>item.json()))
-  //   console.log("respJSON",respJSON);
-    
-  // } catch (error) {
-  //   consol.log("error",error)
-  // }
-// }
+    // getAllData()
 
+    // async function newFunc(){
+    //   try {
+    //     const resp = await Promise.all(url.map((item)=>fetch(item)));
+    //     const respJson = await Promise.all(resp.map((item)=>item.json()))
+    //     console.log(respJson);
+    //   } catch (error) {
+    //     console.log("error",error);
+    //   }
+    // }
 
-// async function getAllData(){
-//   await Promise.all(url.map((item)=>fetch(item)))
-//   .then(async(resp)=> Promise.all(resp.map((item)=>item.json())))
-//   .then((resp)=>console.log("resp",resp))
-//   .catch((err)=>console.log("err",err))
-// }
-
-// getAllData()
-
-// async function newFunc(){
-//   try {
-//     const resp = await Promise.all(url.map((item)=>fetch(item)));
-//     const respJson = await Promise.all(resp.map((item)=>item.json()))
-//     console.log(respJson);
-//   } catch (error) {
-//     console.log("error",error);
-//   }
-// }
-
-// newFunc()
-
+    // newFunc()
 
     // ------------------------
+
+    // personInfo.apply(person, ["25"]);
+    // const bindFn = personInfo.bind(person, "25");
+    // console.log(bindFn);
+
     // console.log(personInfo.myCallFn(person,"25"));
     // console.log(personInfo.myApplyFunc(person,["25"]));
     // const bindFn = personInfo.myBind(person,"25");
     // bindFn();
-    
-    
-
 
     // myFunction.apply(person,"25")
     // const apply = myFunction.bind(person,"25")
@@ -168,59 +271,53 @@
     // myFunction.apply(person,"25")
     // const apply = myFunction.bind(person,"25")
     // console.log(apply());
-    
 
-//     Function.prototype.myCall = function (context, ...args) {
-//       //globalThis refers to the global object in any JavaScript environment:
-//   context = context || globalThis;
-//   const fnSymbol = Symbol(); // avoid name collision
-//   context[fnSymbol] = this;
-//   const result = context[fnSymbol](...args);
-//   delete context[fnSymbol];
-//   return result;
-// };
+    //     Function.prototype.myCall = function (context, ...args) {
+    //       //globalThis refers to the global object in any JavaScript environment:
+    //   context = context || globalThis;
+    //   const fnSymbol = Symbol(); // avoid name collision
+    //   context[fnSymbol] = this;
+    //   const result = context[fnSymbol](...args);
+    //   delete context[fnSymbol];
+    //   return result;
+    // };
 
-// function greet(greeting) {
-//   console.log(`${greeting}, ${this.name}`);
-// }
+    // function greet(greeting) {
+    //   console.log(`${greeting}, ${this.name}`);
+    // }
 
-// const person = { name: "Ritik" };
-// greet.myCall(person, "Hello"); // Hello, Ritik
+    // const person = { name: "Ritik" };
+    // greet.myCall(person, "Hello"); // Hello, Ritik
 
+    // Function.prototype.myApply = function (context, args) {
+    //   context = context || globalThis;
+    //   const fnSymbol = Symbol();
+    //   context[fnSymbol] = this;
+    //   const result = args ? context[fnSymbol](...args) : context[fnSymbol]();
+    //   delete context[fnSymbol];
+    //   return result;
+    // };
 
+    // greet.myApply(person, ["Hi"]); // Hi, Ritik
 
-// Function.prototype.myApply = function (context, args) {
-//   context = context || globalThis;
-//   const fnSymbol = Symbol();
-//   context[fnSymbol] = this;
-//   const result = args ? context[fnSymbol](...args) : context[fnSymbol]();
-//   delete context[fnSymbol];
-//   return result;
-// };
+    // Function.prototype.myBind = function (context, ...bindArgs) {
+    //   const fn = this;
+    //   return function (...callArgs) {
+    //     return fn.apply(context, [...bindArgs, ...callArgs]);
+    //   };
+    // };
 
-// greet.myApply(person, ["Hi"]); // Hi, Ritik
+    // const greetPerson = greet.myBind(person, "Hey");
+    // greetPerson();
 
+    // -------------------------------------------
 
-// Function.prototype.myBind = function (context, ...bindArgs) {
-//   const fn = this;
-//   return function (...callArgs) {
-//     return fn.apply(context, [...bindArgs, ...callArgs]);
-//   };
-// };
+    //PRESENT IN ARRAY
+    // const arr = [10, 20, 30];
+    // console.log(1 in arr); // true — because index 1 exists (value = 20)
+    // console.log(5 in arr); // false — index 5 does not exist
 
-// const greetPerson = greet.myBind(person, "Hey");
-// greetPerson(); 
-
-
-
-// -------------------------------------------
-
-//PRESENT IN ARRAY
-// const arr = [10, 20, 30];
-// console.log(1 in arr); // true — because index 1 exists (value = 20)
-// console.log(5 in arr); // false — index 5 does not exist
-
-// ---------------
+    // ---------------
 
     // ==call(), apply(), and bind() are methods used to control the this context of a function.
     // call a function with a specific this value, but they differ in syntax and behavior
@@ -234,123 +331,143 @@
     // helloFunc.apply(person,[25])
     // const bind = helloFunc.bind(person,[25])
     // bind();
-    
-    
 
     // CALL : Calls the function immediately && Calls a function with a given this and args
-//     function greet(age) {
-//       console.log("age",age);
-      
-//   console.log(`Hello, my name is ${this.name} and I am ${age}`);
-// }
-// const person = { name: "Ritik" };
-// greet.call(person, 25); // Hello, my name is Ritik and I am 25
+    //     function greet(age) {
+    //       console.log("age",age);
 
+    //   console.log(`Hello, my name is ${this.name} and I am ${age}`);
+    // }
+    // const person = { name: "Ritik" };
+    // greet.call(person, 25); // Hello, my name is Ritik and I am 25
 
-   // apply : Calls the function immediately && takes arguments as an array
-      // greet.apply(person, [25]); 
+    // apply : Calls the function immediately && takes arguments as an array
+    // greet.apply(person, [25]);
 
-      // bind : Returns a new function with bound this, doesn't call it immediately
-      // const boundGreet = greet.bind(person);
-      // console.log(boundGreet);
-      
-      // boundGreet(25); // Hello, my name is Ritik and I am 25
+    // bind : Returns a new function with bound this, doesn't call it immediately
+    // const boundGreet = greet.bind(person);
+    // console.log(boundGreet);
 
-      // function welcomeFunc(arg){
-      //   console.log(`Hi ${this.name}.You are ${arg} old.`)
-      // }
+    // boundGreet(25); // Hello, my name is Ritik and I am 25
 
-      // const person={name:"Ritwik Vats"}
+    // function welcomeFunc(arg){
+    //   console.log(`Hi ${this.name}.You are ${arg} old.`)
+    // }
 
-      // Function.prototype.myBindFunc=function(context,...args){
-      //   const fn = this;
-      //   return function (...props){
-      //     fn.apply(context,[...args,...props])
-      //   }
-      // }
+    // const person={name:"Ritwik Vats"}
 
-      // const ff = welcomeFunc.myBindFunc(person,21)
-      // console.log(ff())
+    // Function.prototype.myBindFunc=function(context,...args){
+    //   const fn = this;
+    //   return function (...props){
+    //     fn.apply(context,[...args,...props])
+    //   }
+    // }
 
-      // Function.prototype.callFunc = function(context,...args){
-      //   context = context || globalThis();
-      //   const fnSymbolFunc = Symbol();
-      //   context[fnSymbolFunc] = this;
-      //   const result = context[fnSymbolFunc](...args);
-      //   return result
-      // }
+    // const ff = welcomeFunc.myBindFunc(person,21)
+    // console.log(ff())
 
-      // Function.prototype.myApplyFunction = function(context,args){
-      //   context = context || globalThis();
-      //   const fnSymbolFunc = Symbol();
-      //   context[fnSymbolFunc] = this
-      //   const result = args ? context[fnSymbolFunc](...args) : context[fnSymbolFunc]()
-      //   return result
-      // }
+    // Function.prototype.callFunc = function(context,...args){
+    //   context = context || globalThis();
+    //   const fnSymbolFunc = Symbol();
+    //   context[fnSymbolFunc] = this;
+    //   const result = context[fnSymbolFunc](...args);
+    //   return result
+    // }
 
-      // Function.prototype.myBindFunc = function(context,...args){
-      //   const fn = this;
-      //   return function(...childArgs){
-      //     return fn.apply(context,[...args,...childArgs])
-      //   }
-      // }
+    // Function.prototype.myApplyFunction = function(context,args){
+    //   context = context || globalThis();
+    //   const fnSymbolFunc = Symbol();
+    //   context[fnSymbolFunc] = this
+    //   const result = args ? context[fnSymbolFunc](...args) : context[fnSymbolFunc]()
+    //   return result
+    // }
 
-      // const bind = welcomeFunc.myBindFunc(person,[29])
-      // bind()
-      
+    // Function.prototype.myBindFunc = function(context,...args){
+    //   const fn = this;
+    //   return function(...childArgs){
+    //     return fn.apply(context,[...args,...childArgs])
+    //   }
+    // }
 
-      // welcomeFunc.apply(person,[29])
-      // const bindFunc = welcomeFunc.bind(person,29)
-      // bindFunc();
+    // const bind = welcomeFunc.myBindFunc(person,[29])
+    // bind()
 
-       // welcomeFunc.call(person,29)
-      // welcomeFunc.apply(person,[29])
-      // const bindFunc = welcomeFunc.bind(person,29)
-      // bindFunc();
-      
+    // welcomeFunc.apply(person,[29])
+    // const bindFunc = welcomeFunc.bind(person,29)
+    // bindFunc();
+
+    // welcomeFunc.call(person,29)
+    // welcomeFunc.apply(person,[29])
+    // const bindFunc = welcomeFunc.bind(person,29)
+    // bindFunc();
+
     // -------------------------------------------------------
 
-    const arr = [1,2,3,4,5]
+    // const arr = [1, 2, 3, 4, 5];
 
-    // const myMapFunc = arr.map((item)=>item*2);
-    // const myFilterFunc = arr.filter((item)=>item%2===0);
-    // const myReduceFunc = arr.reduce((x,y)=>x+y,10);
-    // console.log(myReduceFunc);
+    // const mapFn = arr.map((item) => item * 2);
+    // const myFilterFn = arr.filter((item) => item % 2 === 0);
+    // const myReduceFn = arr.reduce((x, y) => x + y);
+    // console.log(mapFn);
+    // console.log(myFilterFn);
+    // console.log(myReduceFn);
 
-    Array.prototype.myMapFunc = function(calbck){
-      const emptyArr = []
-      for (let i = 0; i < this.length; i++) {
-        emptyArr.push(calbck(this[i],i,this))
-      }
+    // Array.prototype.myMapFn=function(calbck){
+    //   const emptyArr = []
+    //   for (let i = 0; i < this.length; i++) {
+    //     emptyArr.push(calbck(this[i],i,this))
+    //   }
 
-      return emptyArr
-    }
+    //   return emptyArr
+    // }
 
-    Array.prototype.myFilterFunc=function(calbck){
-      const emptyArr = []
-      for (let i = 0; i < this.length; i++) {
-        if(calbck(this[i],i,this)){
-          emptyArr.push(this[i])
-        }
-      }
+    // Array.prototype.myFilterFunc = function(calbck){
+    //   const emptyArr = []
+    //   for (let i = 0; i < this.length; i++) {
+    //     if(calbck(this[i],i,this)){
+    //       emptyArr.push(this[i])
+    //     }
+    //   }
 
-      return emptyArr
-    }
+    //   return
+    // }
 
-    Array.prototype.myReduceFunc = function(calbck,initialVal){
-      const array = this
-      let startIndex = 0;
-      let accumulator
+    // Array.prototype.myReduceFn = function(calbck,initialValue){
+    //   const array = this;
+    //   let startIndex = 0
+    //   let accumulator
 
-      if(initialVal!==undefined){
-        
-      }
-    }
-    
+    //   if(initialValue!==undefined){
+    //     accumulator = initialValue
+    //   }
+
+    //   while(startIndex<array.length && !(startIndex in array)){
+    //     startIndex++
+    //   }
+    //   if(startIndex>=array.length){
+    //     throw new Error("Error");
+    //   }
+
+    //   accumulator = array[startIndex]
+    //   startIndex++
+
+    //   for (let i = startIndex; i < array.length; i++) {
+    //     accumulator = calbck(accumulator,array[i],i,array)
+    //   }
+
+    //   return accumulator
+    // }
+
+    // const mapFn = arr.myMapFn((item)=>item*2);
+    // const myFilterFn = arr.myFilterFunc((item)=>item%2===0);
+    // const myReduceFn = arr.myReduceFn((x,y)=>x+y)
+
+    // console.log(mapFn);
+    // console.log(myFilterFn);
+    // console.log(myReduceFn);
+
     // const newArr = arr.myFilterFunc((item,index)=>item%2===0);
     // console.log(newArr);
-    
-
 
     // Array.prototype.myMap=function(callback){
     //   const emptyArr = [];
@@ -371,168 +488,164 @@
     // }
 
     //this refers to the array on which myMap or myFilter is called
-//     Array.prototype.myMap = function(callback) {
-//   const result = [];
-//   console.log("this",this);
-//   for (let i = 0; i < this.length; i++) {
-//     // Skip empty slots for sparse arrays
-//       result.push(callback(this[i], i, this));
-//   }
-//   return result;
-// };
+    //     Array.prototype.myMap = function(callback) {
+    //   const result = [];
+    //   console.log("this",this);
+    //   for (let i = 0; i < this.length; i++) {
+    //     // Skip empty slots for sparse arrays
+    //       result.push(callback(this[i], i, this));
+    //   }
+    //   return result;
+    // };
 
+    // Array.prototype.myMapFunction=function(callback){
+    //   const result=[];
+    //   for (let i = 0; i < this.length; i++) {
+    //     result.push(callback(this[i],i,this))
+    //   }
 
+    //   return result
+    // }
 
-// Array.prototype.myMapFunction=function(callback){
-//   const result=[];
-//   for (let i = 0; i < this.length; i++) {
-//     result.push(callback(this[i],i,this))
-//   }
+    // const arr = [1, 2, 3];
 
-//   return result
-// }
+    // const ee = arr.myMap((it)=>it*2)
+    // console.log(ee);
 
+    // const doubled = arr.myMap(x => x * 2);
+    // console.log(doubled);
+    // --------------------------------------------
 
-// const arr = [1, 2, 3];
+    // Array.prototype.myFilter = function(callback){
+    //   const emptyArr = [];
+    //   for (let i = 0; i < this.length; i++) {
+    //     if(callback(this[i],i,this)){
+    //     emptyArr.push(this[i])
+    //   }
+    //   }
 
-// const ee = arr.myMap((it)=>it*2)
-// console.log(ee);
+    //   return emptyArr
+    // }
 
-// const doubled = arr.myMap(x => x * 2);
-// console.log(doubled); 
-// --------------------------------------------
+    // Array.prototype.myFilterFunction = function (callBack){
+    //   const emptyArr = [];
+    //   for (let i = 0; i < this.length; i++) {
+    //     if(callBack(this[i],i,this)){
+    //       emptyArr.push(this[i])
+    //     }
+    //   }
 
-// Array.prototype.myFilter = function(callback){
-//   const emptyArr = [];
-//   for (let i = 0; i < this.length; i++) {
-//     if(callback(this[i],i,this)){
-//     emptyArr.push(this[i])
-//   }
-//   }
+    //   return emptyArr
+    // }
 
-//   return emptyArr
-// }
+    // const arr = [1,2,3,4,5];
+    // const filteredArr = arr.myFilterFunction((item,index)=>item%2===0);
+    // console.log(filteredArr);
 
-// Array.prototype.myFilterFunction = function (callBack){
-//   const emptyArr = [];
-//   for (let i = 0; i < this.length; i++) {
-//     if(callBack(this[i],i,this)){
-//       emptyArr.push(this[i])
-//     }
-//   }
+    // Array.prototype.myFilter = function(callBack){
+    //   const emptyArr = []
+    //   for (let i = 0; i < this.length; i++) {
+    //     if(callBack(this[i],i,this)){
+    //       emptyArr.push(this[i])
+    //     }
+    //   }
+    //   return emptyArr
+    // }
+    // Array.prototype.myFilter = function(callback) {
+    //   const result = [];
+    //   for (let i = 0; i < this.length; i++) {
+    //     // Skip empty slots
+    //       if (callback(this[i], i, this)) {
+    //         result.push(this[i]);
+    //       }
+    //   }
+    //   return result;
+    // };
 
-//   return emptyArr
-// }
+    // const nums = [1, 2, 3, 4, 5];
+    // const arrt = nums.myFilter((it)=>it%2===0)
+    // console.log(arrt);
 
-// const arr = [1,2,3,4,5];
-// const filteredArr = arr.myFilterFunction((item,index)=>item%2===0);
-// console.log(filteredArr);
+    // const evens = nums.myFilter(n => n % 2 === 0);
+    // console.log(evens);
 
+    // // --------------------------------------
 
-// Array.prototype.myFilter = function(callBack){
-//   const emptyArr = []
-//   for (let i = 0; i < this.length; i++) {
-//     if(callBack(this[i],i,this)){
-//       emptyArr.push(this[i])
-//     }
-//   }
-//   return emptyArr
-// }
-// Array.prototype.myFilter = function(callback) {
-//   const result = [];
-//   for (let i = 0; i < this.length; i++) {
-//     // Skip empty slots
-//       if (callback(this[i], i, this)) {
-//         result.push(this[i]);
-//       }
-//   }
-//   return result;
-// };
+    // CORRECT ONE
+    // Array.prototype.myReduce = function(callback, !==undefined){} {
+    //   if (typeof callback !== "function") {
+    //     throw new TypeError(callback + " is not a function");
+    //   }
 
-// const nums = [1, 2, 3, 4, 5];
-// const arrt = nums.myFilter((it)=>it%2===0)
-// console.log(arrt);
+    //   const array = this;
+    //   let accumulator;
+    //   let startIndex = 0;
 
-// const evens = nums.myFilter(n => n % 2 === 0);
-// console.log(evens);
+    //   // Handle initialValue
+    //   if (initialValue !== undefined) {
+    //     accumulator = initialValue;
+    //   } else {
+    //     // Find first defined value for sparse arrays
+    //     while (startIndex < array.length && !(startIndex in array)) {
+    //       startIndex++;
+    //     }
 
+    //     if (startIndex >= array.length) {
+    //       throw new TypeError("Reduce of empty array with no initial value");
+    //     }
 
-// // --------------------------------------
+    //     accumulator = array[startIndex];
+    //     startIndex++;
+    //   }
 
-// Array.prototype.myReduce = function(callback, initialValue) {
-//   if (typeof callback !== "function") {
-//     throw new TypeError(callback + " is not a function");
-//   }
+    //   // Iterate over the array
+    //   for (let i = startIndex; i < array.length; i++) {
+    //     if (i in array) {
+    //       accumulator = callback(accumulator, array[i], i, array);
+    //     }
+    //   }
 
-//   const array = this;
-//   let accumulator;
-//   let startIndex = 0;
+    //   return accumulator;
+    // };
 
-//   // Handle initialValue
-//   if (initialValue !== undefined) {
-//     accumulator = initialValue;
-//   } else {
-//     // Find first defined value for sparse arrays
-//     while (startIndex < array.length && !(startIndex in array)) {
-//       startIndex++;
-//     }
+    // --------------
 
-//     if (startIndex >= array.length) {
-//       throw new TypeError("Reduce of empty array with no initial value");
-//     }
+    // Array.prototype.myReduceFunction = function(callBack,initialValue){
+    //   const array = this;
+    //   let accumulator;
+    //   let startIndex=0
 
-//     accumulator = array[startIndex];
-//     startIndex++;
-//   }
+    //   if(initialValue!==undefined){
+    //     accumulator = initialValue
+    //   }
+    //   else{
+    //     while(startIndex<array.length && !(startIndex in array)){
+    //       startIndex++
+    //     }
 
-//   // Iterate over the array
-//   for (let i = startIndex; i < array.length; i++) {
-//     if (i in array) {
-//       accumulator = callback(accumulator, array[i], i, array);
-//     }
-//   }
+    //     if(startIndex>=array.length){
+    //       throw new Error("Error");
+    //     }
 
-//   return accumulator;
-// };
+    //     accumulator = array[startIndex];
+    //     startIndex++
+    //   }
 
+    //   for (let i = 0; i < array.length; i++) {
+    //     if(i in array){
+    //       accumulator = callBack(accumulator,array[i],i,array)
+    //     }
 
-// --------------
+    //   }
 
-// Array.prototype.myReduceFunction = function(callBack,initialValue){
-//   const array = this;
-//   let accumulator;
-//   let startIndex=0
+    //   return accumulator
+    // }
 
-//   if(initialValue!==undefined){
-//     accumulator = initialValue
-//   }
-//   else{
-//     while(startIndex<array.length && !(startIndex in array)){
-//       startIndex++
-//     }
-
-//     if(startIndex>=array.length){
-//       throw new Error("Error");
-//     }
-
-//     accumulator = array[startIndex];
-//     startIndex++
-//   }
-
-//   for (let i = 0; i < array.length; i++) {
-//     if(i in array){
-//       accumulator = callBack(accumulator,array[i],i,array)
-//     }
-    
-//   }
-
-//   return accumulator
-// }
-
-//--------------------------------------
+    //--------------------------------------
     // const arr = [10, 20, 30, 40, 50]
-    
+
     // const arr = [10, 20, 30, 40, 50];
+
     // function sumAll(data){
     //   let sum = 0
     //   // for (let i = 0; i <= data.length; i++)     //When i = 5 → data[5] = undefined
@@ -557,54 +670,49 @@
     // }
     // console.log(suMFunc(arr));
 
-
     // -----------------------------------
 
+    //->Only copies the first level of an object or array.
+    //->Nested objects or arrays are still referenced
+    // =>So name remain unchanged but city changes
+    // const original = {
+    //   name: "Ritik",
+    //   address: { city: "Delhi" },
+    // };
 
+    // const shallowCopy = { ...original };
 
+    // shallowCopy.name = "Chauhan";
+    // shallowCopy.address.city = "Mumbai";
 
-//->Only copies the first level of an object or array.
-//->Nested objects or arrays are still referenced 
-// =>So name remain unchanged but city changes
-  // const original = {
-  //   name: "Ritik",
-  //   address: { city: "Delhi" },
-  // };
+    // console.log(original.name); // Ritik ❌→ Chauhan (not affected)
+    // console.log(original.address.city);
 
-  // const shallowCopy = { ...original };
+    // ----------
 
-  // shallowCopy.name = "Chauhan";
-  // shallowCopy.address.city = "Mumbai";
+    // Creates a true copy of the entire structure, including nested objects/arrays.
+    // Changes made in the copy won’t affect the original.
 
-  // console.log(original.name); // Ritik ❌→ Chauhan (not affected)
-  // console.log(original.address.city);
+    // const original = {
+    //   name: "John",
+    //   address: {
+    //     city: "Delhi"
+    //   }
+    // };
 
-// ----------
+    // // // Deep clone using JSON (works only for simple objects)
+    // const deepClone = JSON.parse(JSON.stringify(original));
 
-// Creates a true copy of the entire structure, including nested objects/arrays.
-// Changes made in the copy won’t affect the original.
+    // deepClone.address.city = "Mumbai";
+    // deepClone.name = "RitikChauhan";
 
+    // console.log(original.address.city);
+    // console.log(original.name);
 
-// const original = {
-//   name: "John",
-//   address: {
-//     city: "Delhi"
-//   }
-// };
+    // console.log(deepClone.address.city);
+    // console.log(deepClone.name);
 
-// // // Deep clone using JSON (works only for simple objects)
-// const deepClone = JSON.parse(JSON.stringify(original));
-
-// deepClone.address.city = "Mumbai";
-// deepClone.name = "RitikChauhan";
-
-// console.log(original.address.city); 
-// console.log(original.name);
-
-// console.log(deepClone.address.city); 
-// console.log(deepClone.name); 
-
-// --------
+    // --------
 
     //Optional chaining is only allowed when accessing values, not when assigning to them.
     //You cannot assign to something that might be undefined – it defeats the purpose of assignment safety.
@@ -613,87 +721,87 @@
     // const x = obj?.prop; // ✅ valid
     // obj?.prop = 123;     // ❌ invalid
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUser((prev) => ({
-  //     ...prev,
-  //     [name]: value,    //they're using a JavaScript feature called "computed property names
-  //   }));
-  // };
-  //Without the brackets, it would literally create a key named "name" for email like 
-//   {
-//   name: "user@example.com"
-// }
+    // Computed Property Names
+    // const handleChange = (e) => {
+    //   const { name, value } = e.target;
+    //   setUser((prev) => ({
+    //     ...prev,
+    //     [name]: value,    //they're using a JavaScript feature called "computed property names
+    //   }));
+    // };
+    //Without the brackets, it would literally create a key named "name" for email like
+    //   {
+    //   name: "user@example.com"
+    // }
 
+    //Instead of hardcoding a property name, you compute it at runtime using square brackets
+    // const key = "email";
+    // const obj = {
+    //   [key]: "example@example.com"
+    // };
+    // console.log(obj);
 
-//Instead of hardcoding a property name, you compute it at runtime using square brackets
-// const key = "email";
-// const obj = {
-//   [key]: "example@example.com"
-// };
-// console.log(obj);
+    // const obj = {
+    //   key: "example@example.com"
+    // };
+    // console.log(obj); // { key: "example@example.com" } ❌ Not dynamic
 
-// const obj = {
-//   key: "example@example.com"
-// };
-// console.log(obj); // { key: "example@example.com" } ❌ Not dynamic
+    // -------------------------------------------------
 
-// -------------------------------------------------
+    // var Hoisting
+    // console.log(x); // undefined (NOT ReferenceError)
+    // var x = 5;
 
-// var Hoisting
-// console.log(x); // undefined (NOT ReferenceError)
-// var x = 5;
+    // // Internally JS does:
+    // var x;         // declaration hoisted
+    // console.log(x); // undefined
+    // x = 5;         // initialization
 
-// // Internally JS does:
-// var x;         // declaration hoisted
-// console.log(x); // undefined
-// x = 5;         // initialization
+    //  Temporal Dead Zone (TDZ)
+    // The Temporal Dead Zone is the time between hoisting and declaration where accessing a let or const variable causes a ReferenceError.
+    // a is hoisted but not initialized.
+    // console.log(a); // ❌ ReferenceError
+    // let a = 20;
 
-//  Temporal Dead Zone (TDZ)
-// The Temporal Dead Zone is the time between hoisting and declaration where accessing a let or const variable causes a ReferenceError.
-// a is hoisted but not initialized.
-// console.log(a); // ❌ ReferenceError
-// let a = 20;
-
-// ---------------------------------------------------------
+    // ---------------------------------------------------------
 
     // A variable is not defined if you try to use it without declaring it first.
     // console.log(x); // ❌ ReferenceError: x is not defined
 
-// let x;       //A variable is declared but not assigned a value
-// console.log(x); // undefined
+    // let x;       //A variable is declared but not assigned a value
+    // console.log(x); // undefined
 
-// function test() {}     // A function doesn’t return anything.
-// console.log(test()); // undefined
+    // function test() {}     // A function doesn’t return anything.
+    // console.log(test()); // undefined
 
-// let obj = {};
-// console.log(obj.key);
+    // let obj = {};
+    // console.log(obj.key);
 
-// let a;
-// console.log(a);        // undefined
-// console.log(b);        // ❌ ReferenceError: b is not defined
+    // let a;
+    // console.log(a);        // undefined
+    // console.log(b);        // ❌ ReferenceError: b is not defined
 
-// --------------------
+    // --------------------
 
-// console.log('Start');
-// setTimeout(() => {
-//   console.log('Macrotask - setTimeout');
-// }, 0);
-// Promise.resolve().then(() => {
-//   console.log('Microtask - Promise');
-// });
-// console.log('End');
+    // console.log('Start');
+    // setTimeout(() => {
+    //   console.log('Macrotask - setTimeout');
+    // }, 0);
+    // Promise.resolve().then(() => {
+    //   console.log('Microtask - Promise');
+    // });
+    // console.log('End');
 
-// Start
-// End
-// Microtask - Promise (High-priority tasks, run immediately after the current execution context and before any rendering)
-// Macrotask - setTimeout
+    // Start
+    // End
+    // Microtask - Promise (High-priority tasks, run immediately after the current execution context and before any rendering)
+    // Macrotask - setTimeout
 
-// const user = {username:"Ritik"}
-// const key = [[[["username"]]]]  //When arrays are used as keys or property accessors, JavaScript coerces them to strings using .toString().
-// console.log(user[key]);   //JavaScript implicitly converts the array to a string
-// key == [[[["username"]]]] → becomes "username" (because of array to string coercion)
-// console.log([[["username"]]].toString());
+    // const user = {username:"Ritik"}
+    // const key = [[[["username"]]]]  //When arrays are used as keys or property accessors, JavaScript coerces them to strings using .toString().
+    // console.log(user[key]);   //JavaScript implicitly converts the array to a string
+    // key == [[[["username"]]]] → becomes "username" (because of array to string coercion)
+    // console.log([[["username"]]].toString());
 
     // console.log([]+{})    //"" + "[object Object]" → "[object Object]"
     // console.log({} + [])
@@ -708,38 +816,36 @@
     //for...of with await runs each assignToUser() call sequentially, waiting for each one to finish.
     // Always use for...of (or for, while) when you need to use await inside a loop and want it to actually wait.
 
-  // .forEach() doesn't wait for async callbacks.
-  //So even though you're using await inside the callback, the outer function doesn't pause for them to finish.
+    // .forEach() doesn't wait for async callbacks.
+    //So even though you're using await inside the callback, the outer function doesn't pause for them to finish.
 
-//   const items = [1, 2, 3];
+    //   const items = [1, 2, 3];
 
-// items.forEach(async (item) => {
-//   await new Promise((resolve) => setTimeout(resolve, 1000));    //it didn't wait for 1 sec
-//   console.log(item);
-// });
+    // items.forEach(async (item) => {
+    //   await new Promise((resolve) => setTimeout(resolve, 1000));    //it didn't wait for 1 sec
+    //   console.log(item);
+    // });
 
-// console.log("Done");
-// `
+    // console.log("Done");
 
+    // const items = [1, 2, 3];
 
-// const items = [1, 2, 3];
+    // async function processItems() {
+    //   for (const item of items) {
+    //     await new Promise((resolve) => setTimeout(resolve, 1000));   //it waits for 1 sec
+    //     console.log(item);
+    //   }
+    // }
+    // console.log("Done");
 
-// async function processItems() {
-//   for (const item of items) {
-//     await new Promise((resolve) => setTimeout(resolve, 1000));   //it waits for 1 sec
-//     console.log(item);
-//   }
-// }
-// console.log("Done");
+    // processItems();
 
-// processItems();
-    
     // FOR IN
     // Note : Use array notation in forin and forof loops to get a value
     // const obj = { a: 1, b: 2, c: 3 }
 
     // for (const key in obj) {
-    //   console.log(key);
+    //   console.log("---key---",key);
     //   console.log(obj[key]);
     // }
 
@@ -758,11 +864,11 @@
     // }
 
     // // FOR OF
-    // const arr = [1, 2,8, 3];
+    // const arr = [1,2,8,3];
 
     // for (const element of arr) {
-      // console.log(element);
-      // console.log(arr[element]);  //arr[1],arr[2],arr[8]
+    // console.log("element",element);
+    // console.log(arr[element]);  //arr[1],arr[2],arr[8]
     // }
 
     // for (const element of arr) {
@@ -773,21 +879,22 @@
     //   console.log(value); // Output: 1, 2, 3
     // }
 
-
     // const [key,value] = [["firstName","John"],["lastName","Doe"],["age",30],["arr",["John","qwe"]]]
     //   console.log("key",key);
     //   console.log("value",value);
 
-    // const person = {
-    //   firstName: "John",
-    //   lastName: "Doe",
-    //   age: 30,
-    //   arr: ["John", "qwe"],
-    // };
+    const person = {
+      firstName: "John",
+      lastName: "Doe",
+      age: 30,
+      arr: ["John", "qwe"],
+    };
+
+    // console.log(Object.entries(person));
 
     // for (const [key,value] of Object.entries(person)) {
     //   console.log("key",key);
-    //   console.log("value",value);
+    //   console.log("--value--",value);
     // }
 
     // for (const [key,value] of Object.entries(person)) {
@@ -795,12 +902,11 @@
     //   console.log("value",value);
     // }
 
-
-    // console.log(Object.entries(person)); //it creates array of arrays containing keys and values  
+    // console.log(Object.entries(person)); //it creates array of arrays containing keys and values
     // console.log(Object.keys(person));
     // console.log(Object.values(person));
     // for (const [key,value] of Object.entries(person)) {  //to extract keys and values [arrValue1,arrValue2] = [1,2]
-    //   // const [key,value] = [["firstName","John"],["lastName","Doe"],["age",30],["arr",["John","qwe"]]]
+      // const [key,value] = [["firstName","John"],["lastName","Doe"],["age",30],["arr",["John","qwe"]]]
     //   console.log("key",key);
     //   console.log("value",value);
     // }
@@ -821,7 +927,7 @@
     //       for (let j = 0; j < newArr.length - 1 - i; j++) {
     //         console.log("first Value",newArr[j]);
     //         console.log("---second---",newArr[j+1]);
-    //         if(newArr[j] > newArr[j+1]){ 
+    //         if(newArr[j] > newArr[j+1]){
     //         const emptyArr = newArr[j]
     //         newArr[j] = newArr[j+1]
     //         newArr[j+1] = emptyArr
@@ -829,21 +935,19 @@
     //     }
     //   }
     //   return newArr
-    // } 
+    // }
 
     // console.log(ascendingsort(b));
-    
+
     // const equalItem = a.length === b.length && a.every((item)=>b.includes(item))
     // const conditioon = a.length === b.length && a.every((item)=>b.includes(item))
 
     // console.log("equalItem",equalItem);
-    
 
     // console.log(conditioon);
-    
 
-    // console.log(b.sort().reverse(  ));
-    
+    // console.log(b.sort().reverse());
+
     // const sameItems = (obj1,obj2)=>{
     //   if(obj1?.length !== obj2.length){
     //     return "Not same"
@@ -889,6 +993,7 @@
     // console.log(10 / "5")
     // let cc = 10 % "5"
     // let cc = 10 / "5"
+    // console.log(cc);
     // console.log(typeof(cc));
     // console.log("number" + 15 + 3)  //+ has left-to-right associativity, so expression "number" + 15
     // console.log(15 + 3 + "number" )
@@ -969,7 +1074,8 @@
     // console.log(num);
 
     // console.log("2" * "8")    //multiplication operator (*) implicitly converts the string values to numbers before performing the multiplication.
-    // console.log(2 + "4" * "2")  	  //BODMAS ; When + is used with -,* etc
+    // console.log("2" + "4" * "2")  	  //BODMAS ; When + is used with -,* etc
+    // console.log("2" + "4" * "2") 
     // console.log(1 + +"1");
     // console.log(1 + "1");
     // console.log("1" + "1" - 1);
@@ -992,7 +1098,7 @@
     // console.log(true + 10);      //Boolean to number
     // console.log(true + +"10");
 
-    // NOTE : sort and splice affects main/orignal array
+    // NOTE : sort and splice affects main/orignal array(fill,reverse also)
     // null : It is often used as a placeholder or to indicate that a variable or property has no assigned value.
     // let variable=null;
     // console.log(variable);
@@ -1007,10 +1113,11 @@
     // 5. Set removes duplicay from array [...new Set(array)]
     // 6. a=[] ...a makes array element out removing , (array to string conversion)
     // console.log(...[1,2]);
+    // console.log([1,2].toString());
     // const a=[1,2,3] // {...a} makes array of object with index as keys
     // console.log({...a});
     // console.log({a});
-    
+
     // console.log(1+[1,2]);
     // console.log("1"+[1,2]);
     // 11. spread before array func(...[1,2]) converts it into string
@@ -1023,7 +1130,7 @@
     // console.log(true || true && 10);
     // 8. bCondition1 && bCondition2 is same !(!bCondition1 || !bCondition2)
     // console.log(A || B);                     // true
-// console.log(!(!A && !B));   
+    // console.log(!(!A && !B));
     // 9. FALSE  =  null ; NaN ; 0 ; empty string ("" or '' or ``) ; undefined.
     // console.log(Boolean({}))
     // 10. nullish operator (??) returns its right-hand side operand when its left-hand
@@ -1061,11 +1168,11 @@
 
     // const mySet = new Set();
 
-// mySet.add(1);
-// mySet.add(2);
-// mySet.add(2); // duplicate, ignored
-// console.log(mySet); // Set(2) {1, 2}
-// console.log([...mySet]);
+    // mySet.add(1);
+    // mySet.add(2);
+    // mySet.add(2); // duplicate, ignored
+    // console.log(mySet); // Set(2) {1, 2}
+    // console.log([...mySet]);
 
     // let arr=["js","react","vscode"]
     // let arr = [1, 7, 2, 6, 3, 4];
@@ -1081,10 +1188,10 @@
     // let newArr = arr.map((item) => item * 2); //returns new array with updated values and doesn't affect previous array
     // let newArr=arr.includes(1);        //returns true or false if condition matches
     // let newArr = arr.filter((item,index,array) => {   //return true condition only
-      // console.log(item);
-      // console.log(index);
-      // console.log(array);
-      // return item !== 2
+    // console.log(item);
+    // console.log(index);
+    // console.log(array);
+    // return item !== 2
     // }); //returns new array with filtered values, it removes the element whose condition becomes false
     // let newArr = arr.filter((item) => item === 2); //if condition is true it takes it out that item
     // let newArr=arr.find((item)=>item>2);     //returns only(7) first array value after condition matches
@@ -1101,6 +1208,10 @@
     //   return prev + curr;
     // }, 0); //gives sum of all numbers
 
+    // let newArr = arr.reduce((x,y)=>x+y,0);
+    // console.log(arr);
+    
+
     // const arr = [10, 20, 30, 40, 50];
     // function sumAll(data){
     //   let sum = 0
@@ -1114,7 +1225,6 @@
     // }
 
     // console.log(sumAll(arr));
-    
 
     // let newArr = arr.reduce((prev, curr) => {
     //   return prev + curr;
@@ -1154,11 +1264,11 @@
     // console.log(...arr);    //make array elements out w/o , seperation
     // console.log("hello", ...arr.join("/"));      //iterates without , seperation
     // console.log("hello", arr.join("/"));
-    // const newArr = arr.splice(3,0,"i","p");          //add 2(inclusive) no on 3nd index and dont' remove any ahead elemnet
+    // const newArr = arr.splice(3, 0, "i", "p"); //add 2(inclusive) no on 3nd index and dont' remove any ahead elemnet
     // let newArr=arr.slice(0,3);  //Slice from the 1st element to the 3rd element (non-inclusive means delete 3rd index also):         //deletes array element of given index  (Extract elements from index 0 (inclusive) to index 3 (exclusive))
     // let newArr=arr.slice(1,3);    //Slice from the 2nd element to the 4th element (non-inclusive 1 and delete ahead indexes inclusive 3):
     // let newArr=arr.sort();          //sort no alphabetically;; affect main arr
-    // let newArr=arr.sort().reverse();          //sort no alphabetically;; affect main arr    
+    // let newArr=arr.sort().reverse();          //sort no alphabetically;; affect main arr
     // console.log("newArr", newArr);
     // console.log("arr", arr);
 
@@ -1169,7 +1279,8 @@
     // var portion = originalArray.slice(6, 3);
     // var portion = originalArray.slice(4, 3);
     // var portion = originalArray.slice(3, 3);
-    // ***var portion = originalArray.slice(3, 1);    //as start index is greater than end index
+    // var portion = originalArray.slice(1, 14);
+    // var portion = originalArray.slice(3, 1);    //as start index is greater than end index
     // var portion = originalArray.slice(1, 4); //This extracts elements from index 1 to (4-1) = 3. The resulting portion array will be [2, 3, 4].
     // var portion = originalArray.slice(2, 4);      //4-1 means 3rd index
     // var portion = originalArray.slice(0, 4);      //array will include elements from index 0 to 4 - 1 = 3, resulting in [1, 2, 3, 4].
@@ -1177,6 +1288,8 @@
     // var portion = originalArray.slice(-4);        // (-3-1 = 2index) This extracts the last three elements of the array, regardless of the array's length.
     // var portion = originalArray.slice(-3,4);
     // var portion = originalArray.slice(-3,-1);
+    // var portion = originalArray.slice(-3,-4);
+    // var portion = originalArray.slice(-3,-2);
     // var portion = originalArray.slice(-1,-3);
     // console.log("originalArray", originalArray);
     // console.log("portion", portion);
@@ -1205,7 +1318,7 @@
     // const newArr = arr.forEach((element, index, array) => {
     //   //not need to return anything as we are manipulating array elements
     //   console.log("element", element); //array elements
-    //   console.log("index", index);
+    //   console.log("%cindex","color:blue", index);
     //   console.log("array", array); //full array arr changes again and again
 
     //   array[index] = element * 2;
@@ -1219,9 +1332,16 @@
     // let a = ["1", "2", "3", "4"];
     // let b = ["6", "7", "3", "2"];
 
+    // const combinedObj = [...a,...b];
+    // const filtedered  = combinedObj.filter((item,index)=>{
+    //   console.log("item",item);
+    //   return combinedObj.indexOf(item)===index
+    // });
+    // console.log(filtedered);
+    
+
     // const fil = a.concat(b.filter((item)=>!a.includes(item)))
     // console.log("fil",fil);
-    
 
     // const sds= a.concat(b.filter((item,index)=>!a.includes(item)));
     // const sds = b.filter((it,ind)=>!a.includes(it));
@@ -1287,14 +1407,14 @@
     //  a8 = false || null;        	    //return right side if both false
     //  a8= false || '' || null;
     //  console.log("a8",a8);
-    //  console.log("result",result);
-//     console.log(+[1,2,3]); 
-//     console.log(+{}); 
-//     console.log(5 + !5); // 5 + false → 5 + 0 = 5
-// console.log(5 + !0); // 5 + true  → 5 + 1 = 6
-// console.log([] + []);         // "" → empty string
-// console.log([] + {});         // "[object Object]"
-// console.log({} + []);
+    //  console.log( "result",result);
+        // console.log(+[1,2,3]);
+        // console.log(+{});
+    // console.log(5 + !5); // 5 + false → 5 + 0 = 5
+    // console.log(5 + !0); // 5 + true  → 5 + 1 = 6
+    // console.log([] + []);         // "" → empty string
+    // console.log([] + {});         // "[object Object]"
+    // console.log({} + []);
 
     // const foo = (null) ?? "default string"; //if 1st condition is null or undefined it returns right side
     // console.log(foo); //else it returns left condition
@@ -1315,8 +1435,8 @@
     // }
 
     // now it's in global scope and behaves like var
-    // let i
-    // for ( i = 0; i < 3; i++) {     //it creates 3 lets
+    
+    // for (let i = 0; i < 3; i++) {     //it creates 3 lets
     //   console.log(i);
     //   setTimeout(() => console.log(i), 1);
     // }
@@ -1381,7 +1501,7 @@
     // }
     // const person = "Lydia";
     // const age = 21;
-    // getPersonInfo`2344  cc ${person} is cvdfg df ${age} years old`;
+    // getPersonInfo`Mr. ${person} is only ${age} years old`;
 
     // function checkAge(data) {
     //   if (data === { age: 18 }) {
@@ -1449,6 +1569,9 @@
     // const c = arr.filter((it,index)=>!a.includes(it));
     // console.log(c);
 
+    // const uniqueArr = a.concat(b.filter((item)=>!a.includes(item)));
+    // console.log(uniqueArr);
+    
     // const arr=[...a,...b]
     // console.log([...new Set(arr)]);
     // const ab=a.filter((it)=>b.includes(it))
@@ -1463,8 +1586,10 @@
     // let data = ["anil", "peter", "bruce", "lee"];
     // const tt = delete data[1];
     // console.log(tt);
-    //                  //it deletes (index with value) peter and write empty there
     // console.log(data);
+    
+    // //                  //it deletes (index with value) peter and write empty there
+    // console.log(data?.length);
 
     // const data = ["Hi", "hello", "king"];
     // const [y, z] = data; //ARRAY DESTRUCTURING gives first value of array element
@@ -1486,6 +1611,21 @@
     // var a;
     // let a;
 
+//     sayHello(); // ✅ Works
+// function sayHello() {
+//   console.log("Hello!");
+// }
+//Function declarations are fully hoisted — their entire body is moved to the top.
+//hence, you can call them before their definition
+
+//     console.log(sayHi); // ❌ TypeError
+// var sayHi = function() {
+//   console.log("Hi!");
+// };
+
+// Only the variable sayHi is hoisted (initialized as undefined).
+// The function value is assigned later — so calling it early fails.
+
     // let a = [1, 2, 3, 4, 5];
     // let b = [4, 5, 6];
     // console.log(...a);                         //it doen't replace
@@ -1494,20 +1634,21 @@
     // console.log([...new Set(c)]);
 
     // const a = [1, 2, 3, 4, 5, 4, 5, 6];
-
+    
     // const tt = a.filter((item,index)=>a.indexOf(item)===index);
     // const tt = a.filter((item,index)=>a.findIndex((it)=>it===item)===index);
     // console.log("tt",tt);
     
+
     // const resp = a.filter((value, index, self) => {
-    //   // console.log("value", value);
-    //   // console.log("index", index);
-    //   // console.log("self", self); //it is used to take orignal array
-    //   // console.log(self.findIndex((it)=>console.log(it)));
-    //   // console.log(self.findIndex((it)=>it===value));
-    //   // console.log("self.indexOf(value)", self.indexOf(value));
-    //   return self.findIndex((it)=>it===value) === index;
-    //   // return self.indexOf(value) === index; //index of gives index of value
+    //   console.log("value", value);
+    //   console.log("index", index);
+    //   console.log("self", self); //it is used to take orignal array
+    //   console.log(self.findIndex((it)=>console.log(it)));
+    //   console.log(self.findIndex((it)=>it===value));
+    //   console.log("self.indexOf(value)", self.indexOf(value));
+      // return self.findIndex((it)=>it===value) === index;
+      // return self.indexOf(value) === index; //index of gives index of value
     // });
     // console.log("resp", resp);
 
@@ -1526,7 +1667,7 @@
 
     // let name = "sidhu"; //let has block level scope & it can't pursue variable hoisting
     // function getName() {
-    //   // let name = "jk";
+    //   let name = "jk";
     //   console.log(name); //local variable & global variable
     //   // let name="pal";
     // }
@@ -1538,21 +1679,21 @@
     //   console.log("x : ",x);
     //   console.log("y : ",y);
     //   console.log("z : ",z);
-      
+
     //   return x + y + z;
     // }
     // console.log(sumValues(1, 5, 3)); //spread before array func(...[1,2]) converts it into string
     // console.log(...[1, 5, 3]);
     // console.log(sumValues(...[1, 5, 3]));
 
-//     const name = "code";
-//     console.log(typeof name); //name is not empty string so it's true, ! makes it false
-//     console.log(!typeof name); //& when false it compared with (not empty string) it
-//     console.log(!typeof name === "object"); //returns false false === "object" → false
-//     console.log(!typeof name === "string");     //false === "string" → false
-//     console.log(typeof false);
-//     console.log(typeof name !== "object"); // true
-// console.log(typeof name !== "string"); // false
+        // const name = "code";
+        // console.log(typeof name); //name is not empty string so it's true, ! makes it false
+        // console.log(!typeof name); //& when false it compared with (not empty string) it
+        // console.log(!typeof name === "object"); //returns false false === "object" → false
+        // console.log(!typeof name === "string");     //false === "string" → false
+        // console.log(typeof false);
+        // console.log(typeof name !== "object"); // true
+    // console.log(typeof name !== "string"); // false
 
     // let person = { name: "anil" };
     // console.log(person);
@@ -1560,7 +1701,7 @@
     // console.log(person);
     // //add new key in object
     // Object.seal(person); //after applying seal we cann't add new key but can modify person
-    // // // console.log(person);
+    // console.log(person);
     // person.name = "king"; //cann't add new key but can modify the name key
     // person.class = "hello";
     // console.log(person);
@@ -1575,7 +1716,9 @@
     // let del = data?.slice(0, 1);        //gives new array
     // console.log(del);
     // console.log(data);
-    // let shift = data?.shift();
+    // let shift = data?.shift(0,3);
+    // console.log(shift);
+    
     // console.log(data?.shift());
     // console.log("Removed array element", shift);
     // console.log("All rest array elements", data);
@@ -1601,14 +1744,14 @@
 
     // (Important)
     // function fruit() {
-    //    name="apple";               //give value here
+    //   name="apple";               //give value here
     //   console.log(name);
     //   var name = "apple12345"; //var gets hoisted with the default value of undefined
     //   let price = 20;
     // }
     // fruit();
 
-    // for (let i = 0; i < 3; i++) {
+    // for (var i = 0; i < 3; i++) {
     //   setTimeout(() => {
     //     //setTimeout etc mover in a stack of our code & runs at the end
     //     console.log(i); //var is decalared globally
@@ -1656,12 +1799,11 @@
     // getAge(21);
 
     // function getAge(...args){
-    //     'use strict';                            //but use-strict says follow rules strictly,no hoisting etc
+    //     // 'use strict';                            //but use-strict says follow rules strictly,no hoisting etc
     //     let age = 21;                                 //whenever we don't define let,var etc it auto takes it var
     //     console.log(age);
     // }
     // getAge(21);
-    
 
     // const sum = eval(10 * 10 + 5 - 2); //eval does the mathematical calculations
     // console.log(sum);
@@ -1673,23 +1815,25 @@
     //   if (i === 3) {
     //     continue; //continue will not print rest code when the condition matches
     //   }
-    //   console.log(i);
+    //   console.log("I",i);
     // }
 
     // const person = { name: "anil" };
     // function sayHi(age) {
-    //   console.log(age);
+    //   // console.log(age);
     //   return `${this.name} is ${age}`;
     // }
     // console.log(sayHi.call(person, 21)); //it's called on it's own no callback is required
     // console.log(sayHi.bind(person, 21)); //returns function as it is with added properties
     // console.log(sayHi.bind(person, 21)()); //callback is required,bind is called manually
+    // console.log(sayHi.apply(person, [21]))
 
     // ***
     // function sayHello(){
-        // return(()=>0);                      //it returns a function
-        // return(()=>0)();                    //it returns a zero as fat arrow fun is called
+    // return(()=>0);                      //it returns a function
+    // return(()=>0)();                    //it returns a zero as fat arrow fun is called
     // }
+    // console.log(sayHello());
     // console.log(sayHello()());
     // console.log(typeof sayHello());
     // console.log(typeof sayHello()());           //it also returna a number
@@ -1699,6 +1843,8 @@
     // const numbers = [1, 2, 3];
     // numbers[6] = 11; //index 3,4,5 become empty
     // console.log(numbers);
+    // console.log(numbers.length);
+    
 
     // const numbers = [1, 2, 3];
     // numbers[6] = numbers; //everytime at 6th index it pushes an array
@@ -1756,8 +1902,8 @@
     // })(); //fat arrow function is called
     // console.log(typeof x);
 
-    // (() => {        //Immediately Invoked Function Expres
-    //  (IIFE)
+    // (() => {        //Immediately Invoked Function Expression
+    // //  (IIFE)
     //   // var y;
     //   let x = (y = 10); //bcoz it's like let x=10,var y=10 & var has global scope
     //   console.log(x,y);
@@ -1768,7 +1914,7 @@
     //   var x = (y = 10); // var x makes it a block level scope while y is global scope
     // })();
     // console.log(typeof x);
-    // console.log("x : ", x);
+    // // console.log("x : ", x);
     // console.log(typeof y);
 
     // let x = 100;
@@ -1804,7 +1950,7 @@
     // console.log(str.replace(/H/g,'W'));     //works for all characters
 
     // 5.get string from subString
-    // console.log(str.substring(0,5));
+    // console.log(str.substring(0,1));
 
     //6.Remove first character from string
     // console.log(str.substring(0,str.length));
@@ -1831,8 +1977,8 @@
 
     // console.log(data.reduce((x,y)=>x+y));
 
-    // let sum = 0
     // function ss(payload){
+    //   let sum = 0
     //   payload.forEach(element => {
     //     sum += element
     //   });
@@ -1840,67 +1986,8 @@
     // }
     // console.log(ss(data));
     
-
-    // function summ(dd){
-    //   let sm = 0;
-    //   dd.forEach(element => {
-    //     sm += element
-    //   });
-      
-    //   return sm
-    // }
-
-    // console.log(summ(data));
-
-    // function sum(dd) {
-    //   let sum = 0;
-    //   for (let index = 0; index < dd.length; index++) {
-    //     sum += dd[index];
-    //   }
-    //   return sum;
-    // }
-
-    // console.log(sum(data));
-
-    // var sum = 0;
-    // const aa = data.forEach((e, i) => {
-    //   sum += e;
-    // });
-    // console.log(sum);
-
     // 1.Find sum of all array elements
     // let sum = data.reduce((x, y) => x + y, 0);
-    // console.log(sum);
-
-    // let sum = 0;
-    // for (let index = 0; index < data.length; index++) {
-    //   sum += data[index];
-    // }
-    // console.log("sum", sum);
-
-    // let sum = 0;
-    // for (let i = 0; i < data.length; i++) {
-    //   sum += data[i];
-    // }
-    // console.log(sum);
-
-    // const a = [1,4,5]
-    // const sum = (data)=>{
-    //   let sums = 0
-    //   for (let i = 0; i < data.length; i++) {
-    //     console.log(i);
-        
-    //   sums += a[i]
-    // }
-    // return sums
-    // }
-
-    // console.log("aa",sum(a));
-    
-    // var sum = 0
-    // for (let index = 0; index < a.length; index++) {
-    //   sum += a[index];
-    // }
     // console.log(sum);
 
     // let x =  10;  //assignment statement in JavaScript that uses the comma operator to evaluate multiple expressions and assign the result of the last expression to the variable x
@@ -1911,7 +1998,8 @@
     // console.log(x);
 
     // CLOSURES
-    //a closure gives you access to an outer function's scope from an inner function.
+    //a closure gives you access to an outer function's scope from an inner function
+    // even after the outer function has finished executing..
 
     // const teacher = () =>{
     //   let x = 10
@@ -1924,13 +2012,11 @@
     // const tt = teacher();
     // console.log(tt);
     // console.log(tt(5));
-    
-    
 
     // const closuress =()=>{
     //   let x = 10
     //   console.log("Outer Function");
-      
+
     //   return function innerFunc(){
     //     console.log("Inner Function")
     //     return x+12
@@ -1938,7 +2024,6 @@
     // }
 
     // console.log(closuress()());
-    
 
     // function outer(){
     //   let x = 10;
@@ -1955,7 +2040,6 @@
     // }
 
     // console.log(outerFunc()());
-    
 
     // console.log(outer()());
 
@@ -2030,7 +2114,7 @@
     //   y();
     // }
     // console.log("hgf");
-    
+
     // x();
 
     //when functions return from their lexical scope they still maintain ther position
@@ -2089,6 +2173,7 @@
     // x();
 
     //TIMER
+
     // function startTimer(data) {
     //   for (let index = 0; index <= data; index++) {
     //     setTimeout(() => {
@@ -2108,15 +2193,93 @@
     // }
 
     // console.log(timer(5));
-        
 
-    //THIS
+    //THIS ES6
+    // this refers to the object that is calling the function — and its value depends on 
+    // how the function is invoked, not where it’s defined.
     //In the global level this points to window object
     //window is global object which is created along with global execution context
 
-    // FLATTING Array
+//     2 — async / await (syntax sugar over Promises)
+// async functions always return a Promise. await pauses execution inside the async
+//  function until the awaited Promise resolves (or throws when it rejects).
 
+
+    // COUNTING OCCURANCIES
+    // const fruits = ["apple", "banana", "apple", "orange", "banana", "apple"];
+    // const count = fruits.reduce((acc, fruit) => {
+    //   acc[fruit] = (acc[fruit] || 0) + 1;
+    //   return acc;
+    // }, {});
+    // console.log(count)
+
+    // function countOccurrences(arr) {
+    //   const obj = {};
+    //   arr.forEach(item => {
+    //     obj[item] = (obj[item] || 0) + 1;
+    //   });
+    //   return obj;
+    // }
+
+    // console.log(countOccurrences(fruits));
+
+
+    // Grouping by property
+      // const people = [
+      //   { name: "Ritik", age: 25 },
+      //   { name: "Amit", age: 25 },
+      //   { name: "Priya", age: 30 }
+      // ];
+
+      // const grouped = people.reduce((acc, person) => {
+      //   (acc[person.age] = acc[person.age] || []).push(person);
+      //   return acc;
+      // }, {});
+
+      // console.log(grouped);
+
+      //Prototypal Inheritance : objects can inherit properties and methods from other objects.
+      // const person = {
+      //   greet() {
+      //     console.log(`Hello, I am ${this.name}`);
+      //   }
+      // };
+
+      // const ritik = Object.create(person); // inherits from person , The prototype relationship is created using Object.create(person).
+      // console.log(ritik);   //ritik doesn’t have greet(), so JS looks up in its prototype (person)
+      // ritik.name = "Ritik";
+      // ritik.greet();
+
+// Mutable Example (Bad Practice)
+// const user = { name: "Ritik", age: 28 };
+// user.age = 29; // ❌ mutated
+// console.log(user);
+
+// // Immutable Example (Good Practice) //Don’t modify original — make new copies
+// const user = { name: "Ritik", age: 28 };
+// const updatedUser = { ...user, age: 29 }; 
+// console.log("updatedUser",updatedUser);
+// console.log("user",user);
+
+
+// const numbers = [1, 2, 3];
+
+// // ❌ Bad: Direct mutation
+// const pushedArr = numbers.push(4);
+// console.log("pushedArr",pushedArr);
+// console.log(numbers);
+
+
+// // ✅ Good: Create new array
+// const newNumbers = [...numbers, 4];
+// console.log("newNumbers",newNumbers);
+// console.log("numbers",numbers);
+
+
+    // FLATTING Array
     // var array = [1, 2, 3, [7, 8, [9]], 4, [5], 6];
+    // const flat = array.reduce((acc, curr) => acc.concat(curr), []);     //flat array upto 1 level
+    // console.log(flat);
     // const recusion = (data)=>{
     //   const emptyArr = []
     //   data.forEach((item)=>{
@@ -2129,13 +2292,10 @@
     //   })
     //   console.log("emptyArr",emptyArr);
     //   return emptyArr
-      
+
     // }
 
     // console.log(recusion(array));
-    
-
-
 
     // var array = [1, 2, 3, [7, 8, [9]], 4, [5], 6];
 
@@ -2154,8 +2314,6 @@
     // }
 
     // console.log(flatArr(array));
-    
-
 
     //   var obj={name:"ritik"}
     // function flattenArray(arr) {
@@ -2191,35 +2349,32 @@
     // }
 
     // console.log("input",input);
-    
+
     // const revInput = input.split('').reverse().join('');
     // console.log("revInput",revInput);
     // console.log(input===revInput ? "Palendrome" : "Not Palendrome");
-    
-    
 
     // console.log(isPalen(input) ? "Palendrome" : "Not Palendrome" );
-    
 
     // const a = window.prompt("Enter value of a");
     // const straight = a.split('').reverse().join('');
     // console.log(a===straight ? "Palendrome" : "Not Palendrome");
-    
+
     // console.log("straight",straight);
-    
+
     // const isPalen=(data)=>{
     //   const strLength = data.length
     //   for (let i = 0; i < strLength/2; i++) {
     //     if(data[i]!==data[strLength - 1 -i]){
     //       return "Not Palendrome";
-          
+
     //     }
     //   }
     //   return "Palendrome";
     // }
 
     // console.log(isPalen(a));
-    
+
     // If first and last chacter are same it's palendrome
     // function checkPalindrome(string) {
     //   console.log("string",string);
@@ -2246,134 +2401,34 @@
     // resolved .then()
     // rejected .catch()
 
-    // const prom1 = new Promise((resolve, reject) => {
-    //   setTimeout(() => {
-    //     resolve("Promise 1 is resolved")
-    //   }, 110);
-    // })
+    // const demoProm1 = new Promise((resolve,rejected)=>{
+    //   setTimeout(()=>rejected("Promise 1 is resolved"),1000)
+    // });
+    // const demoProm2 = new Promise((resolve,rejected)=>{
+    //   setTimeout(()=>resolve("Promise 2 is resolved"),200)
+    // });
+    // const demoProm3 = new Promise((resolve,rejected)=>{
+    //   setTimeout(()=>rejected("Promise 3 is resolved"),400)
+    // });
 
-    // const prom2 = new Promise((resolve, reject) => {
-    //   setTimeout(() => {
-    //     resolve("Promise 2 is resolved")
-    //   }, 800);
-    // })
-
-    // const prom3 = new Promise((resolve, reject) => {
-    //   setTimeout(() => {
-    //     resolve("Promise 3 is resolved")
-    //   }, 600);
-    // })
-
-    // Promise.race([prom1,prom2,prom3])
+    // const resp = Promise.race([demoProm1,demoProm2,demoProm3])
     // .then((resp)=>console.log("resp",resp))
-    // .catch((err)=>console.log("err",err))
+    // .catch((error)=>console.log("error",error))
 
-
-
-    // const newProm1 = new Promise((resolve,reject)=>{
-    //   setTimeout(()=>resolve("1"),1000)
-    // })
-
-    // const newProm2 = new Promise((resolve,reject)=>{
-    //   setTimeout(()=>reject("2"),200)
-    // })
-
-    // const newProm3 = new Promise((resolve,reject)=>{
-    //   setTimeout(()=>resolve("3"),3000)
-    // })
-
-    // newProm.then((resp)=>console.log(resp)).catch((err)=>console.log("Err",err))
-    // Promise.allSettled([newProm1,newProm2,newProm3])
+    // const resp = Promise.all([demoProm1,demoProm2,demoProm3])
     // .then((resp)=>console.log("resp",resp))
-    // .catch((err)=>console.log("err",err))
+    // .catch((error)=>console.log("error",error))
 
-    // const promise1 = new Promise((resolve, reject) => {
-    //   setTimeout(()=>{
-    //     resolve("Resolved 1")
-    //   },1000)
-    // })
+    //  const resp = Promise.any([demoProm1,demoProm2,demoProm3])
+    // .then((resp)=>console.log("resp",resp))
+    // .catch((error)=>console.log("error",error))
 
-    //  const promise2 = new Promise((resolve, reject) => {
-    //   setTimeout(()=>{
-    //     reject("Resolved 2")
-    //   },300)
-    // })
+    // const resp = Promise.allSettled([demoProm1,demoProm2,demoProm3])
+    // .then((resp)=>console.log("resp",resp))
+    // .catch((error)=>console.log("error",error))
+    
 
-    //  const promise3 = new Promise((resolve, reject) => {
-    //   setTimeout(()=>{
-    //     resolve("Resolved 3")
-    //   },1400)
-    // })
-
-    // const resp = Promise.allSettled([promise1,promise2,promise3]).then((res)=>console.log("resolve : ",res)).catch((err)=>console.log("error: ",err))
-
-    // const prmise1 = new Promise((resolve, reject) => {
-    //   setTimeout(() => {
-    //     resolve("Promise 1")
-    //   }, 1000);
-    // })
-
-    // const prmise2 = new Promise((resolve, reject) => {
-    //   setTimeout(() => {
-    //     reject("Promise 2")
-    //   }, 600);
-    // })
-
-    // const prmise3 = new Promise((resolve, reject) => {
-    //   setTimeout(() => {
-    //     resolve("Promise 3")
-    //   }, 1200);
-    // })
-
-    // Promise.all([prmise1,prmise2,prmise3]).then((res)=>console.log(res)).catch((err)=>console.log(err))
-
-    // const prom = new Promise((resolve, reject) => {
-    //   if(true){
-    //     return console.log("It is RESOLVED");
-    //   }
-    //   else console.log("It is Rejected");
-    // })
-
-    // const dd = prom.then((re)=>console.log(res)).catch("error")
-
-    // const hell = new Promise((res, rej) => {
-    //   if (true) {
-    //     console.log("It is RESOLVED");
-    //   } else {
-    //     console.log("It is REJECTED");
-    //   }
-    // });
-
-    // hell
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log("err", err));
-
-    // const promise1 = Promise.resolve(123);
-    // console.log("promise1", promise1);
-    // promise1.then((value) => {
-    //   console.log(value);
-    // });
-    // const resp = new Promise.resolve(123).then((value) => console.log("value"));
-    // console.log("resp", resp);
-
-    // const myPromise = new Promise((resolved, rejected) => {
-    //   const a = 2;
-    //   const b = 12;
-    //   const c = a + b;
-    //   if (c === 4) {
-    //     resolved("yes it's correct ");
-    //   } else {
-    //     rejected("no it's not");
-    //   }
-    // });
-
-    // myPromise
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-    //   .catch((err) => {
-    //     console.log("err", err);
-    //   });
+    // demoProm.then((resp)=>console.log(resp)).catch((err)=>console.log(err))
 
     // promise.race
     // it return the firstly resolved or rejected promise
@@ -2382,12 +2437,10 @@
     //   setTimeout(()=>resolve("Resolve First"),1000)
     // })
 
-    
     // const pr2 = new Promise((resolve, reject) => {
     //   setTimeout(()=>resolve("Resolve Second"),700)
     // })
 
-    
     // const pr3 = new Promise((resolve, reject) => {
     //   setTimeout(()=>reject("Error"),400)
     // })
@@ -2527,7 +2580,7 @@
 
     // Array Dstructuring
     // const arr = ["a", "b", "c", "d"];
-    // console.log(arr[0]);
+    // console.log(arr[3]);
 
     // const arr = ["a", "b", "c", "d"];
     // const [p, q, r, s] = arr;
@@ -2567,7 +2620,6 @@
 
     // console.log(obj.normaFunc());
     // console.log(obj.fatArrowFunc());
-    
 
     // let userInfo={
     //   name:"code Improve",
@@ -2583,14 +2635,14 @@
 
     // let userInfo = {
     //   name: "code Improve",
-    //   fullName() {
-    //     const name = () => {
-    //       console.log(this.name);
-    //       console.log(this.name + "Fat Function");    //lexical scoping it found name in parent
-    //     };
-    //     name();
-    //     console.log(this.name + "Normal Function");
-    //   },
+      // fullName() {
+      //   const name = () => {
+      //     console.log(this.name);
+      //     console.log(this.name + "Fat Function");    //lexical scoping it found name in parent
+      //   };
+      //   name();
+      //   console.log(this.name + "Normal Function");
+      // },
     //   fullName2: () => {
     //     console.log("this ", this);   //value of this inside a fat-arrow fn is same as otside a fn
     //     console.log(this.name + "Fat Function"); // Arrow functions do not have their own this context. Instead, they capture the value of this from the surrounding scope
@@ -2612,7 +2664,6 @@
     // }
 
     // console.log(a(3)(4)(5));
-    
 
     // function a(x){
     //   return function b(y){
@@ -2628,8 +2679,6 @@
 
     // console.log(a(2)(4)(2));
     // console.log(func(2,4,2));
-    
-
 
     // const normalSum = (a,b,c)=>a+b+c
     // console.log(normalSum(2,5,6));
@@ -2642,9 +2691,7 @@
     // }
 
     // console.log(currySumFunc(1)(2)(3));
-    
 
-    
     // const multiArgFunction = (a, b, c) => a + b + c;
     // console.log(multiArgFunction(1, 2, 3)); // 6
 
@@ -2658,7 +2705,6 @@
     // }
 
     // console.log(curr(2)(3)(5));
-
 
     // function curryUnaryFunction(a) {
     //   return function (b) {
@@ -2674,6 +2720,23 @@
     // Takes another function as an argument (e.g., map, filter, forEach), OR
     // Returns another function.
 
+//     Every callback is used inside a HOF.
+// 👉 But not every HOF needs a callback, it could return a function instead.
+
+//     function greet(name) {
+//   return `Hello, ${name}!`;
+// }
+
+// // Higher-Order Function
+// function greet(data){
+//   return `Hello ${data}`
+// }
+
+// function hightFunc(calbck){    //✔ It takes another function (greet) as a parameter
+//   const name = "Ritik"
+//   return calbck(name)  //It uses func as a callback and executes it.
+// }
+// hightFunc(greet)
 
     // function highfunc(x){
     //   const y = 10;
@@ -2682,10 +2745,8 @@
     //   }
     // }
 
-    // const highfuncVar = highfunc(5) 
+    // const highfuncVar = highfunc(5)
     // console.log(highfuncVar(10));
-    
-
 
     // const multiplier=(num)=>{
     //   return function(numInside){
@@ -2695,37 +2756,32 @@
 
     // const highFunc = multiplier(2);
     // console.log(highFunc(5));
-    
 
+    //     function fun() {
+    //     console.log("Hello, World!");
+    // }
+    // function fun2(action) {
+    //     action();
+    //     action();
+    // }
 
-//     function fun() {
-//     console.log("Hello, World!");
-// }
-// function fun2(action) {
-//     action();
-//     action();
-// }
+    // console.log(fun2(fun));
 
-// console.log(fun2(fun));
+    // const hightOrder=(fn)=>{
+    //   return function(name){
+    //     fn(name)
+    //   }
+    // }
 
+    // const lowFunc=(dd)=>{
+    //   console.log("Hello " + dd);
+    // }
+    // const hf = hightOrder(lowFunc)
+    // console.log(hf);
 
-// const hightOrder=(fn)=>{
-//   return function(name){
-//     fn(name)
-//   }
-// }
+    // console.log(hf("ritik"));
 
-
-// const lowFunc=(dd)=>{
-//   console.log("Hello " + dd);
-// }
-// const hf = hightOrder(lowFunc)
-// console.log(hf);
-
-// console.log(hf("ritik"));
-
-
-// fun2(fun);
+    // fun2(fun);
 
     // function greaterThan(n) {
     //   //greaterThan is a higher-order function because it returns another function.
@@ -2733,7 +2789,7 @@
 
     //   return (m) => {
     //     console.log("m", m,n);
-    //     return m > n 
+    //     return m > n
     //   };
     // }
 
@@ -2741,19 +2797,18 @@
     // console.log("greaterThan10", greaterThan10);
     // console.log(greaterThan10(11)); //greaterThan10 becomes a function generated by greaterThan(10), specifically a function that checks if its input is greater than 10
 
-//     function multiplier(factor) {
-//       console.log("factor",factor);
-//   return function (num) {
-//     console.log("num",num);
-//     return num * factor;
-//   };
-// }
+    //     function multiplier(factor) {
+    //       console.log("factor",factor);
+    //   return function (num) {
+    //     console.log("num",num);
+    //     return num * factor;
+    //   };
+    // }
 
-// const double = multiplier(2);
-// console.log("double",double);
+    // const double = multiplier(2);
+    // console.log("double",double);
 
-// console.log(double(5)); // Output: 10
-
+    // console.log(double(5)); // Output: 10
 
     // const firstOrderFunc = () =>
     //   console.log("Hello, I am a First order function");
@@ -2763,9 +2818,20 @@
     // }
     // higherOrder(firstOrderFunc);
 
-    // callback function
-    // Call back is a function passed as an arguement to another function which is then invoked inside the outer function
+    // CALLBACK FUNCTION
+    // Call back is a function passed as an arguement to another function which is then invoked inside that another function
     // to complete some kind of routine or action
+
+    // function students(){
+    //   console.log("Hi Students this side");
+    // }
+
+    // function teachers(calbck){
+    //   console.log("Hi teachers this side");
+    //   calbck()    //students is the callback function,
+    // }
+
+    // teachers(students);
     
 
     // function students(){
@@ -2799,7 +2865,6 @@
 
     // teachersFunction(studentFunction)
 
-
     // function students(calbck){
     //   console.log("students called");
     //   // calbck();
@@ -2819,12 +2884,22 @@
     // pure function are function that accept an input and returns a
     // value without modifying any data outside its scope
 
+    // let result = 10
+    // const impureFunc=()=>{
+    //   return (result + 2)
+    // }
+
+    // console.log(impureFunc());
+    
+
+    // const result = (x, y) => x + y
+    // console.log(result(8,6));
+    
     // const result = (a,b)=>{
     //   return a+b
     // }
 
     // console.log(result(3,8));
-    
 
     // let resultVar = 0
     // console.log(resultVar);
@@ -2834,22 +2909,8 @@
     // }
     // console.log(resultFunc(2,67));
     // console.log("startIndex",resultVar);
-    
-    
-    
 
-    // let result = 0
-    // console.log("result",result);
-
-    // function sum(a,b){
-    //   result = a + b
-    //   // return result
-    // }
-
-    // sum(2,7)
     // console.log("result11",result);
-    
-
 
     // function add(a, b) {
     //   return a + b;
@@ -2876,61 +2937,158 @@
 
     // console.log(imapureFunc(2,6));
 
-
     // ----------------------------------
     // -----------------------------------
 
-//     const nestedObj = {
+//     const flatObj = {
 //   name: "John",
-//   address: {
-//     city: "New York",
-//     zip: {
-//       code: 10001,
-//       plus4: 1234
-//     }
-//   }
+//   address_city: "NY",
+//   address_pin: 12345,
+//   address_location_area: "Central"
 // };
 
-// {
-//   "name": "John",
-//   "address.city": "New York",
-//   "address.zip.code": 10001,
-//   "address.zip.plus4": 1234
-// }
 
+//     function unflatten(data) {
+//   const result = {};
 
-// function flattenObject(obj, parentKey = '', result = {}) {
-//   for (let key in obj) {
-//     const newKey = parentKey ? `${parentKey}.${key}` : key;
-//     if (typeof obj[key] === 'object' && obj[key] !== null) {
-//       flattenObject(obj[key], newKey, result);
-//     } else {
-//       result[newKey] = obj[key];
-//     }
+//   for (const key in data) {
+//     const keys = key.split("_"); // split back the path
+//     let current = result;
+
+//     keys.forEach((part, index) => {
+//       if (index === keys.length - 1) {
+//         current[part] = data[key]; // assign value at last key
+//       } else {
+//         current[part] = current[part] || {}; // create nested object if not exists
+//         current = current[part]; // go deeper
+//       }
+//     });
 //   }
+
 //   return result;
 // }
 
-// const flat = flattenObject(nestedObj);
-// console.log(flat);
+
+// console.log(unflatten(flatObj));
 
 
-  // const flatObj = (obj,parentKey='',result={})=>{
-  //   for (const key in obj) {
-  //     const newKey = parentKey ? `${parentKey}.${key}` : key;
-  //     if(typeof obj[key]==='object' && obj[key] !== null){    //if zip is null
-  //       flatObj(obj[key],newKey,result)
-  //     }
-  //     else{
-  //       result[newKey] = obj[key]
-  //     }
+    //     const nestedObj = {
+    //   name: "John",
+    //   address: {
+    //     city: "New York",
+    //     zip: {
+    //       code: 10001,
+    //       plus4: 1234
+    //     }
+    //   }
+    // };
+
+    // {
+    //   "name": "John",
+    //   "address.city": "New York",
+    //   "address.zip.code": 10001,
+    //   "address.zip.plus4": 1234
+    // }
+
+    // function flattenObject(obj, parentKey = '', result = {}) {
+    //   for (let key in obj) {
+    //     const newKey = parentKey ? `${parentKey}.${key}` : key;
+    //     if (typeof obj[key] === 'object' && obj[key] !== null) {
+    //       flattenObject(obj[key], newKey, result);
+    //     } else {
+    //       result[newKey] = obj[key];
+    //     }
+    //   }
+    //   return result;
+    // }
+
+    // const flat = flattenObject(nestedObj);
+    // console.log(flat);
+
+//     To build the FULL key path during recursion.
+// 👉 Without parentKey, you would lose context and only get:code 
+
+// When recursion happens, every function call creates its own scope.
+// If you don't pass result, each recursive call will create a new object, and you end up losing previously flattened keys.
+    // console.log("nestedObj",flatObj(nestedObj));
+
+  // const obj = {
+  //   name: "Teja",
+  //   greet() {
+  //     console.log(this.name); // ?
   //   }
+  // };
+  // obj.greet();
 
-  //   return result
-  // }
-      
-  // console.log("nestedObj",flatObj(nestedObj));
+  //   const obje = {
+  //     name: "Teja",
+  //     greet() {
+  //       function inner() {
+  //         console.log(this.name); // ?
+  //       }
+  //       inner();
+  //     }
+  //   };
+  //   obj.greet();
+
+
+// const payload = [23,5,23,67,30,20,10,-12,-13,65]
+
+// function maximumtwoNumbers(data){
+//   let maximumNoOne;
+//   let maximumNoSecond;
+//   let minimumNoOne;
+//   let minimumNoSecond;
+//   maximumNoOne = -Infinity;
+//   maximumNoSecond = -Infinity;
+//   minimumNoOne = Infinity;
+//   minimumNoSecond = Infinity
+
+
+//   let indexOfMaxOne = -1;
+//   let indexOfMaxSecond = -1;
+//   let indexOfMinOne = -1;
+//   let indexOfMinSecond = -1;
+
+//   data.forEach((num,index)=>{
+//     console.log("num",num);
+//     console.log("index",index);
+    
+//     if(num > maximumNoOne){
+//       maximumNoSecond = maximumNoOne
+//       indexOfMaxSecond = indexOfMaxOne
+//     }
+//     else if(num > maximumNoSecond){
+//       maximumNoSecond = num;
+//       maximumNoSecond = index
+//     }
+//   });
+
+//   console.log("maximumNoOne",maximumNoOne);
+//   console.log("maximumNoOne",maximumNoOne);
   
+// }
+
+// console.log("hello",maximumtwoNumbers(payload));
+
+
+//  Find 2 no whose product is maximam and their indexes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </script>
 
   <body>
@@ -2938,13 +3096,17 @@
       <!-- Event Bubbling -->
       <div onclick="alert('First Div')">
         //3
-        <img onclick="alert('Second Div')">
-          //2 <button onclick="alert('Button alert')">Button</button> //1
-          <p>Hello Ritik chauhan vats </p>
-          <h3>Village _ Dahisra</h3>
-          <h3>District - Sonipat</h3>
-          <img src="./woman.png" alt="Girl in a jacket" width="500" height="600">
-        </div>
+        <img onclick="alert('Second Div')" />
+        //2 <button onclick="alert('Button alert')">Button</button> //1
+        <!-- <p>Hello Ritik chauhan vats</p>
+        <h3>Village _ Dahisra</h3>
+        <h3>District - Sonipat</h3>
+        <img
+          src="./woman.png"
+          alt="Girl in a jacket"
+          width="500"
+          height="600"
+        /> -->
       </div>
     </div>
   </body>
@@ -2985,9 +3147,9 @@ const gfg: Geeks = {
   email: &quot; kgowda@gmail.com&quot;
 };
 
+
 console.log(gfg); -->
 <!-- Interface support the use of object -->
-
 
 <!-- 
 {

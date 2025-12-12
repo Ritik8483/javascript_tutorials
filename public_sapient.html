@@ -515,6 +515,25 @@ It ensures a function executes at most once every X milliseconds, no matter how 
 
 
 <!-- ====================================== -->
+<!-- When the browser reads an HTML file, it parses it top to bottom.
+If your script is inside <head> without special attributes, it will block the HTML parsing until the script file loads and runs.
+Placing the script at the bottom ensures the page’s content loads first.
+Placing the script at the bottom ensures that All DOM elements are already loaded when your script executes.
+When a script runs in the <head>, the DOM (HTML elements) might not exist yet.
+If your JavaScript tries to access elements with document.getElementById() or similar, it will fail.
+
+
+<head>
+  <script src="./june_interview.js" defer></script>
+</head>
+Loads script in parallel with HTML parsing.
+Executes it after the DOM is fully parsed. -->
+
+
+<!-- document.addEventListener("DOMContentLoaded", callbackFunction);
+Run this function (callbackFunction) after the entire HTML document has been completely loaded and 
+parsed — but before images, stylesheets, and other resources are fully loaded -->
+
 
 <!-- Use When: Your code relies on the DOM being fully loaded before it runs. This is safer when your
 JS is in the <head> or when you're manipulating DOM elements.
@@ -525,6 +544,76 @@ JS is in the <head> or when you're manipulating DOM elements.
 document.addEventListener("DOMContentLoaded", getAllPlanets); -->
 
 
+<!-- ---------------------MICROFRONTEND------------------------ -->
+
+A microfrontend is an architectural style where the frontend is split into multiple smaller,
+independent apps, each responsible for a specific business domain or feature.
+Each microfrontend:
+Is built and deployed independently
+Can use different frameworks (e.g., one in React, another in Angular)
+Communicates with others at runtime
+
+For the same e-commerce site:
+/home → built with React
+/cart → built with Angular
+/checkout → built with Vue
+/profile → built with React + TypeScript
+
+
+Benefits:
+Independent deployments (each team can release without breaking others)
+Faster development cycles (parallel teams)
+Technology freedom (React, Angular, Vue can coexist)
+Easier to scale large teams
+
+Problems
+Complex setup and routing between microfrontends
+Higher infrastructure and build complexity
+
+Tools Commonly Used in Microfrontends
+Nx Monorepo → Organizes multiple apps/libs in one repo
+Single-SPA → Orchestrates multiple frameworks
+Webpack Module Federation → Shares modules dynamically
+
+
+WORKING
+Inside create moduleFederation.config.js file(created in root folder of common repo)
+https://www.youtube.com/watch?v=FGAcmMufzVU
+
+const {dependencies} = require("./package.json");
+mode.exports={
+  name :"",         //
+  filename :"remoteEntry.js",     //name of the file that will be created by weback(contains info
+   about exposed modules and shared dependencies)
+  remotes : {}      // used to specify which remote microfrontends it consumes
+  exposes : {}      // which modules mf exposes to others
+}
+
+//ONLY CONTAINER consumes home and course page
+remotes:{
+  mainPage:"mainpage@http://localhost:3000/remoteentry.js"
+  coursesPage:
+}
+
+
+<!-- -------------------MONOLYTHIC----------------- -->
+A monolithic frontend means your entire application’s UI is built, deployed, and
+maintained as one single unit — one codebase, one build, one deployment pipeline.
+
+Imagine a large e-commerce site (like Amazon):
+Homepage
+Product listing
+Cart
+Checkout
+
+It has Single codebase and repository,Shared state and routing between all modules and One deployment
+Problems
+Large bundle size → slow load time
+Hard to maintain and deploy small changes independently
+changing one module might break another
+
+
+
 <!-- =============================== -->
 <!-- 
 
@@ -532,6 +621,47 @@ DEBOUNCING - function is called only after a certain delay since the last time i
 Debouncing a function ensures that it doesn't get called too frequently
 Throttling - function is called at most once for every specified interval, no matter how many times it's triggered.
 a technique used to control how many times we allow a function to be executed over time
+
+Why do we place script at the end of the body?
+HTML loads first, then JavaScript runs and can safely access DOM elements
+If the script runs before the HTML is loaded, document.getElementById() might return null.
+No need to wait with DOMContentLoaded event
+document.addEventListener("DOMContentLoaded", () => {
+    // code
+})
+Placing <script> at end achieves the same effect more simply.
+If you use defer inside <head> or script above body close tag, your code will work fine even without DOMContentLoaded, so you don't have to write it.
+NOte : If <script> is in <head>, the browser stops HTML rendering until JS finishes loading
+<script src="./june_interview.js" defer></script>       //Using defer also ensures DOM loads first, even in <head>.
+
+
+async vs defer (Scripts maintain order of execution.)
+async - When download completes, script executes immediately.HTML parsing is paused during execution.
+defer - Script execution is deferred until HTML is fully parsed.
+defer delays script execution until DOM is ready.
+<head>
+  <script src="a.js" async></script>
+  <script src="b.js" async></script>
+</head>
+
+
+SPECIFICTY
+Inline Style  (style="color:red";)
+ID Selector   (#box)
+Class / Pseudo-class (.btn, .active, :hover)
+Tag/Element (div, p)
+Universal (*)
+/* One ID + one class: score 110 — higher priority */
+.card .title { font-size: 18px; }
+#main .title { font-size: 24px; }
+
+
+
+CLICK EVENT
+<button onclick="handleClickBtn()" id="click_me" >Click Me!</button>
+1. Harder to scale and maintain , Imagine 50 buttons:
+2. Hard to remove event listeners ; btn.removeEventListener("click", handleClickBtn);
+3. No multiple event handlers
 
 SEMANTIC TAGS : HTML elements that clearly describe their content and purpose to both browsers and developers.
 <header>...</header>
@@ -761,28 +891,34 @@ Meta hires two Apple AI researchers for Superintelligence push
 Starlink  could reshape rural and remote connectivity, directly affecting Airtel’s and Jio’s broadband strategies Satellite Internet Incoming
 
 
+Hi My name is Ritik Chauhan. I have around 4 years of experience as a MERN Stack Developer and 
+Currently I am working at Publicis Sapient.
+as a Senior Experience Engineer where I contribute to building scalable and high performance web applications.
 
 
 QUE 1:Tell me about yourself
 
-Hi Sir, my name is Ritik Chauhan. I am currently working as a Full Stack Developer at Infomerics Valuation and Ratings Limited, 
-which is a credit rating agency. I have around 3.6 years of experience in mern-stack development. At present, I am contributing to the development 
-of the 4i CRM project at Infomerics, where I handle both frontend and backend tasks, focusing on building scalable and efficient web applications. 
-
+Hi Everyone, my name is Ritik Chauhan and currently I am working in Publicis Sapient as a Senior Experience Engineer.
+I am having prior 4 years of experience in Frontend developement.Previously I used worked as
+a Full Stack Developer at Infomerics Valuation and Ratings Limited,which is basically a credit rating agency.
+During my time at Infomerics, I contributed to the development of the 4i CRM project, where I handled both frontend
+and backend tasks, focusing on building scalable and efficient web applications.
 
 
 
 
 QUE2:Tell me something about your current project
 
-Currently, I am working on the 4i CRM project, which is used by employees involved in the rating process to streamline and automate their workflows.
-The main objective of the project is to digitalize the entire rating process — shifting from manual paperwork to an online system — in compliance with SEBI guidelines.
-All essential documents such as rating notes, rating models, committee agendas, and meeting minutes are now generated directly through the CRM, replacing the earlier manual process.
-We are using ReactJS for the frontend, NestJS for the backend, and SQL Server as the database.
-We configured automated email alerts for both internal and external committee members to notify them about the voting date and time once the
-voting session goes live with the Helps of SQL Server's Database Mail.
+Previously I used to work on the 4i CRM project, which is used by employees involved in the rating process to streamline
+and automate their workflows.The main objective of the project is to digitalize the entire rating process — shifting from
+manual paperwork to an online system — in compliance with SEBI guidelines.All essential documents such as rating notes,
+rating models, committee agendas, and meeting minutes are now generated directly through the CRM, replacing the earlier 
+manual process.We have used ReactJS for the frontend, NestJS for the backend, and SQL Server as the database.
+We have configured automated email alerts for both internal and external committee members to notify them about the voting date 
+and time once the voting session goes live with the Helps of SQL Server's Database Mail.
 This also includes information on the number of cases scheduled in that particular meeting.
-Additionally, we have integrated various libraries and tools such as docx (for document generation), SharePoint (for document uploads),syncfusion (for text editor) and Material UI for UI components.
+Additionally, we have also integrated various libraries and tools such as docx (for document generation),
+SharePoint (for document uploads),syncfusion (for text editor) and Material UI for UI components.
 
 
 
@@ -790,12 +926,14 @@ Additionally, we have integrated various libraries and tools such as docx (for d
 
 QUE3:What are the roles and responsibilities in your project
 
-I’m responsible for transforming the entire Rating Committee feature in the 4i CRM system from JavaScript to TypeScript on both the frontend and backend.
-We use NestJS for backend architecture, and all CRUD operations are handled through SQL Server stored procedures, which are integrated into our service layer.
+I’m responsible for transforming the entire Rating Committee feature in the 4i CRM system from JavaScript to TypeScript
+on both the frontend and backend.We use NestJS for backend architecture, and all CRUD operations are handled through 
+SQL Server stored procedures, which are integrated into our service layer.
 This approach enhances type safety, code maintainability, and overall system performance.
-I am responsible for creating various document templates — such as committee agendas, registers, press releases, etc. — that are used in the rating process,
-with the goal of eliminating manual paperwork.
-In addition to development, I also support the product in the live environment by fixing critical bugs and implementing enhancements based on feedback from the team.
+I am responsible for creating various document templates — such as committee agendas, registers, press releases, etc.
+— that are used in the rating process,with the goal of eliminating manual paperwork.
+In addition to development, I also support the product in the live environment by fixing critical bugs
+and implementing enhancements based on feedback from the team.
 
 
 

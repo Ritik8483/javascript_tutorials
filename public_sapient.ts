@@ -140,3 +140,5 @@
 
 // type can represent union, intersection, primitive, tuple, etc.
 // type Status = "active" | "inactive"; // ✅ Valid
+
+

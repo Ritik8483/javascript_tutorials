@@ -37,7 +37,7 @@
   background-color: #2ecc71;
 }
 
-#ul_class{
+#ul_classElement{
   background-color: #ccc;
   margin-top: 0;
   max-width: 200px;
@@ -46,11 +46,86 @@
 #li_class{
   list-style: none;
 }
-#ul_class #li_class:hover{
+#ul_classElement #li_class:hover{
   background-color: #f0f0f0;
 }
 
 .main_detail_box{
   border: 1px solid red;
   padding: 20px;
+}
+.poki_class{
+  padding: 0;
+  margin: 0;
+}
+.li_style{
+  width: 200px;
+  padding: 0;
+  margin-left: 0;
+  list-style: none;
+  background-color: #ccc;
+}
+.li_style:hover{
+  color: yellow;
+}
+
+.ul_classElement{
+  margin: 0;
+    padding: 0;
+    width: 150px;
+}
+.li_css{
+  margin-top: 0;
+  list-style: none;
+  cursor: pointer;
+}
+
+.li_css:hover{
+  background-color: #ccc;
+}
+
+#planets_ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list_style{
+  background-color: #ccc;
+}
+
+.list_style:hover{
+  background-color: antiquewhite;
+  cursor: pointer;
+}
+
+
+#planets_list{
+  padding: 0;
+  margin: 0;
+}
+
+.product_box{
+  border: 3px solid red;
+}
+
+.poki_li_box{
+  list-style: none;
+}
+.planets_unol{
+  list-style: none;
+}
+.li_planet{
+  list-style: none;
+}
+#june_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.parent_cont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

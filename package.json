@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/Ritik8483/javascript_tutorials#readme",
   "devDependencies": {
-    "jest": "^30.0.3"
+    "jest": "^30.2.0"
   }
 }

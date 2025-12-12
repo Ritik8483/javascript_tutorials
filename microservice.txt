@@ -1,0 +1,132 @@
+1. Create 3 applications (CONTAINER,HOMEPAGE,COURSES) in typescript
+https://www.youtube.com/watch?v=FGAcmMufzVU&t=3535s
+
+npx create-react-app container --template=typescript
+npx create-react-app homepage --template=typescript
+npx create-react-app courses --template=typescript
+
+2. Create files in homepage and courses application and add dummy code to them and run them
+Now we want to run both of these applications inside a single application
+
+3. Create moduleFederation.config.js file in all app inside the root structure of the code 
+I use container for writing comment
+
+const { dependencies } = require("./package.json");
+module.exports = {
+name: "",
+filename: "remoteEntry.js",
+remotes: {},
+exposes: {},
+}
+
+
+4. Inside Homepage use name as "mainpage" and paste
+exposes: {
+    "./HomePage": "./src/App"
+},
+
+5. Copy Shared dependencies inside the microfrontend.config.json below exposes in all the files
+These are dependencies that are shared among the micro frontends
+
+shared: {
+    ...dependencies,
+    react: {
+      singleton: true,          //ensure single version of react and reactdom among multiple micro-frontends
+      import: "react",
+      shareScope: "default",
+      requiredVersion: dependencies.react,
+    },
+    "react-dom": {
+      singleton: true,
+      requiredVersion: dependencies["react-dom"],
+    },
+  },
+
+
+6. Create a remotetypes.d.ts file inside container application src folder and paste
+DEFINES THE TYPE OF MODULE THAT ARE BEING IMPORTED FROM OTHER REMOTE APPLICATIONS
+
+///<reference types="react" />
+
+declare module "coursepage/Course" {
+  const Course: React.ComponentType;
+  export default Course;
+}
+
+declare module "mainpage/HomePage" {
+  const HomePage: React.ComponentType;
+  export default HomePage;
+}
+
+7. CREATE WEBPACK.CONFIG.JS FILE IN CONTAINER AND REMOTE APPLICATIONS IN THE ROOT FOLDER AND PASTE THE BELOW CODE
+const { ModuleFederationPlugin } = require('webpack').container;
+const fs = require('fs');
+const path = require('path');
+
+const webpackConfigPath = 'react-scripts/config/webpack.config';
+const webpackConfig = require(webpackConfigPath);
+
+const override = (config) => {
+const mfConfigPath = path.resolve(__dirname, 'moduleFederation.config.js');
+
+if (fs.existsSync(mfConfigPath)) {
+const mfConfig = require(mfConfigPath);
+config.plugins.push(new ModuleFederationPlugin(mfConfig));
+config.output.publicPath = 'auto';
+}
+return config;};
+
+require.cache[require.resolve(webpackConfigPath)].exports = (env) =>
+override(webpackConfig(env));
+
+module.exports = require(webpackConfigPath);
+
+8. Create a folder call "scripts" inside the root folder of all apps and inside it create a file start.js
+
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
+require("../webpack.config");
+require("react-scripts/scripts/start");
+
+9. Now update start script of all applications with differnt port nos
+"start": "set PORT=3008 && node ./scripts/start.js",
+*set and && not works in macOS
+"start": "PORT=3007 node ./scripts/start.js",
+
+10. Create a bootstrap.tsx file inside the src folder and copy code of index.tsx inside it for all 3
+Inside index.tsx paste below code
+
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+    <App />
+);
+
+import("./bootstrap);
+export {}
+
+
+11. Now inside app.tsx file of container
+
+<ROUTER>
+      <DIV>
+        <NAV CLASSNAME='NAVBAR'>
+          <UL>
+            <LI>
+              <LINK TO="/">HOME</LINK>
+            </LI>
+            <LI>
+              <LINK TO="/COURSES">COURSES</LINK>
+            </LI>
+          </UL>
+        </NAV>
+        <ROUTES>
+          <ROUTE PATH="/" ELEMENT={<HOMEPAGE />} />
+          <ROUTE PATH="/COURSES" ELEMENT={<COURSES />} />
+        </ROUTES>
+      </DIV>
+    </ROUTER>
